@@ -6,7 +6,14 @@ namespace Inputs
     {
         private readonly InputControls.DpadActions _dpad;
 
-        public IVector2 CurrentPosition => new CustomVector2(_dpad.Move.ReadValue<Vector2>());
+        public IVector2 Position
+        {
+            get
+            {
+                var unityVector = _dpad.Move.ReadValue<Vector2>();
+                return new CustomVector2(unityVector.x, unityVector.y);
+            }
+        }
 
         public Dpad()
         {

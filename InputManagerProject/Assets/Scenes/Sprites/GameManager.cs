@@ -12,6 +12,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"X: {_inputManager.Dpad.CurrentPosition.X} Y: {_inputManager.Dpad.CurrentPosition.Y}");
+        Debug.Log($"X: {_inputManager.Dpad.Position.X} Y: {_inputManager.Dpad.Position.Y}");
     }
 }

@@ -18,15 +18,15 @@ namespace Inputs
         private Vector2 _handleAreaAnchored;
         private Vector2 _handleAnchored;
         private Vector2 _downPointerPosition;
-        private Vector2 _currentPosition;
+        private Vector2 _currentHandlePosition;
 
         protected override string controlPathInternal
         {
             get => _controlPath;
             set => _controlPath = value;
         }
-        
-        public IVector2 CurrentPosition => new CustomVector2(_currentPosition);
+
+        public IVector2 Position => new CustomVector2(_currentHandlePosition.x, _currentHandlePosition.y);
 
         private void Start()
         {
@@ -43,8 +43,8 @@ namespace Inputs
         {
             var handleDeltaRange = CalculateHandleDeltaRange(eventData);
             _handle.anchoredPosition = _handleAnchored + handleDeltaRange;
-            _currentPosition = new Vector2(handleDeltaRange.x / _handleRange, handleDeltaRange.y / _handleRange);
-            SendValueToControl(_currentPosition);
+            _currentHandlePosition = new Vector2(handleDeltaRange.x / _handleRange, handleDeltaRange.y / _handleRange);
+            SendValueToControl(_currentHandlePosition);
         }
 
         private Vector2 CalculateHandleDeltaRange(PointerEventData eventData)
@@ -57,7 +57,7 @@ namespace Inputs
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            _currentPosition = Vector2.zero;
+            _currentHandlePosition = Vector2.zero;
             SetAnchors();
             SendValueToControl(Vector2.zero);
         }
