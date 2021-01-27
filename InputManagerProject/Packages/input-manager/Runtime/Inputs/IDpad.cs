@@ -2,6 +2,6 @@
 {
     public interface IDpad
     {
-        IVector2 CurrentPosition { get; }
+        IVector2 Position { get; }
     }
 }

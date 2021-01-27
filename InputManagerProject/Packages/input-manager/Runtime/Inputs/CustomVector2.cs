@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Inputs
+﻿namespace Inputs
 {
     internal readonly struct CustomVector2 : IVector2
     {
@@ -11,12 +9,6 @@ namespace Inputs
         {
             X = x;
             Y = y;
-        }
-
-        public CustomVector2(Vector2 vector2)
-        {
-            X = vector2.x;
-            Y = vector2.y;
         }
     }
 }

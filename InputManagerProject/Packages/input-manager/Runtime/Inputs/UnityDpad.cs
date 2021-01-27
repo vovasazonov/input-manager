@@ -13,15 +13,15 @@ namespace Inputs
         private Vector2 _handleAreaAnchored;
         private Vector2 _handleAnchored;
         private Vector2 _downPointerPosition;
-        private Vector2 _currentPosition;
+        private Vector2 _currentHandlePosition;
 
-        public IVector2 CurrentPosition => new CustomVector2(_currentPosition);
-        
+        public IVector2 Position => new CustomVector2(_currentHandlePosition.x, _currentHandlePosition.y);
+
         private void Start()
         {
             InitializeAnchors();
         }
-        
+
         public void OnPointerDown(PointerEventData eventData)
         {
             _handleArea.anchoredPosition = eventData.position;
@@ -32,7 +32,7 @@ namespace Inputs
         {
             var handleDeltaRange = CalculateHandleDeltaRange(eventData);
             _handle.anchoredPosition = _handleAnchored + handleDeltaRange;
-            _currentPosition = new Vector2(handleDeltaRange.x / _handleRange, handleDeltaRange.y / _handleRange);
+            _currentHandlePosition = new Vector2(handleDeltaRange.x / _handleRange, handleDeltaRange.y / _handleRange);
         }
 
         private Vector2 CalculateHandleDeltaRange(PointerEventData eventData)
@@ -45,7 +45,7 @@ namespace Inputs
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            _currentPosition = Vector2.zero;
+            _currentHandlePosition = Vector2.zero;
             SetAnchors();
         }
 
@@ -54,7 +54,7 @@ namespace Inputs
             _handleAnchored = _handle.anchoredPosition;
             _handleAreaAnchored = _handleArea.anchoredPosition;
         }
-        
+
         private void SetAnchors()
         {
             _handleArea.anchoredPosition = _handleAreaAnchored;
