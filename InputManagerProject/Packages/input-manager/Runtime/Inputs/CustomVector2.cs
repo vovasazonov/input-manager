@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Inputs
+﻿namespace Inputs
 {
     internal readonly struct CustomVector2 : IVector2
     {

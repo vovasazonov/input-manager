@@ -15,9 +15,9 @@ namespace Inputs
             }
         }
 
-        public Dpad()
+        public Dpad(InputControls.DpadActions dpad)
         {
-            _dpad = new InputControls().Dpad;
+            _dpad = dpad;
             _dpad.Enable();
         }
     }
