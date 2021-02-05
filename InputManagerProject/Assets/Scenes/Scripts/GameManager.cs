@@ -1,15 +1,13 @@
 ﻿using Inputs;
 using UnityEngine;
 
-public sealed class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    [SerializeField] private UnityDpad _dpad;
-
     private IInputManager _inputManager;
 
     private void Awake()
     {
-        _inputManager = new InputManager(_dpad);
+        _inputManager = new InputManager();
     }
 
     private void Update()

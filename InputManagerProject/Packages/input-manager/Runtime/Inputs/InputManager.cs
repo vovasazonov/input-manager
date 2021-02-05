@@ -1,12 +1,14 @@
 ﻿namespace Inputs
 {
-    public class InputManager : IInputManager
+    public sealed class InputManager : IInputManager
     {
+        private readonly InputControls _inputControls;
         public IDpad Dpad { get; }
 
-        public InputManager(IDpad dpad)
+        public InputManager()
         {
-            Dpad = dpad;
+            _inputControls = new InputControls();
+            Dpad = new Dpad(_inputControls.Dpad);
         }
     }
 }

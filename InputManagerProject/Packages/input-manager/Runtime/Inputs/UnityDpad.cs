@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.Layouts;
+using UnityEngine.InputSystem.OnScreen;
 
 namespace Inputs
 {
-    public sealed class UnityDpad : MonoBehaviour, IDpad, IPointerDownHandler, IDragHandler, IPointerUpHandler
+    public sealed class UnityDpad : OnScreenControl, IDpad, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
+        [SerializeField] [InputControl(layout = "Vector2")]
+        private string _controlPath;
+
         [SerializeField] private RectTransform _dpadArea;
         [SerializeField] private RectTransform _handleArea;
         [SerializeField] private RectTransform _handle;
@@ -14,6 +19,12 @@ namespace Inputs
         private Vector2 _handleAnchored;
         private Vector2 _downPointerPosition;
         private Vector2 _currentHandlePosition;
+        
+        protected override string controlPathInternal
+        {
+            get => _controlPath;
+            set => _controlPath = value;
+        }
 
         public IVector2 Position => new CustomVector2(_currentHandlePosition.x, _currentHandlePosition.y);
 
@@ -33,6 +44,8 @@ namespace Inputs
             var handleDeltaRange = CalculateHandleDeltaRange(eventData);
             _handle.anchoredPosition = _handleAnchored + handleDeltaRange;
             _currentHandlePosition = new Vector2(handleDeltaRange.x / _handleRange, handleDeltaRange.y / _handleRange);
+            
+            SendValueToControl(_currentHandlePosition);
         }
 
         private Vector2 CalculateHandleDeltaRange(PointerEventData eventData)
@@ -47,6 +60,7 @@ namespace Inputs
         {
             _currentHandlePosition = Vector2.zero;
             SetAnchors();
+            SendValueToControl(Vector2.zero);
         }
 
         private void InitializeAnchors()
