@@ -35,17 +35,32 @@ namespace Inputs
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            _handleArea.anchoredPosition = eventData.position;
+            MoveHandleAreaToDownPointerPosition(eventData);
+            SaveDownPointerPosition(eventData);
+        }
+
+        private void SaveDownPointerPosition(PointerEventData eventData)
+        {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_dpadArea, eventData.position, eventData.pressEventCamera, out _downPointerPosition);
+        }
+
+        private void MoveHandleAreaToDownPointerPosition(PointerEventData eventData)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_dpadArea, eventData.position, eventData.pressEventCamera, out var localPosition);
+            _handleArea.anchoredPosition = localPosition;
         }
 
         public void OnDrag(PointerEventData eventData)
         {
+            CalculateCurrentHandlePosition(eventData);
+        }
+
+        private void CalculateCurrentHandlePosition(PointerEventData eventData)
+        {
             var handleDeltaRange = CalculateHandleDeltaRange(eventData);
             _handle.anchoredPosition = _handleAnchored + handleDeltaRange;
-            _currentHandlePosition = new Vector2(handleDeltaRange.x / _handleRange, handleDeltaRange.y / _handleRange);
-            
-            SendValueToControl(_currentHandlePosition);
+            var currentHandlePosition = new Vector2(handleDeltaRange.x / _handleRange, handleDeltaRange.y / _handleRange);
+            SetCurrentHandlerPosition(currentHandlePosition);
         }
 
         private Vector2 CalculateHandleDeltaRange(PointerEventData eventData)
@@ -58,8 +73,7 @@ namespace Inputs
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            _currentHandlePosition = Vector2.zero;
-            SetAnchors();
+            ResetValuesToDefault();
             SendValueToControl(Vector2.zero);
         }
 
@@ -69,10 +83,17 @@ namespace Inputs
             _handleAreaAnchored = _handleArea.anchoredPosition;
         }
 
-        private void SetAnchors()
+        private void ResetValuesToDefault()
         {
+            SetCurrentHandlerPosition(Vector2.zero);
             _handleArea.anchoredPosition = _handleAreaAnchored;
             _handle.anchoredPosition = _handleAnchored;
+        }
+
+        private void SetCurrentHandlerPosition(Vector2 value)
+        {
+            _currentHandlePosition = value;
+            SendValueToControl(value);
         }
     }
 }
