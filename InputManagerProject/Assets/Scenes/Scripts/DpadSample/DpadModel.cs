@@ -1,4 +1,5 @@
 ﻿using Inputs;
+using Inputs.Dpads;
 
 namespace Scenes.Scripts.DpadSample
 {

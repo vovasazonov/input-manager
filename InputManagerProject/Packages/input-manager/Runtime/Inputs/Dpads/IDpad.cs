@@ -1,4 +1,4 @@
-﻿namespace Inputs
+﻿namespace Inputs.Dpads
 {
     public interface IDpad
     {

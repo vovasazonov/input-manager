@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine.InputSystem.OnScreen;
 
-namespace Inputs
+namespace Inputs.Dpads
 {
     public sealed class UnityDpad : OnScreenControl, IDpad, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {

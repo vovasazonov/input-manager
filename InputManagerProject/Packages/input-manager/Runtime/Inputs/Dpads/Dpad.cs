@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Inputs
+namespace Inputs.Dpads
 {
     public class Dpad : IDpad
     {
