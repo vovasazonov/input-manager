@@ -1,8 +1,12 @@
-﻿namespace Scenes.Scripts.TouchSample
+﻿using System;
+using Inputs;
+
+namespace Scenes.Scripts.TouchSample
 {
     public interface ITapModel
     {
-        bool IsTap { get; }
+        event Action Tapped;
+        IVector2 Position { get; }
         int AmountTap { get; }
     }
 }

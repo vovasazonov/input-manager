@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Inputs.Dpads
 {
-    public class Dpad : IDpad
+    public sealed class Dpad : IDpad
     {
+        public event MovedHandler Moved;
+        
         private readonly InputControls.DpadActions _dpad;
 
         public IVector2 Position
@@ -19,6 +22,29 @@ namespace Inputs.Dpads
         {
             _dpad = dpad;
             _dpad.Enable();
+            
+            AddDpadListener();
+        }
+
+
+        private void AddDpadListener()
+        {
+            _dpad.Move.performed += OnMovePerformed;
+        }
+
+        private void RemoveDpadListener()
+        {
+            _dpad.Move.performed -= OnMovePerformed;
+        }
+
+        private void OnMovePerformed(InputAction.CallbackContext context)
+        {
+            CallMoved();
+        }
+
+        private void CallMoved()
+        {
+            Moved?.Invoke();
         }
     }
 }

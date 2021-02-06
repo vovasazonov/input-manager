@@ -15,12 +15,12 @@ public sealed class GameManager : MonoBehaviour
     {
         _inputManager = new InputManager();
         _dpadPresenter = new DpadPresenter(_dpadCoordinatesView, new DpadModel(_inputManager.Dpad));
-        _tapPresenter = new TapPresenter(_tapView, new TapModel(_inputManager.TouchSystem));
+        _tapPresenter = new TapPresenter(_tapView, new TapModel(_inputManager.TouchSystem.TapController));
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        _dpadPresenter.Update();
-        _tapPresenter.Update();
+        _dpadPresenter.Activate();
+        _tapPresenter.Activate();
     }
 }

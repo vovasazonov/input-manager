@@ -1,19 +1,20 @@
-﻿using UnityEngine;
+﻿using Inputs;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Scenes.Scripts.TouchSample
 {
     public sealed class TapView : MonoBehaviour, ITapView
     {
-        [SerializeField] private Text _isTapText;
+        [SerializeField] private Text _positionText;
         [SerializeField] private Text _amountTapText;
 
-        public bool IsTap
+        public IVector2 Position
         {
             set
             {
-                var isTap = value;
-                _isTapText.text = $"Is tap: {isTap}";
+                var position = value;
+                _positionText.text = $"Position tap. X: {position.X} Y: {position.Y}";
             }
         }
 

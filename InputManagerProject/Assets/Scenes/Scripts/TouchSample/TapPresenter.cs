@@ -1,6 +1,6 @@
 ﻿namespace Scenes.Scripts.TouchSample
 {
-    public sealed class TapPresenter
+    public sealed class TapPresenter : IPresenter
     {
         private readonly ITapView _view;
         private readonly ITapModel _model;
@@ -11,10 +11,25 @@
             _model = model;
         }
 
-        public void Update()
+        private void UpdateView()
         {
             _view.AmountTap = _model.AmountTap;
-            _view.IsTap = _model.IsTap;
+            _view.Position = _model.Position;
+        }
+
+        public void Activate()
+        {
+            _model.Tapped += OnTapped;
+        }
+
+        public void Deactivate()
+        {
+            _model.Tapped -= OnTapped;
+        }
+
+        private void OnTapped()
+        {
+            UpdateView();
         }
     }
 }

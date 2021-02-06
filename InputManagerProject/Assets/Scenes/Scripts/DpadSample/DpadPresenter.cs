@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Scenes.Scripts.DpadSample
+﻿namespace Scenes.Scripts.DpadSample
 {
-    public class DpadPresenter
+    public class DpadPresenter : IPresenter
     {
         private readonly IDpadCoordinatesView _view;
         private readonly IDpadModel _model;
@@ -13,11 +11,26 @@ namespace Scenes.Scripts.DpadSample
             _model = model;
         }
 
-        public void Update()
+        public void Activate()
+        {
+            _model.Moved += OnMoved;
+        }
+
+        public void Deactivate()
+        {
+            _model.Moved -= OnMoved;
+        }
+
+        private void OnMoved()
+        {
+            UpdateView();
+        }
+
+        private void UpdateView()
         {
             var position = _model.Position;
-            _view.X = String.Format("{0:f4}", position.X);
-            _view.Y = String.Format("{0:f4}", position.Y);
+            _view.X = $"{position.X:f4}";
+            _view.Y = $"{position.Y:f4}";
         }
     }
 }

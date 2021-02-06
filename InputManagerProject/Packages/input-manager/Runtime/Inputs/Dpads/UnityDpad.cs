@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.OnScreen;
 
 namespace Inputs.Dpads
 {
-    public sealed class UnityDpad : OnScreenControl, IDpad, IPointerDownHandler, IDragHandler, IPointerUpHandler
+    public sealed class UnityDpad : OnScreenControl, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
         [SerializeField] [InputControl(layout = "Vector2")]
         private string _controlPath;
@@ -18,15 +18,12 @@ namespace Inputs.Dpads
         private Vector2 _handleAreaAnchored;
         private Vector2 _handleAnchored;
         private Vector2 _downPointerPosition;
-        private Vector2 _currentHandlePosition;
         
         protected override string controlPathInternal
         {
             get => _controlPath;
             set => _controlPath = value;
         }
-
-        public IVector2 Position => new CustomVector2(_currentHandlePosition.x, _currentHandlePosition.y);
 
         private void Start()
         {
@@ -92,7 +89,6 @@ namespace Inputs.Dpads
 
         private void SetCurrentHandlerPosition(Vector2 value)
         {
-            _currentHandlePosition = value;
             SendValueToControl(value);
         }
     }
