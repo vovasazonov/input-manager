@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 212812383}
   - component: {fileID: 212812382}
   m_Layer: 5
-  m_Name: IsTapText
+  m_Name: TapPositionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'is tap:'
+  m_Text: 'Tap position:'
 --- !u!222 &212812383
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e0ec66d89b4ecdabed58b0c5e9c3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isTapText: {fileID: 212812382}
+  _positionText: {fileID: 212812382}
   _amountTapText: {fileID: 625524327}
 --- !u!1 &625524325
 GameObject:

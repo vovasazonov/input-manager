@@ -71,7 +71,6 @@ namespace Inputs.Dpads
         public void OnPointerUp(PointerEventData eventData)
         {
             ResetValuesToDefault();
-            SendValueToControl(Vector2.zero);
         }
 
         private void InitializeAnchors()
@@ -87,9 +86,9 @@ namespace Inputs.Dpads
             _handle.anchoredPosition = _handleAnchored;
         }
 
-        private void SetCurrentHandlerPosition(Vector2 value)
+        private void SetCurrentHandlerPosition(Vector2 position)
         {
-            SendValueToControl(value);
+            SendValueToControl(position);
         }
     }
 }

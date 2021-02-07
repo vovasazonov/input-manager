@@ -30,11 +30,18 @@ namespace Inputs.Dpads
         private void AddDpadListener()
         {
             _dpad.Move.performed += OnMovePerformed;
+            _dpad.Move.canceled += OnMoveCanceled;
         }
 
         private void RemoveDpadListener()
         {
             _dpad.Move.performed -= OnMovePerformed;
+            _dpad.Move.canceled -= OnMoveCanceled;
+        }
+
+        private void OnMoveCanceled(InputAction.CallbackContext context)
+        {
+            CallMoved();
         }
 
         private void OnMovePerformed(InputAction.CallbackContext context)

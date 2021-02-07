@@ -20,7 +20,6 @@ namespace Scenes.Scripts.DpadSample
         private void AddDpadListener()
         {
             _dpad.Moved += OnMoved;
-
         }
 
         private void RemoveDpadListener()
