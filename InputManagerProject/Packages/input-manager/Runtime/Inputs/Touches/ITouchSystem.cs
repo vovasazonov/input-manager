@@ -3,5 +3,6 @@
     public interface ITouchSystem
     {
         ITapController TapController { get; }
+        ISwipeController SwipeController { get; }
     }
 }
