@@ -42,7 +42,7 @@ namespace Inputs.Touches
         private IVector2 GetTapScreenPosition(Touch touch)
         {
             var unityVector = touch.screenPosition;
-            return new CustomVector2(unityVector.x, unityVector.y);
+            return new UnityVector(unityVector);
         }
 
         private void CallTapped(IVector2 screenPosition, int amountTap)

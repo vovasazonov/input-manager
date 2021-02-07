@@ -4,5 +4,6 @@
     {
         ITapGesture TapGesture { get; }
         ISwipeGesture SwipeGesture { get; }
+        IPinchGesture PinchGesture { get; }
     }
 }

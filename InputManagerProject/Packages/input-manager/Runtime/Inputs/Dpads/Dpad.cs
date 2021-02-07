@@ -14,7 +14,7 @@ namespace Inputs.Dpads
             get
             {
                 var unityVector = _dpad.Move.ReadValue<Vector2>();
-                return new CustomVector2(unityVector.x, unityVector.y);
+                return new UnityVector(unityVector);
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
@@ -62,9 +61,9 @@ namespace Inputs.Touches
         {
             var touch = finger.currentTouch;
             var startScreenPosition = touch.startScreenPosition;
-            IVector2 startPosition = new CustomVector2(startScreenPosition.x, startScreenPosition.y);
+            IVector2 startPosition = new UnityVector(startScreenPosition);
             var currentScreenPosition = touch.screenPosition;
-            IVector2 currentPosition = new CustomVector2(currentScreenPosition.x, currentScreenPosition.y);
+            IVector2 currentPosition = new UnityVector(currentScreenPosition);
             
             return new SwipeInfo(finger.index, startPosition, currentPosition);
         }
