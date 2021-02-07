@@ -5,7 +5,7 @@
         private readonly float _startMagnitude;
         private readonly IVector2[] _currentPositions;
 
-        public float PinchValue => _currentPositions[0].Distance(_currentPositions[1]) / _startMagnitude;
+        public float PinchValue => CurrentMagnitude / _startMagnitude;
 
         public float CurrentMagnitude => _currentPositions[0].Distance(_currentPositions[1]);
 

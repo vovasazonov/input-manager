@@ -2,13 +2,13 @@
 
 namespace Scenes.Scripts.TouchSample.Swipe
 {
-    public sealed class CameraModel : ICameraModel
+    public sealed class CameraSwipeModel : ICameraSwipeModel
     {
         public event MovedHandler Moved;
-        
+
         private readonly ITouchSystem _touchSystem;
 
-        public CameraModel(ITouchSystem touchSystem)
+        public CameraSwipeModel(ITouchSystem touchSystem)
         {
             _touchSystem = touchSystem;
                 
@@ -22,15 +22,18 @@ namespace Scenes.Scripts.TouchSample.Swipe
 
         private void RemoveTouchSystemListener()
         {
-            _touchSystem.SwipeGesture.Proceed += OnSwipeProceed;
+            _touchSystem.SwipeGesture.Proceed -= OnSwipeProceed;
         }
 
         private void OnSwipeProceed(ISwipeInfo swipeInfo)
         {
-            var deltaX = swipeInfo.CurrentPosition.X - swipeInfo.StartPosition.X;
-            var deltaY = swipeInfo.CurrentPosition.Y - swipeInfo.StartPosition.Y;
-            
-            CallMoved(deltaX, deltaY);
+            if (swipeInfo.FingerId == 0)
+            {
+                var deltaX = swipeInfo.CurrentPosition.X - swipeInfo.StartPosition.X;
+                var deltaY = swipeInfo.CurrentPosition.Y - swipeInfo.StartPosition.Y;
+                
+                CallMoved(deltaX, deltaY);
+            }
         }
 
         private void CallMoved(float deltaX, float deltaY)

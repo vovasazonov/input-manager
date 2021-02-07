@@ -1,12 +1,9 @@
-﻿using Inputs;
-
-namespace Scenes.Scripts.TouchSample.Swipe
+﻿namespace Scenes.Scripts.TouchSample.Swipe
 {
     public delegate void MovedHandler(float deltaX, float deltaY);
 
-    public interface ICameraModel
+    public interface ICameraSwipeModel
     {
         event MovedHandler Moved;
-        
     }
 }

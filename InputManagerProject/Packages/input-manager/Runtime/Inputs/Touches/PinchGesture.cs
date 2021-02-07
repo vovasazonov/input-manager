@@ -81,12 +81,13 @@ namespace Inputs.Touches
 
         private void OnFingerUp(Finger finger)
         {
-            if (_activePinchFingers.ContainsKey(finger.index))
+            if (IsPinch && _activePinchFingers.ContainsKey(finger.index))
             {
                 var pinchInfo = GetPinchInfo();
-                _activePinchFingers.Remove(finger.index);
                 CallStopped(pinchInfo);
             }
+            
+            _activePinchFingers.Remove(finger.index);
         }
 
         private PinchInfo GetPinchInfo()

@@ -1,6 +1,6 @@
 ﻿namespace Scenes.Scripts.TouchSample.Swipe
 {
-    public interface ICameraView
+    public interface ICameraSwipeView
     {
         void SetPositionFromDefault(float deltaX, float deltaY);
     }

@@ -14,7 +14,7 @@ namespace Inputs.Touches
             
             TapGesture = new TapGesture();
             SwipeGesture = new SwipeGesture();
-            // PinchGesture = new PinchGesture();
+            PinchGesture = new PinchGesture();
         }
     }
 }
