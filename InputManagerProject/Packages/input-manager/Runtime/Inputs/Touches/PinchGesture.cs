@@ -91,7 +91,10 @@ namespace Inputs.Touches
 
         private PinchInfo GetPinchInfo()
         {
-            return new PinchInfo(_startMagnitude, _activePinchFingers[0].screenPosition, _activePinchFingers[1].screenPosition);
+            var firstPosition = new UnityVector(_activePinchFingers[0].screenPosition);
+            var secondPosition = new UnityVector(_activePinchFingers[1].screenPosition);
+            
+            return new PinchInfo(_startMagnitude, firstPosition, secondPosition);
         }
 
         private void CallStarted(PinchInfo pinchInfo)

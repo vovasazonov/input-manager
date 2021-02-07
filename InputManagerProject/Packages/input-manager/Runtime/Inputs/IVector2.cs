@@ -4,5 +4,7 @@
     {
         float X { get; }
         float Y { get; }
+
+        float Distance(IVector2 another);
     }
 }

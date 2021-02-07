@@ -1,6 +1,6 @@
 ﻿namespace Inputs.Touches
 {
-    public delegate void PinchHandler(PinchInfo pinchInfo);
+    public delegate void PinchHandler(IPinchInfo pinchInfo);
 
     public interface IPinchGesture
     {
