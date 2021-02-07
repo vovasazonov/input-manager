@@ -5,7 +5,7 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace Inputs.Touches
 {
-    internal sealed class SwipeController : ISwipeController
+    internal sealed class SwipeGesture : ISwipeGesture
     {
         public event SwipeHandler Started;
         public event SwipeHandler Proceed;
@@ -13,7 +13,7 @@ namespace Inputs.Touches
 
         private readonly HashSet<int> _swipingFingers = new HashSet<int>();
 
-        public SwipeController()
+        public SwipeGesture()
         {
             AddFingerListener();
         }

@@ -2,7 +2,7 @@
 {
     public delegate void TappedHandler(IVector2 screenPosition, int amountTap);
 
-    public interface ITapController
+    public interface ITapGesture
     {
         event TappedHandler Tapped;
     }

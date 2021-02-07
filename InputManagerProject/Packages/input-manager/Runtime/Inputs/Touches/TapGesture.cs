@@ -2,13 +2,13 @@
 
 namespace Inputs.Touches
 {
-    internal sealed class TapController : ITapController
+    internal sealed class TapGesture : ITapGesture
     {
         public event TappedHandler Tapped;
 
         private int _currentAmountTap;
 
-        public TapController()
+        public TapGesture()
         {
             AddFingerListener();
         }

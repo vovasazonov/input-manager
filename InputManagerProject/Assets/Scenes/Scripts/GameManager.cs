@@ -15,7 +15,7 @@ public sealed class GameManager : MonoBehaviour
     {
         _inputManager = new InputManager();
         _dpadPresenter = new DpadPresenter(_dpadCoordinatesView, new DpadModel(_inputManager.Dpad));
-        _tapPresenter = new TapPresenter(_tapView, new TapModel(_inputManager.TouchSystem.TapController));
+        _tapPresenter = new TapPresenter(_tapView, new TapModel(_inputManager.TouchSystem.TapGesture));
     }
 
     private void OnEnable()

@@ -2,7 +2,7 @@
 {
     public interface ITouchSystem
     {
-        ITapController TapController { get; }
-        ISwipeController SwipeController { get; }
+        ITapGesture TapGesture { get; }
+        ISwipeGesture SwipeGesture { get; }
     }
 }

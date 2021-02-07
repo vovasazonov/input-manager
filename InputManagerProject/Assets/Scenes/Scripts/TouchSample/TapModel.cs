@@ -8,24 +8,24 @@ namespace Scenes.Scripts.TouchSample
     {
         public event Action Tapped;
         
-        private readonly ITapController _tapController;
+        private readonly ITapGesture _tapGesture;
         public IVector2 Position { get; private set; }
         public int AmountTap { get; private set; }
         
-        public TapModel(ITapController tapController)
+        public TapModel(ITapGesture tapGesture)
         {
-            _tapController = tapController;
+            _tapGesture = tapGesture;
             AddTapListener();
         }
 
         private void AddTapListener()
         {
-            _tapController.Tapped += OnTapped;
+            _tapGesture.Tapped += OnTapped;
         }
 
         private void RemoveTapListener()
         {
-            _tapController.Tapped -= OnTapped;
+            _tapGesture.Tapped -= OnTapped;
         }
         
         private void OnTapped(IVector2 screenPosition, int amountTap)

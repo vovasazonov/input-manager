@@ -2,7 +2,7 @@
 {
     public delegate void SwipeHandler(SwipeInfo swipeInfo);
 
-    public interface ISwipeController
+    public interface ISwipeGesture
     {
         event SwipeHandler Started;
         event SwipeHandler Proceed;

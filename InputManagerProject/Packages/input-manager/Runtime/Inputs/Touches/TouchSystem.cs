@@ -4,15 +4,15 @@ namespace Inputs.Touches
 {
     internal sealed class TouchSystem : ITouchSystem
     {
-        public ITapController TapController { get; }
-        public ISwipeController SwipeController { get; }
+        public ITapGesture TapGesture { get; }
+        public ISwipeGesture SwipeGesture { get; }
         
         public TouchSystem()
         {
             EnhancedTouchSupport.Enable();
             
-            TapController = new TapController();
-            SwipeController = new SwipeController();
+            TapGesture = new TapGesture();
+            SwipeGesture = new SwipeGesture();
         }
     }
 }
