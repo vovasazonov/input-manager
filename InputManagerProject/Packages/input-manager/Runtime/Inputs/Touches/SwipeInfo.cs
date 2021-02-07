@@ -1,6 +1,6 @@
 ﻿namespace Inputs.Touches
 {
-    public readonly struct SwipeInfo
+    internal readonly struct SwipeInfo : ISwipeInfo
     {
         public int FingerId { get; }
         public IVector2 StartPosition { get; }

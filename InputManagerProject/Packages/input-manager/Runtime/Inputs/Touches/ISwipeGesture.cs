@@ -1,6 +1,6 @@
 ﻿namespace Inputs.Touches
 {
-    public delegate void SwipeHandler(SwipeInfo swipeInfo);
+    public delegate void SwipeHandler(ISwipeInfo swipeInfo);
 
     public interface ISwipeGesture
     {
