@@ -1,7 +1,7 @@
 ﻿using System;
 using Inputs;
 
-namespace Scenes.Scripts.DpadSample
+namespace DpadSample
 {
     public interface IDpadModel
     {

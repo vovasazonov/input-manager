@@ -1,4 +1,4 @@
-﻿namespace Scenes.Scripts.DpadSample
+﻿namespace DpadSample
 {
     public interface IDpadCoordinatesView
     {

@@ -1,6 +1,5 @@
-﻿using Inputs;
-using Scenes.Scripts;
-using Scenes.Scripts.DpadSample;
+﻿using DpadSample;
+using Inputs;
 using Scenes.Scripts.TouchSample;
 using Scenes.Scripts.TouchSample.Pinch;
 using Scenes.Scripts.TouchSample.Swipe;

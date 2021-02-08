@@ -1,8 +1,5 @@
-﻿namespace Scenes.Scripts
+﻿public interface IPresenter
 {
-    public interface IPresenter
-    {
-        void Activate();
-        void Deactivate();
-    }
+    void Activate();
+    void Deactivate();
 }

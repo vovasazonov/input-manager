@@ -2,7 +2,7 @@
 using Inputs;
 using Inputs.Dpads;
 
-namespace Scenes.Scripts.DpadSample
+namespace DpadSample
 {
     public sealed class DpadModel : IDpadModel
     {
