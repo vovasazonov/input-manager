@@ -2,7 +2,7 @@
 using Inputs;
 using Inputs.Touches;
 
-namespace Scenes.Scripts.TouchSample
+namespace TouchSample.Tap
 {
     public sealed class TapModel : ITapModel
     {

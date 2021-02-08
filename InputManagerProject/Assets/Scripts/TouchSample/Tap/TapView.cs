@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scenes.Scripts.TouchSample
+namespace TouchSample.Tap
 {
     public sealed class TapView : MonoBehaviour, ITapView
     {

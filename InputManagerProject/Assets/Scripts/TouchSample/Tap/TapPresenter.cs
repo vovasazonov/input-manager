@@ -1,4 +1,4 @@
-﻿namespace Scenes.Scripts.TouchSample
+﻿namespace TouchSample.Tap
 {
     public sealed class TapPresenter : IPresenter
     {

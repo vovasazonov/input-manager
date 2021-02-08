@@ -1,6 +1,6 @@
 ﻿using Inputs;
 
-namespace Scenes.Scripts.TouchSample
+namespace TouchSample.Tap
 {
     public interface ITapView
     {
