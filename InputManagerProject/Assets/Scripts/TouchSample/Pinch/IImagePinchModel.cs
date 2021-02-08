@@ -1,4 +1,4 @@
-﻿namespace Scenes.Scripts.TouchSample.Pinch
+﻿namespace TouchSample.Pinch
 {
     public delegate void ScaledHandler(float delta);
 

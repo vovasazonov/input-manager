@@ -1,7 +1,6 @@
 ﻿using DpadSample;
 using Inputs;
-using Scenes.Scripts.TouchSample;
-using Scenes.Scripts.TouchSample.Pinch;
+using TouchSample.Pinch;
 using TouchSample.Swipe;
 using TouchSample.Tap;
 using UnityEngine;

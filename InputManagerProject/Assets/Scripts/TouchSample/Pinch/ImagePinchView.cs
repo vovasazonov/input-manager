@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scenes.Scripts.TouchSample.Pinch
+namespace TouchSample.Pinch
 {
     public sealed class ImagePinchView : MonoBehaviour, IImagePinchView
     {

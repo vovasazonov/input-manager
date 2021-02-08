@@ -1,4 +1,4 @@
-﻿namespace Scenes.Scripts.TouchSample.Pinch
+﻿namespace TouchSample.Pinch
 {
     public class ImagePinchPresenter : IPresenter
     {

@@ -1,6 +1,6 @@
 ﻿using Inputs.Touches;
 
-namespace Scenes.Scripts.TouchSample.Pinch
+namespace TouchSample.Pinch
 {
     public sealed class ImagePinchModel : IImagePinchModel
     {
