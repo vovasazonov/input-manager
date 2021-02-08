@@ -1,29 +1,29 @@
-﻿namespace Scenes.Scripts.TouchSample.Swipe
+﻿namespace TouchSample.Swipe
 {
     public sealed class CameraSwipePresenter : IPresenter
     {
-        private readonly ICameraSwipeView _swipeView;
-        private readonly ICameraSwipeModel _swipeModel;
+        private readonly ICameraSwipeView _view;
+        private readonly ICameraSwipeModel _model;
 
-        public CameraSwipePresenter(ICameraSwipeView swipeView, ICameraSwipeModel swipeModel)
+        public CameraSwipePresenter(ICameraSwipeView view, ICameraSwipeModel model)
         {
-            _swipeView = swipeView;
-            _swipeModel = swipeModel;
+            _view = view;
+            _model = model;
         }
 
         public void Activate()
         {
-            _swipeModel.Moved += OnMoved;
+            _model.Displaced += OnMoved;
         }
 
         public void Deactivate()
         {
-            _swipeModel.Moved -= OnMoved;
+            _model.Displaced -= OnMoved;
         }
 
-        private void OnMoved(float deltaX, float deltaY)
+        private void OnMoved(float magnitudeX, float magnitudeY)
         {
-            _swipeView.SetPositionFromDefault(deltaX, deltaY);
+            _view.DisplaceCamera(magnitudeX, magnitudeY);
         }
     }
 }

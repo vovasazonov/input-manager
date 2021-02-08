@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
-namespace Scenes.Scripts.TouchSample.Swipe
+namespace TouchSample.Swipe
 {
     public sealed class CameraSwipeView : MonoBehaviour, ICameraSwipeView
     {
         [SerializeField] private Camera _camera;
-        [SerializeField] private float _speedChange = 0.01f;
 
-        public void SetPositionFromDefault(float deltaX, float deltaY)
+        public void DisplaceCamera(float displaceX, float displaceY)
         {
-            var currentCameraPosition = _camera.transform.position;
-            var positionX = (currentCameraPosition.x + deltaX) * _speedChange;
-            var positionY = (currentCameraPosition.y + deltaY) * _speedChange;
-            _camera.transform.position = new Vector3(positionX, positionY, currentCameraPosition.z);
+            var cameraTransform = _camera.transform;
+            var currentCameraPosition = cameraTransform.position;
+            var positionX = currentCameraPosition.x + displaceX;
+            var positionY = currentCameraPosition.y + displaceY;
+            cameraTransform.position = new Vector3(positionX, positionY, currentCameraPosition.z);
         }
     }
 }

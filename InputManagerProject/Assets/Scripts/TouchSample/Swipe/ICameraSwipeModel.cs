@@ -1,9 +1,9 @@
-﻿namespace Scenes.Scripts.TouchSample.Swipe
+﻿namespace TouchSample.Swipe
 {
-    public delegate void MovedHandler(float deltaX, float deltaY);
+    public delegate void DisplaceHandler(float displaceX, float displaceY);
 
     public interface ICameraSwipeModel
     {
-        event MovedHandler Moved;
+        event DisplaceHandler Displaced;
     }
 }

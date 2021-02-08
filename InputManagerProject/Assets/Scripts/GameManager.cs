@@ -2,7 +2,7 @@
 using Inputs;
 using Scenes.Scripts.TouchSample;
 using Scenes.Scripts.TouchSample.Pinch;
-using Scenes.Scripts.TouchSample.Swipe;
+using TouchSample.Swipe;
 using TouchSample.Tap;
 using UnityEngine;
 
