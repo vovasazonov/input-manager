@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace DpadSample
 {
-    public sealed class DpadCoordinatesView : MonoBehaviour, IDpadCoordinatesView
+    public sealed class StickCoordinatesView : MonoBehaviour, IStickCoordinatesView
     {
         [SerializeField] private Text _coordinateText;
 
@@ -30,7 +30,7 @@ namespace DpadSample
 
         private void UpdateView()
         {
-            _coordinateText.text = $"Dpad coordinates: x:{_x}  y:{_y}";
+            _coordinateText.text = $"Stick coordinates: x:{_x}  y:{_y}";
         }
     }
 }

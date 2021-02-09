@@ -3,14 +3,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine.InputSystem.OnScreen;
 
-namespace Inputs.Dpads
+namespace Inputs
 {
-    public sealed class UnityDpad : OnScreenControl, IPointerDownHandler, IDragHandler, IPointerUpHandler
+    public sealed class ScreenStick : OnScreenControl, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
         [SerializeField] [InputControl(layout = "Vector2")]
         private string _controlPath;
 
-        [SerializeField] private RectTransform _dpadArea;
+        [SerializeField] private RectTransform _stickArea;
         [SerializeField] private RectTransform _handleArea;
         [SerializeField] private RectTransform _handle;
         [SerializeField] private float _handleRange = 50;
@@ -38,12 +38,12 @@ namespace Inputs.Dpads
 
         private void SaveDownPointerPosition(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_dpadArea, eventData.position, eventData.pressEventCamera, out _downPointerPosition);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_stickArea, eventData.position, eventData.pressEventCamera, out _downPointerPosition);
         }
 
         private void MoveHandleAreaToDownPointerPosition(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_dpadArea, eventData.position, eventData.pressEventCamera, out var localPosition);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_stickArea, eventData.position, eventData.pressEventCamera, out var localPosition);
             _handleArea.anchoredPosition = localPosition;
         }
 
@@ -62,7 +62,7 @@ namespace Inputs.Dpads
 
         private Vector2 CalculateHandleDeltaRange(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_dpadArea, eventData.position, eventData.pressEventCamera, out var dragPointerPosition);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_stickArea, eventData.position, eventData.pressEventCamera, out var dragPointerPosition);
             var delta = dragPointerPosition - _downPointerPosition;
             delta = Vector2.ClampMagnitude(delta, _handleRange);
             return delta;

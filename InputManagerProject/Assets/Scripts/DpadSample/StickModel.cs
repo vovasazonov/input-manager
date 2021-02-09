@@ -3,7 +3,7 @@ using Inputs;
 
 namespace DpadSample
 {
-    public sealed class DpadModel : IDpadModel
+    public sealed class StickModel : IStickModel
     {
         public event Action Moved;
         
@@ -11,7 +11,7 @@ namespace DpadSample
         
         public IVector2 Position { get; private set; }
 
-        public DpadModel(IMovement movement)
+        public StickModel(IMovement movement)
         {
             _movement = movement;
             AddMovementListener();

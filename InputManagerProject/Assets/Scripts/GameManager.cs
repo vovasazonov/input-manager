@@ -4,23 +4,23 @@ using UnityEngine;
 
 public sealed class GameManager : MonoBehaviour
 {
-    [SerializeField] private DpadCoordinatesView _dpadCoordinatesView;
+    [SerializeField] private StickCoordinatesView _stickCoordinatesView;
     private IInputManager _inputManager;
-    private IPresenter _dpadPresenter;
+    private IPresenter _stickCoordinatesPresenter;
 
     private void Awake()
     {
         _inputManager = new InputManager();
         
-        var dpadModel = new DpadModel(_inputManager.PlayerControls.Movement);
+        var stickModel = new StickModel(_inputManager.PlayerControls.Movement);
         
-        _dpadPresenter = new DpadPresenter(_dpadCoordinatesView, dpadModel);
+        _stickCoordinatesPresenter = new StickCoordinatesPresenter(_stickCoordinatesView, stickModel);
     }
 
     private void OnEnable()
     {
         _inputManager.PlayerControls.Activate();
         
-        _dpadPresenter.Activate();
+        _stickCoordinatesPresenter.Activate();
     }
 }

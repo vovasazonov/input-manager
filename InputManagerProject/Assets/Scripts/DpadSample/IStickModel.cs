@@ -3,7 +3,7 @@ using Inputs;
 
 namespace DpadSample
 {
-    public interface IDpadModel
+    public interface IStickModel
     {
         event Action Moved;
         IVector2 Position { get; }
