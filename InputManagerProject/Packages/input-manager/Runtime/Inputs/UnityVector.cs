@@ -16,8 +16,8 @@ namespace Inputs
 
         public float Distance(IVector2 another)
         {
-            var anotherUnityVector = new Vector2(another.X, another.Y);
-            return Vector2.Distance(_vector2, anotherUnityVector);
+            var anotherVector2 = new Vector2(another.X, another.Y);
+            return Vector2.Distance(_vector2, anotherVector2);
         }
     }
 }

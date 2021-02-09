@@ -95,6 +95,110 @@ public class @InputControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Player Controls"",
+            ""id"": ""fdd2e49a-08b0-4dc6-8069-62ee1a3e8815"",
+            ""actions"": [
+                {
+                    ""name"": ""Scale"",
+                    ""type"": ""Value"",
+                    ""id"": ""21d0446f-40b6-4d1b-977b-0803fa474c50"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""95763227-e373-4dbc-8ad1-1968612eeacc"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Pinch"",
+                    ""id"": ""ccb0c205-544c-4a06-b93a-594b20d66024"",
+                    ""path"": ""Custom"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifierTouchContact1"",
+                    ""id"": ""08a9730e-f8e5-4399-ae33-88be3e9db5dd"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifierTouchContact2"",
+                    ""id"": ""91365d18-b5f9-4fb9-a780-c153fba70e47"",
+                    ""path"": ""<Touchscreen>/touch1/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positionXTouch1"",
+                    ""id"": ""a2e9b356-f9fc-4392-bf0b-754eeed08517"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positionYTouch1"",
+                    ""id"": ""78341493-607d-4034-94f5-a598f7afa7c6"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positionXTouch2"",
+                    ""id"": ""8bb45dad-7499-464e-b557-53ab4c4735b3"",
+                    ""path"": ""<Touchscreen>/touch1/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positionYTouch2"",
+                    ""id"": ""2123da21-ab8c-4370-9846-71f8da23705c"",
+                    ""path"": ""<Touchscreen>/touch1/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -102,6 +206,9 @@ public class @InputControls : IInputActionCollection, IDisposable
         // Dpad
         m_Dpad = asset.FindActionMap("Dpad", throwIfNotFound: true);
         m_Dpad_Move = m_Dpad.FindAction("Move", throwIfNotFound: true);
+        // Player Controls
+        m_PlayerControls = asset.FindActionMap("Player Controls", throwIfNotFound: true);
+        m_PlayerControls_Scale = m_PlayerControls.FindAction("Scale", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -180,8 +287,45 @@ public class @InputControls : IInputActionCollection, IDisposable
         }
     }
     public DpadActions @Dpad => new DpadActions(this);
+
+    // Player Controls
+    private readonly InputActionMap m_PlayerControls;
+    private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
+    private readonly InputAction m_PlayerControls_Scale;
+    public struct PlayerControlsActions
+    {
+        private @InputControls m_Wrapper;
+        public PlayerControlsActions(@InputControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Scale => m_Wrapper.m_PlayerControls_Scale;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerControlsActions instance)
+        {
+            if (m_Wrapper.m_PlayerControlsActionsCallbackInterface != null)
+            {
+                @Scale.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
+                @Scale.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
+                @Scale.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
+            }
+            m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Scale.started += instance.OnScale;
+                @Scale.performed += instance.OnScale;
+                @Scale.canceled += instance.OnScale;
+            }
+        }
+    }
+    public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
     public interface IDpadActions
     {
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IPlayerControlsActions
+    {
+        void OnScale(InputAction.CallbackContext context);
     }
 }
