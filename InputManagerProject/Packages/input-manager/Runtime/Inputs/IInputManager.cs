@@ -1,9 +1,7 @@
-﻿using Inputs.Dpads;
-
-namespace Inputs
+﻿namespace Inputs
 {
     public interface IInputManager
     {
-        IDpad Dpad { get; }
+        IPlayerControls PlayerControls { get; }
     }
 }

@@ -12,12 +12,15 @@ public sealed class GameManager : MonoBehaviour
     {
         _inputManager = new InputManager();
         
-        var dpadModel = new DpadModel(_inputManager.Dpad);
+        var dpadModel = new DpadModel(_inputManager.PlayerControls.Movement);
+        
         _dpadPresenter = new DpadPresenter(_dpadCoordinatesView, dpadModel);
     }
 
     private void OnEnable()
     {
+        _inputManager.PlayerControls.Activate();
+        
         _dpadPresenter.Activate();
     }
 }

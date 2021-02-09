@@ -1,6 +1,5 @@
 ﻿using System;
 using Inputs;
-using Inputs.Dpads;
 
 namespace DpadSample
 {
@@ -8,27 +7,29 @@ namespace DpadSample
     {
         public event Action Moved;
         
-        private readonly IDpad _dpad;
-        public IVector2 Position => _dpad.Position;
+        private readonly IMovement _movement;
+        
+        public IVector2 Position { get; private set; }
 
-        public DpadModel(IDpad dpad)
+        public DpadModel(IMovement movement)
         {
-            _dpad = dpad;
-            AddDpadListener();
+            _movement = movement;
+            AddMovementListener();
         }
 
-        private void AddDpadListener()
+        private void AddMovementListener()
         {
-            _dpad.Moved += OnMoved;
+            _movement.Moved += OnMoved;
         }
 
         private void RemoveDpadListener()
         {
-            _dpad.Moved -= OnMoved;
+            _movement.Moved -= OnMoved;
         }
 
-        private void OnMoved()
+        private void OnMoved(IVector2 position)
         {
+            Position = position;
             CallMoved();
         }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7bc22cbe7d0a0ad4c890d8d908f6b2c0
+guid: b8323c8e3ca6a0745914d65fb3d34a00
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: 
+  wrapperCodeNamespace: Inputs
