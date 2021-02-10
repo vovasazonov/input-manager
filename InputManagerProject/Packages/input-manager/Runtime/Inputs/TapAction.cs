@@ -9,11 +9,11 @@ namespace Inputs
         public event ClickedHandler Clicked;
 
         private readonly InputAction[] _tapActions;
-        private readonly InputAction _primaryPointerPositionAction;
+        private readonly InputAction _pointerPositionAction;
 
-        public TapAction(InputAction primaryPointerPositionAction, params InputAction[] tapActions)
+        public TapAction(InputAction pointerPositionAction, params InputAction[] tapActions)
         {
-            _primaryPointerPositionAction = primaryPointerPositionAction;
+            _pointerPositionAction = pointerPositionAction;
             _tapActions = tapActions;
 
             AddActionListener();
@@ -37,7 +37,7 @@ namespace Inputs
 
         private void OnActionPreformed(InputAction.CallbackContext context)
         {
-            var vector = _primaryPointerPositionAction.ReadValue<Vector2>();
+            var vector = _pointerPositionAction.ReadValue<Vector2>();
             var screenPosition = new UnityVector(vector);
 
             if (context.interaction is MultiTapInteraction interaction)

@@ -4,5 +4,6 @@
     {
         IMovementAction MovementAction { get; }
         ITapAction TapAction { get; }
+        ISwipeAction SwipeAction { get; }
     }
 }

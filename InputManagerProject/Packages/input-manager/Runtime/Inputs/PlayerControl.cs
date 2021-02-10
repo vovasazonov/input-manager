@@ -5,6 +5,7 @@
         private readonly PlayerActions _playerActions;
         public IMovementAction MovementAction { get; }
         public ITapAction TapAction { get; }
+        public ISwipeAction SwipeAction { get; }
 
         public PlayerControl(PlayerActions playerActions)
         {
@@ -12,7 +13,8 @@
 
             var playerControls = _playerActions.PlayerControls;
             MovementAction = new MovementAction(playerControls.Movement);
-            TapAction = new TapAction(playerControls.PrimaryPointerPosition, playerControls.PrimaryPointerTap, playerControls.PrimaryPointerDoubleTap, playerControls.PrimaryPointerTripleTap);
+            TapAction = new TapAction(playerControls.PointerPosition, playerControls.PointerTap, playerControls.PointerDoubleTap, playerControls.PointerTripleTap);
+            SwipeAction = new SwipeAction(playerControls.PointerPosition, playerControls.PointerPressRelease);
         }
 
         public void Activate()
