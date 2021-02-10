@@ -1,12 +1,11 @@
 ﻿using Inputs;
 using Samples;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public sealed class GameManager : MonoBehaviour
 {
     [SerializeField] private CoordinatesView _coordinatesView;
-    [SerializeField] private PointClickView _pointClickView;
+    [SerializeField] private PointView pointView;
     private IInputManager _inputManager;
     private IPresenter _stickCoordinatesPresenter;
     private IPresenter _pointClickPresenter;
@@ -16,9 +15,10 @@ public sealed class GameManager : MonoBehaviour
         _inputManager = new InputManager();
         
         var stickModel = new StickModel(_inputManager.PlayerControl.MovementAction);
+        var pointModel = new PointModel(_inputManager.PlayerControl);
         
         _stickCoordinatesPresenter = new StickCoordinatesPresenter(_coordinatesView, stickModel);
-        _pointClickPresenter = new PointClickPresenter(_pointClickView, _inputManager.PlayerControl.TapAction);
+        _pointClickPresenter = new PointPresenter(pointView, pointModel);
     }
 
     private void OnEnable()

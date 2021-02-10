@@ -8,12 +8,13 @@ namespace Inputs
         public event SwipeHandler Started;
         public event SwipeHandler Proceed;
         public event SwipeHandler Stopped;
-        
+
         private readonly InputAction _positionAction;
         private readonly InputAction _pressReleaseAction;
         private IVector2 _startScreenPosition;
         private bool _isSwiping;
-        
+        private bool _isPressing;
+
         public SwipeAction(InputAction positionAction, InputAction pressReleaseAction)
         {
             _positionAction = positionAction;
@@ -33,30 +34,46 @@ namespace Inputs
             _positionAction.performed -= OnPositionActionPerformed;
             _pressReleaseAction.performed -= OnPressReleaseActionPerformed;
         }
-        
+
         private void OnPressReleaseActionPerformed(InputAction.CallbackContext context)
         {
-            ChangeModeSwiping();
+            ChangeModePressRelease();
+            DetectStopSwiping();
+        }
+
+        private void ChangeModePressRelease()
+        {
+            _isPressing = !_isPressing;
+        }
+
+        private void DetectStopSwiping()
+        {
+            if (!_isPressing && _isSwiping)
+            {
+                StopSwiping();
+            }
+        }
+
+        private void DetectProceedSwiping()
+        {
+            if (_isSwiping && _isPressing)
+            {
+                ProceedSwiping();
+            }
+        }
+
+        private void DetectStartSwiping()
+        {
+            if (!_isSwiping && _isPressing)
+            {
+                StartSwiping();
+            }
         }
 
         private void OnPositionActionPerformed(InputAction.CallbackContext context)
         {
-            if (_isSwiping)
-            {
-                CallProceed(GetSwipeInfo());
-            }
-        }
-        
-        private void ChangeModeSwiping()
-        {
-            if (_isSwiping)
-            {
-                StopSwiping();
-            }
-            else
-            {
-                StartSwiping();
-            }
+            DetectProceedSwiping();
+            DetectStartSwiping();
         }
 
         private void StartSwiping()
@@ -65,7 +82,12 @@ namespace Inputs
             InitializeStartScreenPosition();
             CallStarted(GetSwipeInfo());
         }
-        
+
+        private void ProceedSwiping()
+        {
+            CallProceed(GetSwipeInfo());
+        }
+
         private void StopSwiping()
         {
             _isSwiping = false;
@@ -76,7 +98,7 @@ namespace Inputs
         {
             return new SwipeInfo(_startScreenPosition, GetCurrentScreenPosition());
         }
-        
+
         private void InitializeStartScreenPosition()
         {
             _startScreenPosition = GetCurrentScreenPosition();
@@ -87,17 +109,17 @@ namespace Inputs
             var position = _positionAction.ReadValue<Vector2>();
             return new UnityVector(position);
         }
-        
+
         private void CallStarted(SwipeInfo swipeInfo)
         {
             Started?.Invoke(swipeInfo);
         }
-        
+
         private void CallProceed(SwipeInfo swipeInfo)
         {
             Proceed?.Invoke(swipeInfo);
         }
-        
+
         private void CallStopped(SwipeInfo swipeInfo)
         {
             Stopped?.Invoke(swipeInfo);

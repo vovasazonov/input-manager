@@ -1,9 +1,9 @@
 ﻿namespace Inputs
 {
-    public delegate void ClickedHandler(IVector2 screenPosition, int amount);
+    public delegate void TappedHandler(IVector2 screenPosition, int amount);
 
     public interface ITapAction
     {
-        event ClickedHandler Clicked;
+        event TappedHandler Tapped;
     }
 }

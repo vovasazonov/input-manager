@@ -6,7 +6,7 @@ namespace Inputs
 {
     public sealed class TapAction : ITapAction
     {
-        public event ClickedHandler Clicked;
+        public event TappedHandler Tapped;
 
         private readonly InputAction[] _tapActions;
         private readonly InputAction _pointerPositionAction;
@@ -49,7 +49,7 @@ namespace Inputs
 
         private void CallClicked(IVector2 screenPosition, int amount)
         {
-            Clicked?.Invoke(screenPosition, amount);
+            Tapped?.Invoke(screenPosition, amount);
         }
     }
 }

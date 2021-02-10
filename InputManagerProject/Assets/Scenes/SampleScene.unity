@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coordinatesView: {fileID: 829187660}
-  _pointClickView: {fileID: 1334869266}
+  pointView: {fileID: 1334869266}
 --- !u!4 &1307881693
 Transform:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 1334869267}
   - component: {fileID: 1334869266}
   m_Layer: 5
-  m_Name: PointClickView
+  m_Name: PointView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,6 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5999dfb3582a4e2695e5c79940e479f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 1334869267}
   _pointRectTransform: {fileID: 1334869265}
   _amountTapText: {fileID: 1539233945}
 --- !u!114 &1334869267
