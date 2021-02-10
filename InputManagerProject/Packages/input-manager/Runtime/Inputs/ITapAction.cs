@@ -2,7 +2,7 @@
 {
     public delegate void ClickedHandler(IVector2 screenPosition, int amount);
 
-    public interface IClickAction
+    public interface ITapAction
     {
         event ClickedHandler Clicked;
     }

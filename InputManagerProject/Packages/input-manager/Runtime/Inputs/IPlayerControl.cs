@@ -3,6 +3,6 @@
     public interface IPlayerControl : IInputControl
     {
         IMovementAction MovementAction { get; }
-        IClickAction ClickAction { get; }
+        ITapAction TapAction { get; }
     }
 }

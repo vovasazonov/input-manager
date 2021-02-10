@@ -29,18 +29,50 @@ namespace Inputs
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""TriggerClick"",
+                    ""name"": ""PrimaryPointerTap"",
                     ""type"": ""Button"",
                     ""id"": ""30bf1e30-b4ea-41cf-aa21-d40e0a16b3dc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap""
+                    ""interactions"": ""MultiTap(tapCount=1)""
                 },
                 {
-                    ""name"": ""PositionClick"",
+                    ""name"": ""PrimaryPointerDoubleTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""830b9398-7623-452c-a47b-84b2e1999544"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap""
+                },
+                {
+                    ""name"": ""PrimaryPointerTripleTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""c94ecf44-cd9c-43aa-b55a-817cafe4f377"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap(tapCount=3)""
+                },
+                {
+                    ""name"": ""PrimaryPointerPosition"",
                     ""type"": ""Value"",
                     ""id"": ""6231e476-589a-49e9-b0c3-5ea1fc7a10e6"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pinch"",
+                    ""type"": ""Value"",
+                    ""id"": ""f08016df-d853-4300-bd54-604974af6b33"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Swipe"",
+                    ""type"": ""Button"",
+                    ""id"": ""9115a950-ca65-4e75-bb74-9efa9c2b8240"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -114,12 +146,12 @@ namespace Inputs
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9bddabef-4b25-436c-86f1-3f396d462004"",
+                    ""id"": ""e28e4b1f-4289-4d13-81d8-7a1a8e8b115a"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TriggerClick"",
+                    ""groups"": ""PC"",
+                    ""action"": ""PrimaryPointerTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -129,8 +161,8 @@ namespace Inputs
                     ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TriggerClick"",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""PrimaryPointerTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -140,8 +172,8 @@ namespace Inputs
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PositionClick"",
+                    ""groups"": ""PC"",
+                    ""action"": ""PrimaryPointerPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -151,8 +183,74 @@ namespace Inputs
                     ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""PrimaryPointerPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f627d91c-149f-41f8-861e-a2ce9eb7ecee"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Pinch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""538681dc-8358-4a31-9cb9-967aedbc3201"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PositionClick"",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82ece81f-0008-4215-bf66-584764a57e1c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""PrimaryPointerDoubleTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6191765c-a200-46c4-8805-1d87126e9eb0"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""PrimaryPointerDoubleTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60a1ba46-353f-4238-8f11-f2ed0e72802a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""PrimaryPointerTripleTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""480c44f2-542a-4fad-9fce-99039c37fc20"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""PrimaryPointerTripleTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -192,8 +290,12 @@ namespace Inputs
             // PlayerControls
             m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
             m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
-            m_PlayerControls_TriggerClick = m_PlayerControls.FindAction("TriggerClick", throwIfNotFound: true);
-            m_PlayerControls_PositionClick = m_PlayerControls.FindAction("PositionClick", throwIfNotFound: true);
+            m_PlayerControls_PrimaryPointerTap = m_PlayerControls.FindAction("PrimaryPointerTap", throwIfNotFound: true);
+            m_PlayerControls_PrimaryPointerDoubleTap = m_PlayerControls.FindAction("PrimaryPointerDoubleTap", throwIfNotFound: true);
+            m_PlayerControls_PrimaryPointerTripleTap = m_PlayerControls.FindAction("PrimaryPointerTripleTap", throwIfNotFound: true);
+            m_PlayerControls_PrimaryPointerPosition = m_PlayerControls.FindAction("PrimaryPointerPosition", throwIfNotFound: true);
+            m_PlayerControls_Pinch = m_PlayerControls.FindAction("Pinch", throwIfNotFound: true);
+            m_PlayerControls_Swipe = m_PlayerControls.FindAction("Swipe", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -244,15 +346,23 @@ namespace Inputs
         private readonly InputActionMap m_PlayerControls;
         private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
         private readonly InputAction m_PlayerControls_Movement;
-        private readonly InputAction m_PlayerControls_TriggerClick;
-        private readonly InputAction m_PlayerControls_PositionClick;
+        private readonly InputAction m_PlayerControls_PrimaryPointerTap;
+        private readonly InputAction m_PlayerControls_PrimaryPointerDoubleTap;
+        private readonly InputAction m_PlayerControls_PrimaryPointerTripleTap;
+        private readonly InputAction m_PlayerControls_PrimaryPointerPosition;
+        private readonly InputAction m_PlayerControls_Pinch;
+        private readonly InputAction m_PlayerControls_Swipe;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
             public PlayerControlsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
-            public InputAction @TriggerClick => m_Wrapper.m_PlayerControls_TriggerClick;
-            public InputAction @PositionClick => m_Wrapper.m_PlayerControls_PositionClick;
+            public InputAction @PrimaryPointerTap => m_Wrapper.m_PlayerControls_PrimaryPointerTap;
+            public InputAction @PrimaryPointerDoubleTap => m_Wrapper.m_PlayerControls_PrimaryPointerDoubleTap;
+            public InputAction @PrimaryPointerTripleTap => m_Wrapper.m_PlayerControls_PrimaryPointerTripleTap;
+            public InputAction @PrimaryPointerPosition => m_Wrapper.m_PlayerControls_PrimaryPointerPosition;
+            public InputAction @Pinch => m_Wrapper.m_PlayerControls_Pinch;
+            public InputAction @Swipe => m_Wrapper.m_PlayerControls_Swipe;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -265,12 +375,24 @@ namespace Inputs
                     @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                    @TriggerClick.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTriggerClick;
-                    @TriggerClick.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTriggerClick;
-                    @TriggerClick.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTriggerClick;
-                    @PositionClick.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPositionClick;
-                    @PositionClick.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPositionClick;
-                    @PositionClick.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPositionClick;
+                    @PrimaryPointerTap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerTap;
+                    @PrimaryPointerTap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerTap;
+                    @PrimaryPointerTap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerTap;
+                    @PrimaryPointerDoubleTap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerDoubleTap;
+                    @PrimaryPointerDoubleTap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerDoubleTap;
+                    @PrimaryPointerDoubleTap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerDoubleTap;
+                    @PrimaryPointerTripleTap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerTripleTap;
+                    @PrimaryPointerTripleTap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerTripleTap;
+                    @PrimaryPointerTripleTap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerTripleTap;
+                    @PrimaryPointerPosition.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerPosition;
+                    @PrimaryPointerPosition.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerPosition;
+                    @PrimaryPointerPosition.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPrimaryPointerPosition;
+                    @Pinch.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
+                    @Pinch.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
+                    @Pinch.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
+                    @Swipe.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    @Swipe.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    @Swipe.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -278,12 +400,24 @@ namespace Inputs
                     @Movement.started += instance.OnMovement;
                     @Movement.performed += instance.OnMovement;
                     @Movement.canceled += instance.OnMovement;
-                    @TriggerClick.started += instance.OnTriggerClick;
-                    @TriggerClick.performed += instance.OnTriggerClick;
-                    @TriggerClick.canceled += instance.OnTriggerClick;
-                    @PositionClick.started += instance.OnPositionClick;
-                    @PositionClick.performed += instance.OnPositionClick;
-                    @PositionClick.canceled += instance.OnPositionClick;
+                    @PrimaryPointerTap.started += instance.OnPrimaryPointerTap;
+                    @PrimaryPointerTap.performed += instance.OnPrimaryPointerTap;
+                    @PrimaryPointerTap.canceled += instance.OnPrimaryPointerTap;
+                    @PrimaryPointerDoubleTap.started += instance.OnPrimaryPointerDoubleTap;
+                    @PrimaryPointerDoubleTap.performed += instance.OnPrimaryPointerDoubleTap;
+                    @PrimaryPointerDoubleTap.canceled += instance.OnPrimaryPointerDoubleTap;
+                    @PrimaryPointerTripleTap.started += instance.OnPrimaryPointerTripleTap;
+                    @PrimaryPointerTripleTap.performed += instance.OnPrimaryPointerTripleTap;
+                    @PrimaryPointerTripleTap.canceled += instance.OnPrimaryPointerTripleTap;
+                    @PrimaryPointerPosition.started += instance.OnPrimaryPointerPosition;
+                    @PrimaryPointerPosition.performed += instance.OnPrimaryPointerPosition;
+                    @PrimaryPointerPosition.canceled += instance.OnPrimaryPointerPosition;
+                    @Pinch.started += instance.OnPinch;
+                    @Pinch.performed += instance.OnPinch;
+                    @Pinch.canceled += instance.OnPinch;
+                    @Swipe.started += instance.OnSwipe;
+                    @Swipe.performed += instance.OnSwipe;
+                    @Swipe.canceled += instance.OnSwipe;
                 }
             }
         }
@@ -309,8 +443,12 @@ namespace Inputs
         public interface IPlayerControlsActions
         {
             void OnMovement(InputAction.CallbackContext context);
-            void OnTriggerClick(InputAction.CallbackContext context);
-            void OnPositionClick(InputAction.CallbackContext context);
+            void OnPrimaryPointerTap(InputAction.CallbackContext context);
+            void OnPrimaryPointerDoubleTap(InputAction.CallbackContext context);
+            void OnPrimaryPointerTripleTap(InputAction.CallbackContext context);
+            void OnPrimaryPointerPosition(InputAction.CallbackContext context);
+            void OnPinch(InputAction.CallbackContext context);
+            void OnSwipe(InputAction.CallbackContext context);
         }
     }
 }

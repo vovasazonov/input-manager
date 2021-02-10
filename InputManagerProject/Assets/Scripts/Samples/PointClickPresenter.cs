@@ -5,9 +5,9 @@ namespace Samples
     public sealed class PointClickPresenter : IPresenter
     {
         private readonly IPointClickView _view;
-        private readonly IClickAction _model;
+        private readonly ITapAction _model;
 
-        public PointClickPresenter(IPointClickView view, IClickAction model)
+        public PointClickPresenter(IPointClickView view, ITapAction model)
         {
             _view = view;
             _model = model;
@@ -26,6 +26,7 @@ namespace Samples
         private void OnClicked(IVector2 screenPosition, int amount)
         {
             _view.SetPosition(screenPosition);
+            _view.SetAmountTap(amount);
         }
     }
 }

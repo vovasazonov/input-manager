@@ -4,14 +4,15 @@
     {
         private readonly PlayerActions _playerActions;
         public IMovementAction MovementAction { get; }
-        public IClickAction ClickAction { get; }
+        public ITapAction TapAction { get; }
 
         public PlayerControl(PlayerActions playerActions)
         {
             _playerActions = playerActions;
-            
-            MovementAction = new MovementAction(_playerActions.PlayerControls.Movement);
-            ClickAction = new ClickAction(_playerActions.PlayerControls.TriggerClick, _playerActions.PlayerControls.PositionClick);
+
+            var playerControls = _playerActions.PlayerControls;
+            MovementAction = new MovementAction(playerControls.Movement);
+            TapAction = new TapAction(playerControls.PrimaryPointerPosition, playerControls.PrimaryPointerTap, playerControls.PrimaryPointerDoubleTap, playerControls.PrimaryPointerTripleTap);
         }
 
         public void Activate()

@@ -18,7 +18,7 @@ public sealed class GameManager : MonoBehaviour
         var stickModel = new StickModel(_inputManager.PlayerControl.MovementAction);
         
         _stickCoordinatesPresenter = new StickCoordinatesPresenter(_coordinatesView, stickModel);
-        _pointClickPresenter = new PointClickPresenter(_pointClickView, _inputManager.PlayerControl.ClickAction);
+        _pointClickPresenter = new PointClickPresenter(_pointClickView, _inputManager.PlayerControl.TapAction);
     }
 
     private void OnEnable()
