@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace DpadSample
+namespace Samples
 {
-    public sealed class StickCoordinatesView : MonoBehaviour, IStickCoordinatesView
+    public sealed class CoordinatesView : MonoBehaviour, ICoordinatesView
     {
         [SerializeField] private Text _coordinateText;
 
@@ -30,7 +30,7 @@ namespace DpadSample
 
         private void UpdateView()
         {
-            _coordinateText.text = $"Stick coordinates: x:{_x}  y:{_y}";
+            _coordinateText.text = $"Coordinates: x:{_x}  y:{_y}";
         }
     }
 }

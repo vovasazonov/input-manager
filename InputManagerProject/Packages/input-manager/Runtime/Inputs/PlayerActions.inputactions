@@ -14,10 +14,18 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Click",
+                    "name": "TriggerClick",
                     "type": "Button",
                     "id": "30bf1e30-b4ea-41cf-aa21-d40e0a16b3dc",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
+                },
+                {
+                    "name": "PositionClick",
+                    "type": "Value",
+                    "id": "6231e476-589a-49e9-b0c3-5ea1fc7a10e6",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -93,21 +101,43 @@
                     "name": "",
                     "id": "9bddabef-4b25-436c-86f1-3f396d462004",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
-                    "groups": "PC",
-                    "action": "Click",
+                    "groups": "",
+                    "action": "TriggerClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "3672cc6a-a425-4d57-8fc4-49be55bde02c",
+                    "id": "c648bf93-e49e-4ab3-828e-7d00c223cd9e",
                     "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
-                    "groups": "TouchScreen",
-                    "action": "Click",
+                    "groups": "",
+                    "action": "TriggerClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e54bd23-a192-4945-a3c1-0517fb98d84f",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PositionClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35a291d0-e0f6-4c1e-ba6c-efe0bf2df30c",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PositionClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

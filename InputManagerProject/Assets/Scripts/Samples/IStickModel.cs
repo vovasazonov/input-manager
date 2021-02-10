@@ -1,7 +1,7 @@
 ﻿using System;
 using Inputs;
 
-namespace DpadSample
+namespace Samples
 {
     public interface IStickModel
     {

@@ -1,11 +1,11 @@
-﻿namespace DpadSample
+﻿namespace Samples
 {
     public class StickCoordinatesPresenter : IPresenter
     {
-        private readonly IStickCoordinatesView _view;
+        private readonly ICoordinatesView _view;
         private readonly IStickModel _model;
 
-        public StickCoordinatesPresenter(IStickCoordinatesView view, IStickModel model)
+        public StickCoordinatesPresenter(ICoordinatesView view, IStickModel model)
         {
             _view = view;
             _model = model;

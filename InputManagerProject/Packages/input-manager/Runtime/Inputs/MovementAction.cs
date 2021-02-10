@@ -22,27 +22,27 @@ namespace Inputs
         {
             _movementAction = movementActionAction;
             
-            AddMovementActionListener();
+            AddActionListener();
         }
 
-        private void AddMovementActionListener()
+        private void AddActionListener()
         {
-            _movementAction.performed += OnMovePerformed;
-            _movementAction.canceled += OnMoveCanceled;
+            _movementAction.performed += OnActionPerformed;
+            _movementAction.canceled += OnActionCanceled;
         }
 
         private void RemoveMovementListener()
         {
-            _movementAction.performed -= OnMovePerformed;
-            _movementAction.canceled -= OnMoveCanceled;
+            _movementAction.performed -= OnActionPerformed;
+            _movementAction.canceled -= OnActionCanceled;
         }
 
-        private void OnMoveCanceled(InputAction.CallbackContext context)
+        private void OnActionCanceled(InputAction.CallbackContext context)
         {
             CallMoved();
         }
 
-        private void OnMovePerformed(InputAction.CallbackContext context)
+        private void OnActionPerformed(InputAction.CallbackContext context)
         {
             CallMoved();
         }

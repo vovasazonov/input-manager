@@ -29,10 +29,18 @@ namespace Inputs
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Click"",
+                    ""name"": ""TriggerClick"",
                     ""type"": ""Button"",
                     ""id"": ""30bf1e30-b4ea-41cf-aa21-d40e0a16b3dc"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
+                },
+                {
+                    ""name"": ""PositionClick"",
+                    ""type"": ""Value"",
+                    ""id"": ""6231e476-589a-49e9-b0c3-5ea1fc7a10e6"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -108,21 +116,43 @@ namespace Inputs
                     ""name"": """",
                     ""id"": ""9bddabef-4b25-436c-86f1-3f396d462004"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Click"",
+                    ""groups"": """",
+                    ""action"": ""TriggerClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3672cc6a-a425-4d57-8fc4-49be55bde02c"",
+                    ""id"": ""c648bf93-e49e-4ab3-828e-7d00c223cd9e"",
                     ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""TouchScreen"",
-                    ""action"": ""Click"",
+                    ""groups"": """",
+                    ""action"": ""TriggerClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e54bd23-a192-4945-a3c1-0517fb98d84f"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PositionClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35a291d0-e0f6-4c1e-ba6c-efe0bf2df30c"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PositionClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -162,7 +192,8 @@ namespace Inputs
             // PlayerControls
             m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
             m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
-            m_PlayerControls_Click = m_PlayerControls.FindAction("Click", throwIfNotFound: true);
+            m_PlayerControls_TriggerClick = m_PlayerControls.FindAction("TriggerClick", throwIfNotFound: true);
+            m_PlayerControls_PositionClick = m_PlayerControls.FindAction("PositionClick", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -213,13 +244,15 @@ namespace Inputs
         private readonly InputActionMap m_PlayerControls;
         private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
         private readonly InputAction m_PlayerControls_Movement;
-        private readonly InputAction m_PlayerControls_Click;
+        private readonly InputAction m_PlayerControls_TriggerClick;
+        private readonly InputAction m_PlayerControls_PositionClick;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
             public PlayerControlsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
-            public InputAction @Click => m_Wrapper.m_PlayerControls_Click;
+            public InputAction @TriggerClick => m_Wrapper.m_PlayerControls_TriggerClick;
+            public InputAction @PositionClick => m_Wrapper.m_PlayerControls_PositionClick;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -232,9 +265,12 @@ namespace Inputs
                     @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                    @Click.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnClick;
-                    @Click.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnClick;
-                    @Click.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnClick;
+                    @TriggerClick.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTriggerClick;
+                    @TriggerClick.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTriggerClick;
+                    @TriggerClick.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTriggerClick;
+                    @PositionClick.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPositionClick;
+                    @PositionClick.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPositionClick;
+                    @PositionClick.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPositionClick;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -242,9 +278,12 @@ namespace Inputs
                     @Movement.started += instance.OnMovement;
                     @Movement.performed += instance.OnMovement;
                     @Movement.canceled += instance.OnMovement;
-                    @Click.started += instance.OnClick;
-                    @Click.performed += instance.OnClick;
-                    @Click.canceled += instance.OnClick;
+                    @TriggerClick.started += instance.OnTriggerClick;
+                    @TriggerClick.performed += instance.OnTriggerClick;
+                    @TriggerClick.canceled += instance.OnTriggerClick;
+                    @PositionClick.started += instance.OnPositionClick;
+                    @PositionClick.performed += instance.OnPositionClick;
+                    @PositionClick.canceled += instance.OnPositionClick;
                 }
             }
         }
@@ -270,7 +309,8 @@ namespace Inputs
         public interface IPlayerControlsActions
         {
             void OnMovement(InputAction.CallbackContext context);
-            void OnClick(InputAction.CallbackContext context);
+            void OnTriggerClick(InputAction.CallbackContext context);
+            void OnPositionClick(InputAction.CallbackContext context);
         }
     }
 }

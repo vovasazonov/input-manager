@@ -1,6 +1,6 @@
-﻿namespace DpadSample
+﻿namespace Samples
 {
-    public interface IStickCoordinatesView
+    public interface ICoordinatesView
     {
         string X { set; }
         string Y { set; }
