@@ -1,4 +1,4 @@
-﻿namespace Inputs
+﻿namespace Inputs.Actions
 {
     internal readonly struct SwipeInfo : ISwipeInfo
     {

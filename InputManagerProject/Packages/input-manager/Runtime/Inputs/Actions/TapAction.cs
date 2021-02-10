@@ -2,7 +2,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
-namespace Inputs
+namespace Inputs.Actions
 {
     public sealed class TapAction : ITapAction
     {

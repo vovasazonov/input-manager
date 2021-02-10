@@ -1,4 +1,4 @@
-﻿namespace Inputs
+﻿namespace Inputs.Actions
 {
     public delegate void TappedHandler(IVector2 screenPosition, int amount);
 

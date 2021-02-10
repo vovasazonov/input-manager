@@ -1,4 +1,6 @@
-﻿namespace Inputs
+﻿using Inputs.Actions;
+
+namespace Inputs
 {
     public interface IPlayerControl : IInputControl
     {

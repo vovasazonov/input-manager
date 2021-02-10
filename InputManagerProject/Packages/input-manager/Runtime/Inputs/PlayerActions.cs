@@ -67,6 +67,14 @@ namespace Inputs
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Scale"",
+                    ""type"": ""Value"",
+                    ""id"": ""aebddb12-4f78-40f5-8840-4d36676c5bab"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -245,6 +253,17 @@ namespace Inputs
                     ""action"": ""PointerTripleTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a73bac55-fdf4-4ce7-9086-b9de3836f615"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -287,6 +306,7 @@ namespace Inputs
             m_PlayerControls_PointerTripleTap = m_PlayerControls.FindAction("PointerTripleTap", throwIfNotFound: true);
             m_PlayerControls_PointerPosition = m_PlayerControls.FindAction("PointerPosition", throwIfNotFound: true);
             m_PlayerControls_PointerPressRelease = m_PlayerControls.FindAction("PointerPressRelease", throwIfNotFound: true);
+            m_PlayerControls_Scale = m_PlayerControls.FindAction("Scale", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -342,6 +362,7 @@ namespace Inputs
         private readonly InputAction m_PlayerControls_PointerTripleTap;
         private readonly InputAction m_PlayerControls_PointerPosition;
         private readonly InputAction m_PlayerControls_PointerPressRelease;
+        private readonly InputAction m_PlayerControls_Scale;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
@@ -352,6 +373,7 @@ namespace Inputs
             public InputAction @PointerTripleTap => m_Wrapper.m_PlayerControls_PointerTripleTap;
             public InputAction @PointerPosition => m_Wrapper.m_PlayerControls_PointerPosition;
             public InputAction @PointerPressRelease => m_Wrapper.m_PlayerControls_PointerPressRelease;
+            public InputAction @Scale => m_Wrapper.m_PlayerControls_Scale;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -379,6 +401,9 @@ namespace Inputs
                     @PointerPressRelease.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPressRelease;
                     @PointerPressRelease.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPressRelease;
                     @PointerPressRelease.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPressRelease;
+                    @Scale.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
+                    @Scale.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
+                    @Scale.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -401,6 +426,9 @@ namespace Inputs
                     @PointerPressRelease.started += instance.OnPointerPressRelease;
                     @PointerPressRelease.performed += instance.OnPointerPressRelease;
                     @PointerPressRelease.canceled += instance.OnPointerPressRelease;
+                    @Scale.started += instance.OnScale;
+                    @Scale.performed += instance.OnScale;
+                    @Scale.canceled += instance.OnScale;
                 }
             }
         }
@@ -431,6 +459,7 @@ namespace Inputs
             void OnPointerTripleTap(InputAction.CallbackContext context);
             void OnPointerPosition(InputAction.CallbackContext context);
             void OnPointerPressRelease(InputAction.CallbackContext context);
+            void OnScale(InputAction.CallbackContext context);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Inputs;
+using Inputs.Actions;
 
 namespace Samples
 {
