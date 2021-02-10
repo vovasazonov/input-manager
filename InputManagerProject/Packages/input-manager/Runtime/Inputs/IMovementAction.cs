@@ -2,7 +2,7 @@
 {
     public delegate void MovedHandler(IVector2 position);
 
-    public interface IMovement
+    public interface IMovementAction
     {
         event MovedHandler Moved;
     }

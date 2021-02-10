@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Inputs
 {
-    internal sealed class Movement : IMovement
+    internal sealed class MovementAction : IMovementAction
     {
         public event MovedHandler Moved;
         
@@ -18,7 +18,7 @@ namespace Inputs
             }
         }
 
-        public Movement(InputAction movementActionAction)
+        public MovementAction(InputAction movementActionAction)
         {
             _movementAction = movementActionAction;
             

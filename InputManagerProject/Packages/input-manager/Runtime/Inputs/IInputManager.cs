@@ -2,6 +2,6 @@
 {
     public interface IInputManager
     {
-        IPlayerControls PlayerControls { get; }
+        IPlayerControl PlayerControl { get; }
     }
 }

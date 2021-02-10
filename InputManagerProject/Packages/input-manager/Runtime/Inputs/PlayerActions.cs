@@ -27,6 +27,14 @@ namespace Inputs
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""30bf1e30-b4ea-41cf-aa21-d40e0a16b3dc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -95,6 +103,28 @@ namespace Inputs
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9bddabef-4b25-436c-86f1-3f396d462004"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3672cc6a-a425-4d57-8fc4-49be55bde02c"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -132,6 +162,7 @@ namespace Inputs
             // PlayerControls
             m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
             m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
+            m_PlayerControls_Click = m_PlayerControls.FindAction("Click", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -182,11 +213,13 @@ namespace Inputs
         private readonly InputActionMap m_PlayerControls;
         private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
         private readonly InputAction m_PlayerControls_Movement;
+        private readonly InputAction m_PlayerControls_Click;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
             public PlayerControlsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
+            public InputAction @Click => m_Wrapper.m_PlayerControls_Click;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -199,6 +232,9 @@ namespace Inputs
                     @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
+                    @Click.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnClick;
+                    @Click.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnClick;
+                    @Click.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnClick;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -206,6 +242,9 @@ namespace Inputs
                     @Movement.started += instance.OnMovement;
                     @Movement.performed += instance.OnMovement;
                     @Movement.canceled += instance.OnMovement;
+                    @Click.started += instance.OnClick;
+                    @Click.performed += instance.OnClick;
+                    @Click.canceled += instance.OnClick;
                 }
             }
         }
@@ -231,6 +270,7 @@ namespace Inputs
         public interface IPlayerControlsActions
         {
             void OnMovement(InputAction.CallbackContext context);
+            void OnClick(InputAction.CallbackContext context);
         }
     }
 }

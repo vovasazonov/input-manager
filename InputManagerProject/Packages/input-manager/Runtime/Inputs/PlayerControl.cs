@@ -1,14 +1,14 @@
 ﻿namespace Inputs
 {
-    internal sealed class PlayerControls : IPlayerControls
+    internal sealed class PlayerControl : IPlayerControl
     {
         private readonly PlayerActions _playerActions;
-        public IMovement Movement { get; }
+        public IMovementAction MovementAction { get; }
 
-        public PlayerControls(PlayerActions playerActions)
+        public PlayerControl(PlayerActions playerActions)
         {
             _playerActions = playerActions;
-            Movement = new Movement(_playerActions.PlayerControls.Movement);
+            MovementAction = new MovementAction(_playerActions.PlayerControls.Movement);
         }
 
         public void Activate()

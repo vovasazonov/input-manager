@@ -7,24 +7,24 @@ namespace DpadSample
     {
         public event Action Moved;
         
-        private readonly IMovement _movement;
+        private readonly IMovementAction _movementAction;
         
         public IVector2 Position { get; private set; }
 
-        public StickModel(IMovement movement)
+        public StickModel(IMovementAction movementAction)
         {
-            _movement = movement;
+            _movementAction = movementAction;
             AddMovementListener();
         }
 
         private void AddMovementListener()
         {
-            _movement.Moved += OnMoved;
+            _movementAction.Moved += OnMoved;
         }
 
         private void RemoveDpadListener()
         {
-            _movement.Moved -= OnMoved;
+            _movementAction.Moved -= OnMoved;
         }
 
         private void OnMoved(IVector2 position)

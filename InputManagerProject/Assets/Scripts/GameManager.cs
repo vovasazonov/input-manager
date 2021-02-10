@@ -12,14 +12,14 @@ public sealed class GameManager : MonoBehaviour
     {
         _inputManager = new InputManager();
         
-        var stickModel = new StickModel(_inputManager.PlayerControls.Movement);
+        var stickModel = new StickModel(_inputManager.PlayerControl.MovementAction);
         
         _stickCoordinatesPresenter = new StickCoordinatesPresenter(_stickCoordinatesView, stickModel);
     }
 
     private void OnEnable()
     {
-        _inputManager.PlayerControls.Activate();
+        _inputManager.PlayerControl.Activate();
         
         _stickCoordinatesPresenter.Activate();
     }
