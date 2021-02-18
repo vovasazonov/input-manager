@@ -60,6 +60,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "InventoryDialog",
+                    "type": "Button",
+                    "id": "21db96df-edb8-4d63-a145-f9d38c1b29d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -247,6 +255,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Scale",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5827baa-c87e-4b24-bd26-b45974aee5d3",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "InventoryDialog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

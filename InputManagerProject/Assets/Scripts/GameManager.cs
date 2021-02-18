@@ -1,14 +1,18 @@
 ﻿using Inputs;
 using Samples;
+using Samples.UI;
 using UnityEngine;
 
 public sealed class GameManager : MonoBehaviour
 {
     [SerializeField] private CoordinatesView _coordinatesView;
-    [SerializeField] private PointView pointView;
+    [SerializeField] private PointView _pointView;
+    [SerializeField] private DialogView _dialogView;
+    
     private IInputManager _inputManager;
     private IPresenter _stickCoordinatesPresenter;
     private IPresenter _pointClickPresenter;
+    private IPresenter _inventoryDialogPresenter;
 
     private void Awake()
     {
@@ -16,9 +20,11 @@ public sealed class GameManager : MonoBehaviour
         
         var stickModel = new StickModel(_inputManager.PlayerControl.MovementAction);
         var pointModel = new PointModel(_inputManager.PlayerControl);
+        var inventoryDialogModel = new DialogModel(_inputManager.PlayerControl.InventoryDialogAction);
         
         _stickCoordinatesPresenter = new StickCoordinatesPresenter(_coordinatesView, stickModel);
-        _pointClickPresenter = new PointPresenter(pointView, pointModel);
+        _pointClickPresenter = new PointPresenter(_pointView, pointModel);
+        _inventoryDialogPresenter = new DialogPresenter(_dialogView, inventoryDialogModel);
     }
 
     private void OnEnable()
@@ -27,5 +33,6 @@ public sealed class GameManager : MonoBehaviour
         
         _stickCoordinatesPresenter.Activate();
         _pointClickPresenter.Activate();
+        _inventoryDialogPresenter.Activate();
     }
 }

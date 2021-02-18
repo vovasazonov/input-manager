@@ -8,6 +8,7 @@ namespace Inputs
         public IMovementAction MovementAction { get; }
         public ITapAction TapAction { get; }
         public ISwipeAction SwipeAction { get; }
+        public IDialogAction InventoryDialogAction { get; }
 
         public PlayerControl(PlayerActions playerActions)
         {
@@ -17,6 +18,7 @@ namespace Inputs
             MovementAction = new MovementAction(playerControls.Movement);
             TapAction = new TapAction(playerControls.PointerPosition, playerControls.PointerTap, playerControls.PointerDoubleTap, playerControls.PointerTripleTap);
             SwipeAction = new SwipeAction(playerControls.PointerPosition, playerControls.PointerPressRelease);
+            InventoryDialogAction = new DialogAction(playerControls.InventoryDialog);
         }
 
         public void Activate()

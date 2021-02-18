@@ -75,6 +75,14 @@ namespace Inputs
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""InventoryDialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""21db96df-edb8-4d63-a145-f9d38c1b29d9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -264,6 +272,17 @@ namespace Inputs
                     ""action"": ""Scale"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a5827baa-c87e-4b24-bd26-b45974aee5d3"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""InventoryDialog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -307,6 +326,7 @@ namespace Inputs
             m_PlayerControls_PointerPosition = m_PlayerControls.FindAction("PointerPosition", throwIfNotFound: true);
             m_PlayerControls_PointerPressRelease = m_PlayerControls.FindAction("PointerPressRelease", throwIfNotFound: true);
             m_PlayerControls_Scale = m_PlayerControls.FindAction("Scale", throwIfNotFound: true);
+            m_PlayerControls_InventoryDialog = m_PlayerControls.FindAction("InventoryDialog", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -363,6 +383,7 @@ namespace Inputs
         private readonly InputAction m_PlayerControls_PointerPosition;
         private readonly InputAction m_PlayerControls_PointerPressRelease;
         private readonly InputAction m_PlayerControls_Scale;
+        private readonly InputAction m_PlayerControls_InventoryDialog;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
@@ -374,6 +395,7 @@ namespace Inputs
             public InputAction @PointerPosition => m_Wrapper.m_PlayerControls_PointerPosition;
             public InputAction @PointerPressRelease => m_Wrapper.m_PlayerControls_PointerPressRelease;
             public InputAction @Scale => m_Wrapper.m_PlayerControls_Scale;
+            public InputAction @InventoryDialog => m_Wrapper.m_PlayerControls_InventoryDialog;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -404,6 +426,9 @@ namespace Inputs
                     @Scale.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
                     @Scale.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
                     @Scale.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
+                    @InventoryDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
+                    @InventoryDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
+                    @InventoryDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -429,6 +454,9 @@ namespace Inputs
                     @Scale.started += instance.OnScale;
                     @Scale.performed += instance.OnScale;
                     @Scale.canceled += instance.OnScale;
+                    @InventoryDialog.started += instance.OnInventoryDialog;
+                    @InventoryDialog.performed += instance.OnInventoryDialog;
+                    @InventoryDialog.canceled += instance.OnInventoryDialog;
                 }
             }
         }
@@ -460,6 +488,7 @@ namespace Inputs
             void OnPointerPosition(InputAction.CallbackContext context);
             void OnPointerPressRelease(InputAction.CallbackContext context);
             void OnScale(InputAction.CallbackContext context);
+            void OnInventoryDialog(InputAction.CallbackContext context);
         }
     }
 }

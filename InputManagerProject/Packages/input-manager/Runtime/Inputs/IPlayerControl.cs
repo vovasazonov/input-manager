@@ -7,5 +7,6 @@ namespace Inputs
         IMovementAction MovementAction { get; }
         ITapAction TapAction { get; }
         ISwipeAction SwipeAction { get; }
+        IDialogAction InventoryDialogAction { get; }
     }
 }
