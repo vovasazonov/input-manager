@@ -68,6 +68,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SkillButton1",
+                    "type": "Button",
+                    "id": "ab107c2e-598f-4fe7-8d95-278023f15927",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SkillButton2",
+                    "type": "Button",
+                    "id": "8f02aedc-f161-4254-9386-cee88de3e7e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -266,6 +282,28 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "InventoryDialog",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d12b002b-e2b7-4aac-ab17-1ba22d352486",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillButton1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "def3f0df-e938-446d-9c52-29162a82b592",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillButton2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

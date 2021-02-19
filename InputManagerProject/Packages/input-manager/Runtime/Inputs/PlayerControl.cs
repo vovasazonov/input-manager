@@ -9,6 +9,8 @@ namespace Inputs
         public ITapAction TapAction { get; }
         public ISwipeAction SwipeAction { get; }
         public IDialogAction InventoryDialogAction { get; }
+        public ISkillAction SkillAction1 { get; }
+        public ISkillAction SkillAction2 { get; }
 
         public PlayerControl(PlayerActions playerActions)
         {
@@ -19,6 +21,8 @@ namespace Inputs
             TapAction = new TapAction(playerControls.PointerPosition, playerControls.PointerTap, playerControls.PointerDoubleTap, playerControls.PointerTripleTap);
             SwipeAction = new SwipeAction(playerControls.PointerPosition, playerControls.PointerPressRelease);
             InventoryDialogAction = new DialogAction(playerControls.InventoryDialog);
+            SkillAction1 = new SkillAction(playerControls.SkillButton1);
+            SkillAction2 = new SkillAction(playerControls.SkillButton2);
         }
 
         public void Activate()
