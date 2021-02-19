@@ -7,8 +7,8 @@ namespace Inputs.Actions
         event Action Performed;
         event Action Rebind;
         
-        string CurrentBindKey { get; }
+        string CurrentBindPath { get; }
         
-        void ChangeBindKey();
+        void ChangeBindPath();
     }
 }

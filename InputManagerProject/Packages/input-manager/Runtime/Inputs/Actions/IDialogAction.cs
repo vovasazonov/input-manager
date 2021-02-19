@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Inputs
+namespace Inputs.Actions
 {
     public interface IDialogAction
     {

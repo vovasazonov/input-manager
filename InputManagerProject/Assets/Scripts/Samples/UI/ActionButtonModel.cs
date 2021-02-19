@@ -9,7 +9,7 @@ namespace Samples.UI
         public event Action Performed;
         public event Action NameKeyChanged;
 
-        public string NameKey => _skillAction.CurrentBindKey;
+        public string NameKey => _skillAction.CurrentBindPath;
 
         public ActionButtonModel(ISkillAction skillAction)
         {
@@ -41,7 +41,7 @@ namespace Samples.UI
 
         public void ChangeNameKey()
         {
-            _skillAction.ChangeBindKey();
+            _skillAction.ChangeBindPath();
         }
 
         private void CallNameKeyPerformChanged()

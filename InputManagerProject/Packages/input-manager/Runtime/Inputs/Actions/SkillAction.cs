@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Inputs.Actions
 {
-    public sealed class SkillAction : ISkillAction
+    internal sealed class SkillAction : ISkillAction
     {
         public event Action Performed;
         public event Action Rebind;
@@ -12,7 +12,7 @@ namespace Inputs.Actions
         private readonly InputAction _inputAction;
         private InputActionRebindingExtensions.RebindingOperation _rebindOperation;
 
-        public string CurrentBindKey => _inputAction.bindings.First().effectivePath;
+        public string CurrentBindPath => _inputAction.bindings.First().effectivePath;
 
         public SkillAction(InputAction inputAction)
         {
@@ -33,10 +33,10 @@ namespace Inputs.Actions
 
         private void OnPerformed(InputAction.CallbackContext context)
         {
-            CallClicked();
+            CallPerformed();
         }
 
-        public void ChangeBindKey()
+        public void ChangeBindPath()
         {
             StartRebind();
         }
@@ -69,7 +69,7 @@ namespace Inputs.Actions
             Rebind?.Invoke();
         }
 
-        private void CallClicked()
+        private void CallPerformed()
         {
             Performed?.Invoke();
         }

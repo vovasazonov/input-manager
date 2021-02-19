@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Inputs.Actions
 {
-    public sealed class DialogAction : IDialogAction
+    internal sealed class DialogAction : IDialogAction
     {
         private readonly InputAction _inputAction;
         public event Action Addressed;
@@ -11,6 +11,7 @@ namespace Inputs.Actions
         public DialogAction(InputAction inputAction)
         {
             _inputAction = inputAction;
+            
             AddInputActionListener();
         }
 
