@@ -3,16 +3,18 @@ using Inputs.Actions;
 
 namespace Samples.UI
 {
-    public sealed class ActionButtonModel : IActionButtonModel
+    public sealed class SkillModel : ISkillModel
     {
         private readonly ISkillAction _skillAction;
         public event Action Performed;
-        public event Action NameKeyChanged;
+        public event Action BindPathChanged;
 
-        public string NameKey => _skillAction.CurrentBindPath;
+        public string NameSkill { get; }
+        public string NameBindPath => _skillAction.CurrentBindPath;
 
-        public ActionButtonModel(ISkillAction skillAction)
+        public SkillModel(ISkillAction skillAction, string nameSkill)
         {
+            NameSkill = nameSkill;
             _skillAction = skillAction;
             AddActionListener();
         }
@@ -31,7 +33,7 @@ namespace Samples.UI
 
         private void OnSkillPerformed()
         {
-            CallPerformed();
+            Invoke();
         }
 
         private void OnRebind()
@@ -39,14 +41,19 @@ namespace Samples.UI
             CallNameKeyPerformChanged();
         }
 
-        public void ChangeNameKey()
+        public void ChangeBindPath()
         {
             _skillAction.ChangeBindPath();
         }
 
+        public void Invoke()
+        {
+            CallPerformed();
+        }
+
         private void CallNameKeyPerformChanged()
         {
-            NameKeyChanged?.Invoke();
+            BindPathChanged?.Invoke();
         }
 
         private void CallPerformed()

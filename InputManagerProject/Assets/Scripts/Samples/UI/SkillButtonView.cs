@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 namespace Samples.UI
 {
-    public sealed class ActionButtonView: MonoBehaviour, IActionButtonView, IPointerDownHandler
+    public sealed class SkillButtonView: MonoBehaviour, ISkillButtonView, IPointerDownHandler
     {
         public event Action Clicked;
 
-        [SerializeField] private Text _nameKeyText;
+        [SerializeField] private Text _nameSkillText;
         
-        public void SetNameKey(string nameKey)
+        public void SetNameSkill(string nameSkill)
         {
-            _nameKeyText.text = nameKey;
+            _nameSkillText.text = nameSkill;
         }
 
         private void CallClicked()

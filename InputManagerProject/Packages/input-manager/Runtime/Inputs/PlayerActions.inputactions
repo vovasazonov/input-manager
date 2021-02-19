@@ -70,6 +70,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "SettingSkillDialog",
+                    "type": "Button",
+                    "id": "3fb8811e-ec8c-4a63-b60d-16808c93610b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "SkillButton1",
                     "type": "Button",
                     "id": "ab107c2e-598f-4fe7-8d95-278023f15927",
@@ -304,6 +312,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SkillButton2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "861f8747-c396-4e4c-a958-397985aca705",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "SettingSkillDialog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

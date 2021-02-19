@@ -1,5 +1,4 @@
 ﻿using System;
-using Inputs;
 using Inputs.Actions;
 
 namespace Samples.UI

@@ -2,10 +2,10 @@
 
 namespace Samples.UI
 {
-    public interface IActionButtonView
+    public interface ISkillButtonView
     {
         event Action Clicked;
 
-        void SetNameKey(string nameKey);
+        void SetNameSkill(string nameSkill);
     }
 }

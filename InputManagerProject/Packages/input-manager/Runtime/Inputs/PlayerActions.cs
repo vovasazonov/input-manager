@@ -85,6 +85,14 @@ namespace Inputs
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""SettingSkillDialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""3fb8811e-ec8c-4a63-b60d-16808c93610b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""SkillButton1"",
                     ""type"": ""Button"",
                     ""id"": ""ab107c2e-598f-4fe7-8d95-278023f15927"",
@@ -321,6 +329,17 @@ namespace Inputs
                     ""action"": ""SkillButton2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""861f8747-c396-4e4c-a958-397985aca705"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""SettingSkillDialog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -365,6 +384,7 @@ namespace Inputs
             m_PlayerControls_PointerPressRelease = m_PlayerControls.FindAction("PointerPressRelease", throwIfNotFound: true);
             m_PlayerControls_Scale = m_PlayerControls.FindAction("Scale", throwIfNotFound: true);
             m_PlayerControls_InventoryDialog = m_PlayerControls.FindAction("InventoryDialog", throwIfNotFound: true);
+            m_PlayerControls_SettingSkillDialog = m_PlayerControls.FindAction("SettingSkillDialog", throwIfNotFound: true);
             m_PlayerControls_SkillButton1 = m_PlayerControls.FindAction("SkillButton1", throwIfNotFound: true);
             m_PlayerControls_SkillButton2 = m_PlayerControls.FindAction("SkillButton2", throwIfNotFound: true);
         }
@@ -424,6 +444,7 @@ namespace Inputs
         private readonly InputAction m_PlayerControls_PointerPressRelease;
         private readonly InputAction m_PlayerControls_Scale;
         private readonly InputAction m_PlayerControls_InventoryDialog;
+        private readonly InputAction m_PlayerControls_SettingSkillDialog;
         private readonly InputAction m_PlayerControls_SkillButton1;
         private readonly InputAction m_PlayerControls_SkillButton2;
         public struct PlayerControlsActions
@@ -438,6 +459,7 @@ namespace Inputs
             public InputAction @PointerPressRelease => m_Wrapper.m_PlayerControls_PointerPressRelease;
             public InputAction @Scale => m_Wrapper.m_PlayerControls_Scale;
             public InputAction @InventoryDialog => m_Wrapper.m_PlayerControls_InventoryDialog;
+            public InputAction @SettingSkillDialog => m_Wrapper.m_PlayerControls_SettingSkillDialog;
             public InputAction @SkillButton1 => m_Wrapper.m_PlayerControls_SkillButton1;
             public InputAction @SkillButton2 => m_Wrapper.m_PlayerControls_SkillButton2;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
@@ -473,6 +495,9 @@ namespace Inputs
                     @InventoryDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
                     @InventoryDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
                     @InventoryDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
+                    @SettingSkillDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
+                    @SettingSkillDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
+                    @SettingSkillDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
                     @SkillButton1.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
                     @SkillButton1.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
                     @SkillButton1.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
@@ -507,6 +532,9 @@ namespace Inputs
                     @InventoryDialog.started += instance.OnInventoryDialog;
                     @InventoryDialog.performed += instance.OnInventoryDialog;
                     @InventoryDialog.canceled += instance.OnInventoryDialog;
+                    @SettingSkillDialog.started += instance.OnSettingSkillDialog;
+                    @SettingSkillDialog.performed += instance.OnSettingSkillDialog;
+                    @SettingSkillDialog.canceled += instance.OnSettingSkillDialog;
                     @SkillButton1.started += instance.OnSkillButton1;
                     @SkillButton1.performed += instance.OnSkillButton1;
                     @SkillButton1.canceled += instance.OnSkillButton1;
@@ -545,6 +573,7 @@ namespace Inputs
             void OnPointerPressRelease(InputAction.CallbackContext context);
             void OnScale(InputAction.CallbackContext context);
             void OnInventoryDialog(InputAction.CallbackContext context);
+            void OnSettingSkillDialog(InputAction.CallbackContext context);
             void OnSkillButton1(InputAction.CallbackContext context);
             void OnSkillButton2(InputAction.CallbackContext context);
         }
