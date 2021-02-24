@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Layouts;
 
@@ -48,19 +47,21 @@ namespace Inputs.BindingComposites
 
         private List<int> _modifiers;
         private List<int> _results;
-        private readonly Dictionary<int, int> _takePartModifiers = new Dictionary<int, int>();
-        private readonly Dictionary<int, int> _takePartResults = new Dictionary<int, int>();
+        private Dictionary<int, int> _takePartModifiers;
+        private Dictionary<int, int> _takePartResults;
+        private bool _isInitialized;
 
-        public int AmountTakePartModifiers;
-        public int AmountTakePartResults;
-
-        [InitializeOnEnterPlayMode]
         private void Initialize()
         {
-            InitializeModifiers();
-            InitializeResults();
-            InitializeTakePartModifiers();
-            InitializeTakePartResults();
+            if (!_isInitialized)
+            {
+                InitializeModifiers();
+                InitializeResults();
+                InitializeTakePartModifiers();
+                InitializeTakePartResults();
+
+                _isInitialized = true;
+            }
         }
 
         static UniversalBindingComposite()
@@ -68,53 +69,35 @@ namespace Inputs.BindingComposites
             InputSystem.RegisterBindingComposite<UniversalBindingComposite>();
         }
 
-        [RuntimeInitializeOnLoadMethod]
-        static void Init()
-        {
-        }
-
         public override CompositeData ReadValue(ref InputBindingCompositeContext context)
         {
-            if (IsAllModifiersPerformed(ref context))
-            {
-                return new CompositeData(_takePartResults, ref context);
-            }
-
-            return default;
-        }
-
-        private bool IsAllModifiersPerformed(ref InputBindingCompositeContext context)
-        {
-            bool isAllModifiersPerformed = true;
-
-            foreach (var takePartModifier in _takePartModifiers.Values)
-            {
-                if (context.ReadValueAsButton(takePartModifier))
-                {
-                    isAllModifiersPerformed = false;
-                }
-            }
-
-            return isAllModifiersPerformed;
+            Initialize();
+            return new CompositeData(_takePartResults, ref context);
         }
 
         private void InitializeTakePartModifiers()
         {
-            InitializeTakePartValues(_takePartModifiers, _modifiers, AmountTakePartModifiers);
+            if (_takePartModifiers == null)
+            {
+                _takePartModifiers = new Dictionary<int, int>();
+                
+                for (int i = 0; i < _modifiers.Count; i++)
+                {
+                    _takePartModifiers.Add(i, _modifiers[i]);
+                }
+            }
         }
 
         private void InitializeTakePartResults()
         {
-            InitializeTakePartValues(_takePartResults, _results, AmountTakePartResults);
-        }
-
-        private void InitializeTakePartValues(IDictionary<int, int> takePartValues, IList<int> values, int amountValues)
-        {
-            takePartValues.Clear();
-
-            for (int i = 0; i < amountValues; i++)
+            if (_takePartResults == null)
             {
-                takePartValues.Add(i, values[i]);
+                _takePartResults = new Dictionary<int, int>();
+                
+                for (int i = 0; i < _results.Count; i++)
+                {
+                    _takePartResults.Add(i, _results[i]);
+                }
             }
         }
 

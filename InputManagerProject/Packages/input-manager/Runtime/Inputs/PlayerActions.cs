@@ -29,30 +29,6 @@ namespace Inputs
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""PointerTap"",
-                    ""type"": ""Button"",
-                    ""id"": ""30bf1e30-b4ea-41cf-aa21-d40e0a16b3dc"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""MultiTap(tapCount=1)""
-                },
-                {
-                    ""name"": ""PointerDoubleTap"",
-                    ""type"": ""Button"",
-                    ""id"": ""830b9398-7623-452c-a47b-84b2e1999544"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""MultiTap""
-                },
-                {
-                    ""name"": ""PointerTripleTap"",
-                    ""type"": ""Button"",
-                    ""id"": ""c94ecf44-cd9c-43aa-b55a-817cafe4f377"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""MultiTap(tapCount=3)""
-                },
-                {
                     ""name"": ""PointerPosition"",
                     ""type"": ""Value"",
                     ""id"": ""6231e476-589a-49e9-b0c3-5ea1fc7a10e6"",
@@ -186,28 +162,6 @@ namespace Inputs
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e28e4b1f-4289-4d13-81d8-7a1a8e8b115a"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""PointerTap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c648bf93-e49e-4ab3-828e-7d00c223cd9e"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""TouchScreen"",
-                    ""action"": ""PointerTap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""3e54bd23-a192-4945-a3c1-0517fb98d84f"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -247,50 +201,6 @@ namespace Inputs
                     ""processors"": """",
                     ""groups"": ""TouchScreen"",
                     ""action"": ""PointerPressRelease"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""82ece81f-0008-4215-bf66-584764a57e1c"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""PointerDoubleTap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6191765c-a200-46c4-8805-1d87126e9eb0"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""TouchScreen"",
-                    ""action"": ""PointerDoubleTap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""60a1ba46-353f-4238-8f11-f2ed0e72802a"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""PointerTripleTap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""480c44f2-542a-4fad-9fce-99039c37fc20"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""TouchScreen"",
-                    ""action"": ""PointerTripleTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -350,20 +260,9 @@ namespace Inputs
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""ced89237-0094-4d22-84ed-b852899bf4f1"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Universal Binding"",
-                    ""id"": ""f46f3d5b-302e-45fc-b35a-f738e6e28638"",
-                    ""path"": ""UniversalBinding(_amountModifiers=4,_amountResults=5)"",
+                    ""name"": ""LeftButton"",
+                    ""id"": ""baa582bb-b219-488c-9447-6cc289fa1e5e"",
+                    ""path"": ""UniversalBinding"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -373,96 +272,8 @@ namespace Inputs
                 },
                 {
                     ""name"": ""Modifier1"",
-                    ""id"": ""61847a70-ada5-4153-90db-6e8c8d78701e"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Modifier2"",
-                    ""id"": ""af34078d-76a6-4a10-acf3-380b36423354"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Modifier3"",
-                    ""id"": ""9dcb1d7c-40ce-48d9-bd3c-18272bd82ede"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Modifier4"",
-                    ""id"": ""53be9741-35ab-494f-962e-88883136457c"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Modifier5"",
-                    ""id"": ""fb159ac9-4c77-43a5-888a-8d5c35bf634f"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Modifier6"",
-                    ""id"": ""9e42f61f-a2cf-4f40-b491-04906eb7da80"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Modifier7"",
-                    ""id"": ""59f45fb6-0378-4599-a9b4-98892a7fc007"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Modifier8"",
-                    ""id"": ""c64dd991-627d-4da0-bfec-2882963a6f20"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Modifier9"",
-                    ""id"": ""02c6b777-9d35-456d-9bc3-a9ca860c9fa4"",
-                    ""path"": """",
+                    ""id"": ""0b29ee0f-b448-4ad0-a052-6b1f97cff7c9"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -472,8 +283,8 @@ namespace Inputs
                 },
                 {
                     ""name"": ""Result1"",
-                    ""id"": ""ebb2684f-f2f7-46f2-b900-f4f92e427fb6"",
-                    ""path"": """",
+                    ""id"": ""3b69db01-8627-4297-86a5-a6a16ef11a41"",
+                    ""path"": ""<Mouse>/position/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -483,8 +294,8 @@ namespace Inputs
                 },
                 {
                     ""name"": ""Result2"",
-                    ""id"": ""225636ef-3525-4e26-b460-d6f1f4b87c34"",
-                    ""path"": """",
+                    ""id"": ""930da51c-052c-449e-93bd-8cf3756cd629"",
+                    ""path"": ""<Mouse>/position/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -494,74 +305,8 @@ namespace Inputs
                 },
                 {
                     ""name"": ""Result3"",
-                    ""id"": ""5e41886d-83a8-412a-a8c5-1158578796b0"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Result4"",
-                    ""id"": ""b571adca-8ee1-4461-9f37-abbe517f405d"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Result5"",
-                    ""id"": ""b3532b94-f52a-43a0-b623-fd0c3a52c08e"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Result6"",
-                    ""id"": ""94b8738c-bab1-4aba-a8d3-dbe4e67b7e3c"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Result7"",
-                    ""id"": ""4bf4ae8c-451a-43bd-ae11-8b26be28d43b"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Result8"",
-                    ""id"": ""581c1071-9936-4565-8890-c08cca146d46"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Result9"",
-                    ""id"": ""869eb61f-8c32-4eff-95a4-50d783608ad6"",
-                    ""path"": """",
+                    ""id"": ""f8234826-063f-4e4c-b2d4-05b1428ebfe7"",
+                    ""path"": ""<Mouse>/clickCount"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -605,9 +350,6 @@ namespace Inputs
             // PlayerControls
             m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
             m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
-            m_PlayerControls_PointerTap = m_PlayerControls.FindAction("PointerTap", throwIfNotFound: true);
-            m_PlayerControls_PointerDoubleTap = m_PlayerControls.FindAction("PointerDoubleTap", throwIfNotFound: true);
-            m_PlayerControls_PointerTripleTap = m_PlayerControls.FindAction("PointerTripleTap", throwIfNotFound: true);
             m_PlayerControls_PointerPosition = m_PlayerControls.FindAction("PointerPosition", throwIfNotFound: true);
             m_PlayerControls_PointerPressRelease = m_PlayerControls.FindAction("PointerPressRelease", throwIfNotFound: true);
             m_PlayerControls_Scale = m_PlayerControls.FindAction("Scale", throwIfNotFound: true);
@@ -666,9 +408,6 @@ namespace Inputs
         private readonly InputActionMap m_PlayerControls;
         private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
         private readonly InputAction m_PlayerControls_Movement;
-        private readonly InputAction m_PlayerControls_PointerTap;
-        private readonly InputAction m_PlayerControls_PointerDoubleTap;
-        private readonly InputAction m_PlayerControls_PointerTripleTap;
         private readonly InputAction m_PlayerControls_PointerPosition;
         private readonly InputAction m_PlayerControls_PointerPressRelease;
         private readonly InputAction m_PlayerControls_Scale;
@@ -682,9 +421,6 @@ namespace Inputs
             private @PlayerActions m_Wrapper;
             public PlayerControlsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
-            public InputAction @PointerTap => m_Wrapper.m_PlayerControls_PointerTap;
-            public InputAction @PointerDoubleTap => m_Wrapper.m_PlayerControls_PointerDoubleTap;
-            public InputAction @PointerTripleTap => m_Wrapper.m_PlayerControls_PointerTripleTap;
             public InputAction @PointerPosition => m_Wrapper.m_PlayerControls_PointerPosition;
             public InputAction @PointerPressRelease => m_Wrapper.m_PlayerControls_PointerPressRelease;
             public InputAction @Scale => m_Wrapper.m_PlayerControls_Scale;
@@ -705,15 +441,6 @@ namespace Inputs
                     @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                    @PointerTap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerTap;
-                    @PointerTap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerTap;
-                    @PointerTap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerTap;
-                    @PointerDoubleTap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerDoubleTap;
-                    @PointerDoubleTap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerDoubleTap;
-                    @PointerDoubleTap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerDoubleTap;
-                    @PointerTripleTap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerTripleTap;
-                    @PointerTripleTap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerTripleTap;
-                    @PointerTripleTap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerTripleTap;
                     @PointerPosition.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPosition;
                     @PointerPosition.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPosition;
                     @PointerPosition.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPosition;
@@ -745,15 +472,6 @@ namespace Inputs
                     @Movement.started += instance.OnMovement;
                     @Movement.performed += instance.OnMovement;
                     @Movement.canceled += instance.OnMovement;
-                    @PointerTap.started += instance.OnPointerTap;
-                    @PointerTap.performed += instance.OnPointerTap;
-                    @PointerTap.canceled += instance.OnPointerTap;
-                    @PointerDoubleTap.started += instance.OnPointerDoubleTap;
-                    @PointerDoubleTap.performed += instance.OnPointerDoubleTap;
-                    @PointerDoubleTap.canceled += instance.OnPointerDoubleTap;
-                    @PointerTripleTap.started += instance.OnPointerTripleTap;
-                    @PointerTripleTap.performed += instance.OnPointerTripleTap;
-                    @PointerTripleTap.canceled += instance.OnPointerTripleTap;
                     @PointerPosition.started += instance.OnPointerPosition;
                     @PointerPosition.performed += instance.OnPointerPosition;
                     @PointerPosition.canceled += instance.OnPointerPosition;
@@ -803,9 +521,6 @@ namespace Inputs
         public interface IPlayerControlsActions
         {
             void OnMovement(InputAction.CallbackContext context);
-            void OnPointerTap(InputAction.CallbackContext context);
-            void OnPointerDoubleTap(InputAction.CallbackContext context);
-            void OnPointerTripleTap(InputAction.CallbackContext context);
             void OnPointerPosition(InputAction.CallbackContext context);
             void OnPointerPressRelease(InputAction.CallbackContext context);
             void OnScale(InputAction.CallbackContext context);

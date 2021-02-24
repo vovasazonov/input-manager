@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using Inputs.BindingComposites;
+using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 namespace Inputs.Actions
 {
@@ -8,42 +8,38 @@ namespace Inputs.Actions
     {
         public event TappedHandler Tapped;
 
-        private readonly InputAction[] _tapActions;
-        private readonly InputAction _pointerPositionAction;
+        private readonly InputAction _tapAction;
 
-        public TapAction(InputAction pointerPositionAction, params InputAction[] tapActions)
+        public TapAction(InputAction tapAction)
         {
-            _pointerPositionAction = pointerPositionAction;
-            _tapActions = tapActions;
+            _tapAction = tapAction;
 
             AddActionListener();
         }
 
         private void AddActionListener()
         {
-            foreach (var tapAction in _tapActions)
-            {
-                tapAction.performed += OnActionPreformed;
-            }
+            _tapAction.performed += OnActionPreformed;
         }
 
         private void RemoveActionListener()
         {
-            foreach (var tapAction in _tapActions)
-            {
-                tapAction.performed -= OnActionPreformed;
-            }
+            _tapAction.performed -= OnActionPreformed;
         }
 
         private void OnActionPreformed(InputAction.CallbackContext context)
         {
-            var vector = _pointerPositionAction.ReadValue<Vector2>();
-            var screenPosition = new UnityVector(vector);
+            var compositeData = context.ReadValue<CompositeData>();
+            var tapCount = compositeData.ReadValue<int>(2);
 
-            if (context.interaction is MultiTapInteraction interaction)
+            if (tapCount > 0)
             {
-                var tapCount = interaction.tapCount;
-                CallClicked(screenPosition, tapCount);
+                var positionX = compositeData.ReadValue<float>(0);
+                var positionY = compositeData.ReadValue<float>(1);
+                var vector = new Vector2(positionX, positionY);
+                IVector2 position = new UnityVector(vector);
+                
+                CallClicked(position, tapCount);
             }
         }
 
