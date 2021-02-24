@@ -39,11 +39,11 @@ namespace Inputs.BindingComposites
         [InputControl(layout = "Button")] public int Modifier3;
         [InputControl(layout = "Button")] public int Modifier4;
         [InputControl(layout = "Button")] public int Modifier5;
-        [InputControl] public int Result1;
-        [InputControl] public int Result2;
-        [InputControl] public int Result3;
-        [InputControl] public int Result4;
-        [InputControl] public int Result5;
+        [InputControl(layout = "Button")] public int Result1;
+        [InputControl(layout = "Button")] public int Result2;
+        [InputControl(layout = "Button")] public int Result3;
+        [InputControl(layout = "Button")] public int Result4;
+        [InputControl(layout = "Button")] public int Result5;
 
         private List<int> _modifiers;
         private List<int> _results;
@@ -75,6 +75,32 @@ namespace Inputs.BindingComposites
             return new CompositeData(_takePartResults, ref context);
         }
 
+        public override float EvaluateMagnitude(ref InputBindingCompositeContext context)
+        {
+            Initialize();
+            if (IsAllModifiersPerformed(ref context))
+            {
+                return 0;
+            }
+
+            return -1;
+        }
+        
+        private bool IsAllModifiersPerformed(ref InputBindingCompositeContext context)
+        {
+            bool isAllModifiersPerformed = true;
+
+            foreach (var takePartModifier in _takePartModifiers.Values)
+            {
+                if (context.ReadValueAsButton(takePartModifier))
+                {
+                    isAllModifiersPerformed = false;
+                }
+            }
+
+            return isAllModifiersPerformed;
+        }
+        
         private void InitializeTakePartModifiers()
         {
             if (_takePartModifiers == null)

@@ -25,6 +25,7 @@ namespace Inputs
             SkillSettingDialogAction = new DialogAction(playerControls.SettingSkillDialog);
             SkillAction1 = new SkillAction(playerControls.SkillButton1);
             SkillAction2 = new SkillAction(playerControls.SkillButton2);
+            new TestAction(playerControls.Test);
         }
 
         public void Activate()

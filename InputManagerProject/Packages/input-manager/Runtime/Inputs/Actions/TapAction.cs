@@ -29,6 +29,7 @@ namespace Inputs.Actions
 
         private void OnActionPreformed(InputAction.CallbackContext context)
         {
+            Debug.Log("tap performed");
             var compositeData = context.ReadValue<CompositeData>();
             var tapCount = compositeData.ReadValue<int>(2);
 
