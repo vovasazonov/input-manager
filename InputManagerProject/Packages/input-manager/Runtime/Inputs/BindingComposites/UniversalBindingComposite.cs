@@ -71,7 +71,6 @@ namespace Inputs.BindingComposites
 
         public override CompositeData ReadValue(ref InputBindingCompositeContext context)
         {
-            Initialize();
             return new CompositeData(_takePartResults, ref context);
         }
 

@@ -91,14 +91,6 @@ namespace Inputs
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Test"",
-                    ""type"": ""Button"",
-                    ""id"": ""2e22b170-d03a-4265-b1c0-5172d95453fd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -321,50 +313,6 @@ namespace Inputs
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Button With Two Modifiers"",
-                    ""id"": ""b8ab8ac1-6085-4e26-be4d-c08ddc4b19e4"",
-                    ""path"": ""ButtonWithTwoModifiers"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Test"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier1"",
-                    ""id"": ""22c46dd5-d264-4213-ac66-c5ab8782e738"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Test"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""modifier2"",
-                    ""id"": ""71eb8474-c8f0-4382-86ac-d5ae25a076e7"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Test"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""button"",
-                    ""id"": ""8d8ce293-72ed-4601-9e1c-a61855812553"",
-                    ""path"": ""<Mouse>/position/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Test"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -410,7 +358,6 @@ namespace Inputs
             m_PlayerControls_SkillButton1 = m_PlayerControls.FindAction("SkillButton1", throwIfNotFound: true);
             m_PlayerControls_SkillButton2 = m_PlayerControls.FindAction("SkillButton2", throwIfNotFound: true);
             m_PlayerControls_Tap = m_PlayerControls.FindAction("Tap", throwIfNotFound: true);
-            m_PlayerControls_Test = m_PlayerControls.FindAction("Test", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -469,7 +416,6 @@ namespace Inputs
         private readonly InputAction m_PlayerControls_SkillButton1;
         private readonly InputAction m_PlayerControls_SkillButton2;
         private readonly InputAction m_PlayerControls_Tap;
-        private readonly InputAction m_PlayerControls_Test;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
@@ -483,7 +429,6 @@ namespace Inputs
             public InputAction @SkillButton1 => m_Wrapper.m_PlayerControls_SkillButton1;
             public InputAction @SkillButton2 => m_Wrapper.m_PlayerControls_SkillButton2;
             public InputAction @Tap => m_Wrapper.m_PlayerControls_Tap;
-            public InputAction @Test => m_Wrapper.m_PlayerControls_Test;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -520,9 +465,6 @@ namespace Inputs
                     @Tap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
                     @Tap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
                     @Tap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
-                    @Test.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTest;
-                    @Test.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTest;
-                    @Test.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTest;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -554,9 +496,6 @@ namespace Inputs
                     @Tap.started += instance.OnTap;
                     @Tap.performed += instance.OnTap;
                     @Tap.canceled += instance.OnTap;
-                    @Test.started += instance.OnTest;
-                    @Test.performed += instance.OnTest;
-                    @Test.canceled += instance.OnTest;
                 }
             }
         }
@@ -590,7 +529,6 @@ namespace Inputs
             void OnSkillButton1(InputAction.CallbackContext context);
             void OnSkillButton2(InputAction.CallbackContext context);
             void OnTap(InputAction.CallbackContext context);
-            void OnTest(InputAction.CallbackContext context);
         }
     }
 }
