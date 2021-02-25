@@ -420,6 +420,50 @@ namespace Inputs
                     ""action"": ""Swipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""TouchSwipe"",
+                    ""id"": ""5b341caf-b888-489c-b9e7-ca343066fa6d"",
+                    ""path"": ""UniversalBinding"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier1"",
+                    ""id"": ""f318fd93-53da-4eb7-b9a4-09b74b737347"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result1"",
+                    ""id"": ""32808420-b854-4b9c-9818-834e1c73d80b"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result2"",
+                    ""id"": ""ef93fcbf-0ca8-47fb-9628-4b2a177906a8"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
