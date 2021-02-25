@@ -276,7 +276,7 @@ namespace Inputs
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -287,7 +287,7 @@ namespace Inputs
                     ""path"": ""<Mouse>/position/x"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -298,7 +298,7 @@ namespace Inputs
                     ""path"": ""<Mouse>/position/y"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -309,7 +309,62 @@ namespace Inputs
                     ""path"": ""<Mouse>/clickCount"",
                     ""interactions"": """",
                     ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""TouchTap"",
+                    ""id"": ""7c479dc4-84fb-4315-853c-150565335c06"",
+                    ""path"": ""UniversalBinding"",
+                    ""interactions"": """",
+                    ""processors"": """",
                     ""groups"": """",
+                    ""action"": ""Tap"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier1"",
+                    ""id"": ""c6e97a13-2196-4283-aaf4-e08c4fdb372e"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result1"",
+                    ""id"": ""ec8d8806-34df-494a-9643-41732458fb75"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result2"",
+                    ""id"": ""e18cd48c-0c92-4840-8ee3-f0fefdf6d338"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result3"",
+                    ""id"": ""624b2b82-54d5-44b7-86f4-7b94ddcde737"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tapCount"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
