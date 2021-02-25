@@ -20,7 +20,7 @@ namespace Inputs
             var playerControls = _playerActions.PlayerControls;
             MovementAction = new MovementAction(playerControls.Movement);
             TapAction = new TapAction(playerControls.Tap);
-            SwipeAction = new SwipeAction(playerControls.PointerPosition, playerControls.PointerPressRelease);
+            SwipeAction = new SwipeAction(playerControls.Swipe);
             InventoryDialogAction = new DialogAction(playerControls.InventoryDialog);
             SkillSettingDialogAction = new DialogAction(playerControls.SettingSkillDialog);
             SkillAction1 = new SkillAction(playerControls.SkillButton1);

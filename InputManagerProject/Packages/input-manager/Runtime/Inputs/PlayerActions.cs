@@ -91,6 +91,14 @@ namespace Inputs
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Swipe"",
+                    ""type"": ""Button"",
+                    ""id"": ""16cfed38-1028-4b78-a677-269b61048701"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -273,7 +281,7 @@ namespace Inputs
                 {
                     ""name"": ""Modifier1"",
                     ""id"": ""0b29ee0f-b448-4ad0-a052-6b1f97cff7c9"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""PC"",
@@ -368,6 +376,50 @@ namespace Inputs
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""PcSwipe"",
+                    ""id"": ""5e2b36b9-fcb5-4c0a-9e60-2a2338663d85"",
+                    ""path"": ""UniversalBinding"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier1"",
+                    ""id"": ""db3a1b22-5eb2-4173-a71b-170d190c509a"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result1"",
+                    ""id"": ""4a6a2575-e355-4f3c-8e87-c98070b14df3"",
+                    ""path"": ""<Mouse>/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result2"",
+                    ""id"": ""e0d61b37-a956-4d35-9590-06ddf5001e6b"",
+                    ""path"": ""<Mouse>/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Swipe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -413,6 +465,7 @@ namespace Inputs
             m_PlayerControls_SkillButton1 = m_PlayerControls.FindAction("SkillButton1", throwIfNotFound: true);
             m_PlayerControls_SkillButton2 = m_PlayerControls.FindAction("SkillButton2", throwIfNotFound: true);
             m_PlayerControls_Tap = m_PlayerControls.FindAction("Tap", throwIfNotFound: true);
+            m_PlayerControls_Swipe = m_PlayerControls.FindAction("Swipe", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -471,6 +524,7 @@ namespace Inputs
         private readonly InputAction m_PlayerControls_SkillButton1;
         private readonly InputAction m_PlayerControls_SkillButton2;
         private readonly InputAction m_PlayerControls_Tap;
+        private readonly InputAction m_PlayerControls_Swipe;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
@@ -484,6 +538,7 @@ namespace Inputs
             public InputAction @SkillButton1 => m_Wrapper.m_PlayerControls_SkillButton1;
             public InputAction @SkillButton2 => m_Wrapper.m_PlayerControls_SkillButton2;
             public InputAction @Tap => m_Wrapper.m_PlayerControls_Tap;
+            public InputAction @Swipe => m_Wrapper.m_PlayerControls_Swipe;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -520,6 +575,9 @@ namespace Inputs
                     @Tap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
                     @Tap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
                     @Tap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
+                    @Swipe.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    @Swipe.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    @Swipe.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -551,6 +609,9 @@ namespace Inputs
                     @Tap.started += instance.OnTap;
                     @Tap.performed += instance.OnTap;
                     @Tap.canceled += instance.OnTap;
+                    @Swipe.started += instance.OnSwipe;
+                    @Swipe.performed += instance.OnSwipe;
+                    @Swipe.canceled += instance.OnSwipe;
                 }
             }
         }
@@ -584,6 +645,7 @@ namespace Inputs
             void OnSkillButton1(InputAction.CallbackContext context);
             void OnSkillButton2(InputAction.CallbackContext context);
             void OnTap(InputAction.CallbackContext context);
+            void OnSwipe(InputAction.CallbackContext context);
         }
     }
 }

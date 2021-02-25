@@ -76,6 +76,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Swipe",
+                    "type": "Button",
+                    "id": "16cfed38-1028-4b78-a677-269b61048701",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -258,7 +266,7 @@
                 {
                     "name": "Modifier1",
                     "id": "0b29ee0f-b448-4ad0-a052-6b1f97cff7c9",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -351,6 +359,50 @@
                     "processors": "",
                     "groups": "TouchScreen",
                     "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "PcSwipe",
+                    "id": "5e2b36b9-fcb5-4c0a-9e60-2a2338663d85",
+                    "path": "UniversalBinding",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier1",
+                    "id": "db3a1b22-5eb2-4173-a71b-170d190c509a",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Result1",
+                    "id": "4a6a2575-e355-4f3c-8e87-c98070b14df3",
+                    "path": "<Mouse>/position/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Result2",
+                    "id": "e0d61b37-a956-4d35-9590-06ddf5001e6b",
+                    "path": "<Mouse>/position/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

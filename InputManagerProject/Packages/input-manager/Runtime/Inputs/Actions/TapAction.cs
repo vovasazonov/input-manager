@@ -39,11 +39,11 @@ namespace Inputs.Actions
                 var vector = new Vector2(positionX, positionY);
                 IVector2 position = new UnityVector(vector);
                 
-                CallClicked(position, tapCount);
+                CallTapped(position, tapCount);
             }
         }
 
-        private void CallClicked(IVector2 screenPosition, int amount)
+        private void CallTapped(IVector2 screenPosition, int amount)
         {
             Tapped?.Invoke(screenPosition, amount);
         }
