@@ -29,30 +29,6 @@ namespace Inputs
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""PointerPosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""6231e476-589a-49e9-b0c3-5ea1fc7a10e6"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""PointerPressRelease"",
-                    ""type"": ""Button"",
-                    ""id"": ""9115a950-ca65-4e75-bb74-9efa9c2b8240"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
-                },
-                {
-                    ""name"": ""Scale"",
-                    ""type"": ""Value"",
-                    ""id"": ""aebddb12-4f78-40f5-8840-4d36676c5bab"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""InventoryDialog"",
                     ""type"": ""Button"",
                     ""id"": ""21db96df-edb8-4d63-a145-f9d38c1b29d9"",
@@ -97,6 +73,14 @@ namespace Inputs
                     ""type"": ""Button"",
                     ""id"": ""16cfed38-1028-4b78-a677-269b61048701"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Scale"",
+                    ""type"": ""Value"",
+                    ""id"": ""aebddb12-4f78-40f5-8840-4d36676c5bab"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -165,61 +149,6 @@ namespace Inputs
                     ""processors"": """",
                     ""groups"": ""TouchScreen"",
                     ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3e54bd23-a192-4945-a3c1-0517fb98d84f"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""PointerPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""35a291d0-e0f6-4c1e-ba6c-efe0bf2df30c"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""TouchScreen"",
-                    ""action"": ""PointerPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""538681dc-8358-4a31-9cb9-967aedbc3201"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""PointerPressRelease"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3c5d3dfe-e7ca-4f90-bdaf-8c4561c855e0"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""TouchScreen"",
-                    ""action"": ""PointerPressRelease"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a73bac55-fdf4-4ce7-9086-b9de3836f615"",
-                    ""path"": ""<Mouse>/scroll"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Scale"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -464,6 +393,17 @@ namespace Inputs
                     ""action"": ""Swipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a73bac55-fdf4-4ce7-9086-b9de3836f615"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -501,15 +441,13 @@ namespace Inputs
             // PlayerControls
             m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
             m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
-            m_PlayerControls_PointerPosition = m_PlayerControls.FindAction("PointerPosition", throwIfNotFound: true);
-            m_PlayerControls_PointerPressRelease = m_PlayerControls.FindAction("PointerPressRelease", throwIfNotFound: true);
-            m_PlayerControls_Scale = m_PlayerControls.FindAction("Scale", throwIfNotFound: true);
             m_PlayerControls_InventoryDialog = m_PlayerControls.FindAction("InventoryDialog", throwIfNotFound: true);
             m_PlayerControls_SettingSkillDialog = m_PlayerControls.FindAction("SettingSkillDialog", throwIfNotFound: true);
             m_PlayerControls_SkillButton1 = m_PlayerControls.FindAction("SkillButton1", throwIfNotFound: true);
             m_PlayerControls_SkillButton2 = m_PlayerControls.FindAction("SkillButton2", throwIfNotFound: true);
             m_PlayerControls_Tap = m_PlayerControls.FindAction("Tap", throwIfNotFound: true);
             m_PlayerControls_Swipe = m_PlayerControls.FindAction("Swipe", throwIfNotFound: true);
+            m_PlayerControls_Scale = m_PlayerControls.FindAction("Scale", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -560,29 +498,25 @@ namespace Inputs
         private readonly InputActionMap m_PlayerControls;
         private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
         private readonly InputAction m_PlayerControls_Movement;
-        private readonly InputAction m_PlayerControls_PointerPosition;
-        private readonly InputAction m_PlayerControls_PointerPressRelease;
-        private readonly InputAction m_PlayerControls_Scale;
         private readonly InputAction m_PlayerControls_InventoryDialog;
         private readonly InputAction m_PlayerControls_SettingSkillDialog;
         private readonly InputAction m_PlayerControls_SkillButton1;
         private readonly InputAction m_PlayerControls_SkillButton2;
         private readonly InputAction m_PlayerControls_Tap;
         private readonly InputAction m_PlayerControls_Swipe;
+        private readonly InputAction m_PlayerControls_Scale;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
             public PlayerControlsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
-            public InputAction @PointerPosition => m_Wrapper.m_PlayerControls_PointerPosition;
-            public InputAction @PointerPressRelease => m_Wrapper.m_PlayerControls_PointerPressRelease;
-            public InputAction @Scale => m_Wrapper.m_PlayerControls_Scale;
             public InputAction @InventoryDialog => m_Wrapper.m_PlayerControls_InventoryDialog;
             public InputAction @SettingSkillDialog => m_Wrapper.m_PlayerControls_SettingSkillDialog;
             public InputAction @SkillButton1 => m_Wrapper.m_PlayerControls_SkillButton1;
             public InputAction @SkillButton2 => m_Wrapper.m_PlayerControls_SkillButton2;
             public InputAction @Tap => m_Wrapper.m_PlayerControls_Tap;
             public InputAction @Swipe => m_Wrapper.m_PlayerControls_Swipe;
+            public InputAction @Scale => m_Wrapper.m_PlayerControls_Scale;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -595,15 +529,6 @@ namespace Inputs
                     @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                     @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                    @PointerPosition.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPosition;
-                    @PointerPosition.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPosition;
-                    @PointerPosition.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPosition;
-                    @PointerPressRelease.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPressRelease;
-                    @PointerPressRelease.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPressRelease;
-                    @PointerPressRelease.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPointerPressRelease;
-                    @Scale.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
-                    @Scale.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
-                    @Scale.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
                     @InventoryDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
                     @InventoryDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
                     @InventoryDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
@@ -622,6 +547,9 @@ namespace Inputs
                     @Swipe.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
                     @Swipe.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
                     @Swipe.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    @Scale.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
+                    @Scale.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
+                    @Scale.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScale;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -629,15 +557,6 @@ namespace Inputs
                     @Movement.started += instance.OnMovement;
                     @Movement.performed += instance.OnMovement;
                     @Movement.canceled += instance.OnMovement;
-                    @PointerPosition.started += instance.OnPointerPosition;
-                    @PointerPosition.performed += instance.OnPointerPosition;
-                    @PointerPosition.canceled += instance.OnPointerPosition;
-                    @PointerPressRelease.started += instance.OnPointerPressRelease;
-                    @PointerPressRelease.performed += instance.OnPointerPressRelease;
-                    @PointerPressRelease.canceled += instance.OnPointerPressRelease;
-                    @Scale.started += instance.OnScale;
-                    @Scale.performed += instance.OnScale;
-                    @Scale.canceled += instance.OnScale;
                     @InventoryDialog.started += instance.OnInventoryDialog;
                     @InventoryDialog.performed += instance.OnInventoryDialog;
                     @InventoryDialog.canceled += instance.OnInventoryDialog;
@@ -656,6 +575,9 @@ namespace Inputs
                     @Swipe.started += instance.OnSwipe;
                     @Swipe.performed += instance.OnSwipe;
                     @Swipe.canceled += instance.OnSwipe;
+                    @Scale.started += instance.OnScale;
+                    @Scale.performed += instance.OnScale;
+                    @Scale.canceled += instance.OnScale;
                 }
             }
         }
@@ -681,15 +603,13 @@ namespace Inputs
         public interface IPlayerControlsActions
         {
             void OnMovement(InputAction.CallbackContext context);
-            void OnPointerPosition(InputAction.CallbackContext context);
-            void OnPointerPressRelease(InputAction.CallbackContext context);
-            void OnScale(InputAction.CallbackContext context);
             void OnInventoryDialog(InputAction.CallbackContext context);
             void OnSettingSkillDialog(InputAction.CallbackContext context);
             void OnSkillButton1(InputAction.CallbackContext context);
             void OnSkillButton2(InputAction.CallbackContext context);
             void OnTap(InputAction.CallbackContext context);
             void OnSwipe(InputAction.CallbackContext context);
+            void OnScale(InputAction.CallbackContext context);
         }
     }
 }

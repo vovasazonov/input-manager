@@ -14,30 +14,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "PointerPosition",
-                    "type": "Value",
-                    "id": "6231e476-589a-49e9-b0c3-5ea1fc7a10e6",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "PointerPressRelease",
-                    "type": "Button",
-                    "id": "9115a950-ca65-4e75-bb74-9efa9c2b8240",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=2)"
-                },
-                {
-                    "name": "Scale",
-                    "type": "Value",
-                    "id": "aebddb12-4f78-40f5-8840-4d36676c5bab",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "InventoryDialog",
                     "type": "Button",
                     "id": "21db96df-edb8-4d63-a145-f9d38c1b29d9",
@@ -82,6 +58,14 @@
                     "type": "Button",
                     "id": "16cfed38-1028-4b78-a677-269b61048701",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Scale",
+                    "type": "Value",
+                    "id": "aebddb12-4f78-40f5-8840-4d36676c5bab",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -150,61 +134,6 @@
                     "processors": "",
                     "groups": "TouchScreen",
                     "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3e54bd23-a192-4945-a3c1-0517fb98d84f",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "PointerPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "35a291d0-e0f6-4c1e-ba6c-efe0bf2df30c",
-                    "path": "<Touchscreen>/primaryTouch/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "TouchScreen",
-                    "action": "PointerPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "538681dc-8358-4a31-9cb9-967aedbc3201",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "PointerPressRelease",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3c5d3dfe-e7ca-4f90-bdaf-8c4561c855e0",
-                    "path": "<Touchscreen>/primaryTouch/press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "TouchScreen",
-                    "action": "PointerPressRelease",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a73bac55-fdf4-4ce7-9086-b9de3836f615",
-                    "path": "<Mouse>/scroll",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Scale",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -449,6 +378,17 @@
                     "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a73bac55-fdf4-4ce7-9086-b9de3836f615",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scale",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
