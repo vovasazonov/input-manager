@@ -18,8 +18,8 @@ namespace Inputs
         public PlayerControl(PlayerActions playerActions)
         {
             _playerActions = playerActions;
-
             var playerControls = _playerActions.PlayerControls;
+
             MovementAction = new MovementAction(playerControls.Movement);
             TapAction = new TapAction(playerControls.Tap);
             SwipeAction = new SwipeAction(playerControls.Swipe);
