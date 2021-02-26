@@ -60,14 +60,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Scale",
-                    "type": "Value",
-                    "id": "aebddb12-4f78-40f5-8840-4d36676c5bab",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -378,17 +370,6 @@
                     "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "a73bac55-fdf4-4ce7-9086-b9de3836f615",
-                    "path": "<Mouse>/scroll",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Scale",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

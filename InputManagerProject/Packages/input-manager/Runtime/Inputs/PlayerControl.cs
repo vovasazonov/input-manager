@@ -1,4 +1,5 @@
 ﻿using Inputs.Actions;
+using Inputs.Actions.Pinch;
 
 namespace Inputs
 {
@@ -8,6 +9,7 @@ namespace Inputs
         public IMovementAction MovementAction { get; }
         public ITapAction TapAction { get; }
         public ISwipeAction SwipeAction { get; }
+        public IPinchAction PinchAction { get; }
         public IDialogAction InventoryDialogAction { get; }
         public IDialogAction SkillSettingDialogAction { get; }
         public ISkillAction SkillAction1 { get; }
@@ -21,6 +23,7 @@ namespace Inputs
             MovementAction = new MovementAction(playerControls.Movement);
             TapAction = new TapAction(playerControls.Tap);
             SwipeAction = new SwipeAction(playerControls.Swipe);
+            PinchAction = new PinchAction();
             InventoryDialogAction = new DialogAction(playerControls.InventoryDialog);
             SkillSettingDialogAction = new DialogAction(playerControls.SettingSkillDialog);
             SkillAction1 = new SkillAction(playerControls.SkillButton1);
