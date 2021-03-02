@@ -75,6 +75,14 @@ namespace Inputs
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""32cda967-b65f-4c04-81d7-9e5d2bbfb6ad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -385,6 +393,17 @@ namespace Inputs
                     ""action"": ""Swipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75d50cf6-a940-4180-85ef-481789c34d4a"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -428,6 +447,7 @@ namespace Inputs
             m_PlayerControls_SkillButton2 = m_PlayerControls.FindAction("SkillButton2", throwIfNotFound: true);
             m_PlayerControls_Tap = m_PlayerControls.FindAction("Tap", throwIfNotFound: true);
             m_PlayerControls_Swipe = m_PlayerControls.FindAction("Swipe", throwIfNotFound: true);
+            m_PlayerControls_Scroll = m_PlayerControls.FindAction("Scroll", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -484,6 +504,7 @@ namespace Inputs
         private readonly InputAction m_PlayerControls_SkillButton2;
         private readonly InputAction m_PlayerControls_Tap;
         private readonly InputAction m_PlayerControls_Swipe;
+        private readonly InputAction m_PlayerControls_Scroll;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
@@ -495,6 +516,7 @@ namespace Inputs
             public InputAction @SkillButton2 => m_Wrapper.m_PlayerControls_SkillButton2;
             public InputAction @Tap => m_Wrapper.m_PlayerControls_Tap;
             public InputAction @Swipe => m_Wrapper.m_PlayerControls_Swipe;
+            public InputAction @Scroll => m_Wrapper.m_PlayerControls_Scroll;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -525,6 +547,9 @@ namespace Inputs
                     @Swipe.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
                     @Swipe.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
                     @Swipe.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    @Scroll.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
+                    @Scroll.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
+                    @Scroll.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -550,6 +575,9 @@ namespace Inputs
                     @Swipe.started += instance.OnSwipe;
                     @Swipe.performed += instance.OnSwipe;
                     @Swipe.canceled += instance.OnSwipe;
+                    @Scroll.started += instance.OnScroll;
+                    @Scroll.performed += instance.OnScroll;
+                    @Scroll.canceled += instance.OnScroll;
                 }
             }
         }
@@ -581,6 +609,7 @@ namespace Inputs
             void OnSkillButton2(InputAction.CallbackContext context);
             void OnTap(InputAction.CallbackContext context);
             void OnSwipe(InputAction.CallbackContext context);
+            void OnScroll(InputAction.CallbackContext context);
         }
     }
 }
