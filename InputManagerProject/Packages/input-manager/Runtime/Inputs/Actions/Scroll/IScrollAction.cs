@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace Inputs.Actions.Scroll
+﻿namespace Inputs.Actions.Scroll
 {
-    public delegate void PerformedHandler();
+    public delegate void ScrolledHandler();
 
     public interface IScrollAction
     {
-        event PerformedHandler Performed;
+        event ScrolledHandler Scrolled;
         
         IVector2 ScrollVector { get; }
         float TotalMagnitude { get; }

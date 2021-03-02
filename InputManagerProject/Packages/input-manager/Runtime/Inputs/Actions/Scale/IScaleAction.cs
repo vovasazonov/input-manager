@@ -1,10 +1,10 @@
 ﻿namespace Inputs.Actions.Scale
 {
-    public delegate void PerformedHandler();
+    public delegate void ScaledHandler();
 
     public interface IScaleAction
     {
-        event PerformedHandler Performed;
+        event ScaledHandler Scaled;
 
         float TotalMagnitude { get; }
     }

@@ -5,7 +5,7 @@ namespace Inputs.Actions.Scale
 {
     public sealed class ScaleAction : IScaleAction
     {
-        public event PerformedHandler Performed;
+        public event ScaledHandler Scaled;
 
         private readonly IPinchAction _pinchAction;
         private readonly IScrollAction _scrollAction;
@@ -33,29 +33,29 @@ namespace Inputs.Actions.Scale
 
         private void AddScrollListeners()
         {
-            _scrollAction.Performed += OnScrollPerformed;
+            _scrollAction.Scrolled += OnScrollScrolled;
         }
 
         private void RemoveScrollListeners()
         {
-            _scrollAction.Performed -= OnScrollPerformed;
+            _scrollAction.Scrolled -= OnScrollScrolled;
         }
 
-        private void OnScrollPerformed()
+        private void OnScrollScrolled()
         {
             TotalMagnitude = _scrollAction.TotalMagnitude;
-            CallPerformed();
+            CallScaled();
         }
         
         private void OnPinchProceed(IPinchInfo pinchInfo)
         {
             TotalMagnitude = pinchInfo.TotalMagnitude;
-            CallPerformed();
+            CallScaled();
         }
 
-        private void CallPerformed()
+        private void CallScaled()
         {
-            Performed?.Invoke();
+            Scaled?.Invoke();
         }
     }
 }

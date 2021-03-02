@@ -5,7 +5,7 @@ namespace Inputs.Actions.Scroll
 {
     public sealed class ScrollAction : IScrollAction
     {
-        public event PerformedHandler Performed;
+        public event ScrolledHandler Scrolled;
         
         private readonly InputAction _inputAction;
         private Vector2 _scrollVector2;
@@ -40,12 +40,12 @@ namespace Inputs.Actions.Scroll
         private void OnPerformed(InputAction.CallbackContext context)
         {
             _scrollVector2 = _inputAction.ReadValue<Vector2>();
-            CallPerformed();
+            CallScrolled();
         }
 
-        private void CallPerformed()
+        private void CallScrolled()
         {
-            Performed?.Invoke();
+            Scrolled?.Invoke();
         }
     }
 }
