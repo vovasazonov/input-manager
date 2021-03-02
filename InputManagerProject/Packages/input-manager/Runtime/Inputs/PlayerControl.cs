@@ -1,5 +1,6 @@
 ﻿using Inputs.Actions;
 using Inputs.Actions.Pinch;
+using Inputs.Actions.Scale;
 using Inputs.Actions.Scroll;
 
 namespace Inputs
@@ -12,6 +13,7 @@ namespace Inputs
         public ISwipeAction SwipeAction { get; }
         public IPinchAction PinchAction { get; }
         public IScrollAction ScrollAction { get; }
+        public IScaleAction ScaleAction { get; }
         public IDialogAction InventoryDialogAction { get; }
         public IDialogAction SkillSettingDialogAction { get; }
         public ISkillAction SkillAction1 { get; }
@@ -27,6 +29,7 @@ namespace Inputs
             SwipeAction = new SwipeAction(playerControls.Swipe);
             PinchAction = new PinchAction();
             ScrollAction = new ScrollAction(playerControls.Scroll);
+            ScaleAction = new ScaleAction(PinchAction, ScrollAction);
             InventoryDialogAction = new DialogAction(playerControls.InventoryDialog);
             SkillSettingDialogAction = new DialogAction(playerControls.SettingSkillDialog);
             SkillAction1 = new SkillAction(playerControls.SkillButton1);
