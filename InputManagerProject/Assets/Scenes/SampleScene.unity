@@ -706,8 +706,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 261.5, y: 192}
-  m_SizeDelta: {x: 276.94467, y: 59.200775}
+  m_AnchoredPosition: {x: 261.5, y: 170}
+  m_SizeDelta: {x: 276.94467, y: 103.226654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280849427
 MonoBehaviour:
@@ -747,7 +747,14 @@ MonoBehaviour:
     Click "U" to open skill settings dialog.
 
     Click "I" to
-    open inventory dialog.'
+    open inventory dialog.
+
+    Pinch or scroll to scale point.
+
+    Tap to get amount
+    tap on point.
+
+    Swipe to move point.'
 --- !u!222 &280849428
 CanvasRenderer:
   m_ObjectHideFlags: 0
