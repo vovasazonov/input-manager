@@ -8,7 +8,8 @@ namespace Samples
         public event ColorChangedHandler ColorChanged;
         public event PositionChangedHandler PositionChanged;
         public event NumberChangedHandler NumberChanged;
-        
+        public event ScaledHandler Scaled;
+
         private readonly IPlayerControl _playerControl;
 
         public PointModel(IPlayerControl playerControl)
@@ -24,6 +25,7 @@ namespace Samples
             _playerControl.SwipeAction.Started += OnSwipeStarted;
             _playerControl.SwipeAction.Proceed += OnSwipeProceed;
             _playerControl.SwipeAction.Stopped += OnSwipeStopped;
+            _playerControl.ScaleAction.Scaled += OnScaled;
         }
 
         private void RemovePlayerControlListener()
@@ -32,6 +34,13 @@ namespace Samples
             _playerControl.SwipeAction.Started -= OnSwipeStarted;
             _playerControl.SwipeAction.Proceed -= OnSwipeProceed;
             _playerControl.SwipeAction.Stopped -= OnSwipeStopped;
+            _playerControl.ScaleAction.Scaled -= OnScaled;
+        }
+
+        private void OnScaled()
+        {
+            var scale = _playerControl.ScaleAction.TotalMagnitude;
+            CallScaled(scale);
         }
 
         private void OnSwipeStopped(ISwipeInfo swipeInfo)
@@ -69,6 +78,11 @@ namespace Samples
         private void CallNumberChanged(int number)
         {
             NumberChanged?.Invoke(number);
+        }
+
+        private void CallScaled(float scale)
+        {
+            Scaled?.Invoke(scale);
         }
     }
 }

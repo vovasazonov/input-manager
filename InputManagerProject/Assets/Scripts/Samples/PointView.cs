@@ -39,5 +39,13 @@ namespace Samples
                     throw new ArgumentOutOfRangeException(nameof(pointColor), pointColor, null);
             }
         }
+
+        public void ChangeScale(float magnitudeDelta)
+        {
+            var pointScale = _pointRectTransform.localScale;
+            pointScale.x = pointScale.x + pointScale.x/magnitudeDelta;
+            pointScale.y = pointScale.y + pointScale.y/magnitudeDelta;
+            _pointRectTransform.localScale = pointScale;
+        }
     }
 }

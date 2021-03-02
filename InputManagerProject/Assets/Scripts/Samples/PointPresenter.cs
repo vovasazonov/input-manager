@@ -18,6 +18,7 @@ namespace Samples
             _model.ColorChanged += OnColorChanged;
             _model.NumberChanged += OnNumberChanged;
             _model.PositionChanged += OnPositionChanged;
+            _model.Scaled += OnScaled;
         }
 
         public void Deactivate()
@@ -25,6 +26,12 @@ namespace Samples
             _model.ColorChanged -= OnColorChanged;
             _model.NumberChanged -= OnNumberChanged;
             _model.PositionChanged -= OnPositionChanged;
+            _model.Scaled -= OnScaled;
+        }
+
+        private void OnScaled(float scale)
+        {
+            _view.ChangeScale(scale);
         }
 
         private void OnPositionChanged(IVector2 position)

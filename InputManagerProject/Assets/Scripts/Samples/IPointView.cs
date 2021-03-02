@@ -7,6 +7,7 @@ namespace Samples
         void SetPosition(IVector2 position);
         void SetNumber(int amount);
         void SetColor(PointColor pointColor);
+        void ChangeScale(float magnitudeDelta);
     }
 
     public enum PointColor
