@@ -6,17 +6,27 @@ namespace Inputs.Actions.Scroll
     public sealed class ScrollAction : IScrollAction
     {
         public event ScrolledHandler Scrolled;
-        
+
         private readonly InputAction _inputAction;
         private Vector2 _scrollVector2;
 
         public IVector2 ScrollVector => new UnityVector(_scrollVector2);
-        public float TotalMagnitude => Vector2.zero.magnitude + _scrollVector2.magnitude;
+
+        public float TotalMagnitude
+        {
+            get
+            {
+                var magnitude = _scrollVector2.magnitude;
+                var sign = Mathf.Sign(_scrollVector2.y);
+
+                return magnitude * sign;
+            }
+        }
 
         public ScrollAction(InputAction inputAction)
         {
             _inputAction = inputAction;
-            
+
             AddInputActionListeners();
         }
 
