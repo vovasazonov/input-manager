@@ -360,7 +360,7 @@
                 {
                     "name": "Result1",
                     "id": "32808420-b854-4b9c-9818-834e1c73d80b",
-                    "path": "<Touchscreen>/primaryTouch/position/y",
+                    "path": "<Touchscreen>/primaryTouch/position/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "TouchScreen",
