@@ -2,6 +2,7 @@
 using Inputs;
 using UnityEngine;
 using UnityEngine.UI;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Samples
 {
@@ -43,8 +44,8 @@ namespace Samples
         public void ChangeScale(float magnitudeDelta)
         {
             var pointScale = _pointRectTransform.localScale;
-            pointScale.x = pointScale.x + pointScale.x/magnitudeDelta;
-            pointScale.y = pointScale.y + pointScale.y/magnitudeDelta;
+            pointScale.x = pointScale.x + magnitudeDelta * 0.01f;
+            pointScale.y = pointScale.y + magnitudeDelta * 0.01f;
             _pointRectTransform.localScale = pointScale;
         }
     }
