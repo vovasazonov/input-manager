@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Inputs.BindingComposites;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using UnityEngine.InputSystem;
 
 namespace Inputs.Actions.Pinch
 {
@@ -11,91 +10,72 @@ namespace Inputs.Actions.Pinch
         public event PinchHandler Proceed;
         public event PinchHandler Stopped;
 
-        private const int _amountFingersToPinch = 2;
-        private readonly IDictionary<int, Finger> _activePinchFingers = new Dictionary<int, Finger>(2);
+        private readonly InputAction _pinchAction;
+        private bool _isPinch;
         private float _startMagnitude;
-        private bool IsPinch => _amountFingersToPinch == _activePinchFingers.Count;
+        private PinchInfo _pinchInfo;
 
-        public PinchAction()
+        public PinchAction(InputAction pinchAction)
         {
-            AddFingerListener();
+            _pinchAction = pinchAction;
+            AddActionListeners();
         }
 
-        private void AddFingerListener()
+        private void AddActionListeners()
         {
-            Touch.onFingerUp += OnFingerUp;
-            Touch.onFingerMove += OnFingerMove;
-            Touch.onFingerDown += OnFingerDown;
+            _pinchAction.started += OnActionStarted;
+            _pinchAction.performed += OnActionPerformed;
+            _pinchAction.canceled += OnActionCanceled;
         }
 
-        private void RemoveFingerListener()
+        private void RemoveActionListeners()
         {
-            Touch.onFingerUp -= OnFingerUp;
-            Touch.onFingerMove -= OnFingerMove;
-            Touch.onFingerDown -= OnFingerDown;
+            _pinchAction.started -= OnActionStarted;
+            _pinchAction.performed -= OnActionPerformed;
+            _pinchAction.canceled -= OnActionCanceled;
         }
 
-        private void OnFingerDown(Finger finger)
+        private void OnActionStarted(InputAction.CallbackContext context)
         {
-            DetectStartPinch(finger);
+            GeneratePinchInfo(context);
+            _isPinch = true;
+            
+            CallStarted(_pinchInfo);
         }
 
-        private void DetectStartPinch(Finger finger)
+        private void OnActionCanceled(InputAction.CallbackContext context)
         {
-            if (!IsPinch)
+            _isPinch = false;
+
+            CallStopped(_pinchInfo);
+        }
+
+        private void OnActionPerformed(InputAction.CallbackContext context)
+        {
+            GeneratePinchInfo(context);
+
+            CallProceed(_pinchInfo);
+        }
+
+        private void GeneratePinchInfo(InputAction.CallbackContext context)
+        {
+            var compositeData = context.ReadValue<CompositeData>();
+            
+            var xPositionFinger0 = compositeData.ReadValue<float>(0);
+            var yPositionFinger0 = compositeData.ReadValue<float>(1);
+            var xPositionFinger1 = compositeData.ReadValue<float>(2);
+            var yPositionFinger1 = compositeData.ReadValue<float>(3);
+            var positionFinger0 = new UnityVector(new Vector2(xPositionFinger0, yPositionFinger0));
+            var positionFinger1 = new UnityVector(new Vector2(xPositionFinger1, yPositionFinger1));
+
+            if (!_isPinch)
             {
-                _activePinchFingers.Add(finger.index, finger);
-
-                if (IsPinch)
-                {
-                    _startMagnitude = Vector2.Distance(_activePinchFingers[0].screenPosition, _activePinchFingers[1].screenPosition);
-                    var pinchInfo = GetPinchInfo();
-                    CallStarted(pinchInfo);
-                }
+                _startMagnitude = positionFinger0.Distance(positionFinger1);
             }
+            
+            _pinchInfo =  new PinchInfo(_startMagnitude, positionFinger0, positionFinger1);
         }
-
-        private void OnFingerMove(Finger finger)
-        {
-            if (_activePinchFingers.ContainsKey(finger.index) && IsPinch)
-            {
-                UpdateFinger(finger);
-                var pinchInfo =  GetPinchInfo();
-                CallProceed(pinchInfo);
-            }
-        }
-
-        private void UpdateFinger(Finger finger)
-        {
-            int fingerId = finger.index;
-
-            if (_activePinchFingers.Remove(fingerId))
-            {
-                _activePinchFingers.Add(fingerId, finger);
-            }
-            else
-            {
-                throw new KeyNotFoundException();
-            }
-        }
-
-        private void OnFingerUp(Finger finger)
-        {
-            if (_activePinchFingers.ContainsKey(finger.index))
-            {
-                var pinchInfo = GetPinchInfo();
-                _activePinchFingers.Remove(finger.index);
-                CallStopped(pinchInfo);
-            }
-        }
-
-        private PinchInfo GetPinchInfo()
-        {
-            var firstFingerCurrentPosition = new UnityVector(_activePinchFingers[0].screenPosition);
-            var secondFingerCurrentPosition = new UnityVector(_activePinchFingers[1].screenPosition);
-            return new PinchInfo(_startMagnitude, firstFingerCurrentPosition, secondFingerCurrentPosition);
-        }
-
+        
         private void CallStarted(PinchInfo pinchInfo)
         {
             Started?.Invoke(pinchInfo);

@@ -2,6 +2,7 @@
 using Inputs.Actions.Pinch;
 using Inputs.Actions.Scale;
 using Inputs.Actions.Scroll;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace Inputs
 {
@@ -27,7 +28,7 @@ namespace Inputs
             MovementAction = new MovementAction(playerControls.Movement);
             TapAction = new TapAction(playerControls.Tap);
             SwipeAction = new SwipeAction(playerControls.Swipe);
-            PinchAction = new PinchAction();
+            PinchAction = new PinchAction(playerControls.Pinch);
             ScrollAction = new ScrollAction(playerControls.Scroll);
             ScaleAction = new ScaleAction(PinchAction, ScrollAction);
             InventoryDialogAction = new DialogAction(playerControls.InventoryDialog);

@@ -83,6 +83,14 @@ namespace Inputs
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pinch"",
+                    ""type"": ""Button"",
+                    ""id"": ""3173da29-2e8e-4751-a78f-d5d3b164f39c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -199,7 +207,7 @@ namespace Inputs
                 {
                     ""name"": ""LeftButton"",
                     ""id"": ""baa582bb-b219-488c-9447-6cc289fa1e5e"",
-                    ""path"": ""UniversalBinding"",
+                    ""path"": ""UniversalBinding(AmountModifiers=1)"",
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
@@ -254,8 +262,8 @@ namespace Inputs
                 {
                     ""name"": ""TouchTap"",
                     ""id"": ""7c479dc4-84fb-4315-853c-150565335c06"",
-                    ""path"": ""UniversalBinding"",
-                    ""interactions"": ""Tap"",
+                    ""path"": ""UniversalBinding(AmountModifiers=1)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Tap"",
@@ -265,7 +273,7 @@ namespace Inputs
                 {
                     ""name"": ""Modifier1"",
                     ""id"": ""c6e97a13-2196-4283-aaf4-e08c4fdb372e"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""TouchScreen"",
@@ -309,7 +317,7 @@ namespace Inputs
                 {
                     ""name"": ""PcSwipe"",
                     ""id"": ""5e2b36b9-fcb5-4c0a-9e60-2a2338663d85"",
-                    ""path"": ""UniversalBinding"",
+                    ""path"": ""UniversalBinding(AmountModifiers=1)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -353,7 +361,7 @@ namespace Inputs
                 {
                     ""name"": ""TouchSwipe"",
                     ""id"": ""5b341caf-b888-489c-b9e7-ca343066fa6d"",
-                    ""path"": ""UniversalBinding"",
+                    ""path"": ""UniversalBinding(AmountModifiers=1)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -404,6 +412,83 @@ namespace Inputs
                     ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Pinch"",
+                    ""id"": ""efb0c4fd-e9a4-49db-9005-940a5b855038"",
+                    ""path"": ""UniversalBinding(AmountModifiers=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pinch"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier1"",
+                    ""id"": ""01531480-f554-449a-a576-f5ff88f5b9c8"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Pinch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Modifier2"",
+                    ""id"": ""72f93403-dcbd-40de-a580-5411a1cdd361"",
+                    ""path"": ""<Touchscreen>/touch1/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Pinch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result1"",
+                    ""id"": ""f1c0c880-092e-4de1-97a5-c1bcda068688"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Pinch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result2"",
+                    ""id"": ""34fd31a6-ca6b-4b75-9ee5-5d34de37429b"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Pinch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result3"",
+                    ""id"": ""c2c63af3-a4e6-4c69-9af1-fd4a154d1b07"",
+                    ""path"": ""<Touchscreen>/touch1/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Pinch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Result4"",
+                    ""id"": ""36e22757-74fe-4dbd-bf88-d768259b2de8"",
+                    ""path"": ""<Touchscreen>/touch1/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Pinch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -448,6 +533,7 @@ namespace Inputs
             m_PlayerControls_Tap = m_PlayerControls.FindAction("Tap", throwIfNotFound: true);
             m_PlayerControls_Swipe = m_PlayerControls.FindAction("Swipe", throwIfNotFound: true);
             m_PlayerControls_Scroll = m_PlayerControls.FindAction("Scroll", throwIfNotFound: true);
+            m_PlayerControls_Pinch = m_PlayerControls.FindAction("Pinch", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -505,6 +591,7 @@ namespace Inputs
         private readonly InputAction m_PlayerControls_Tap;
         private readonly InputAction m_PlayerControls_Swipe;
         private readonly InputAction m_PlayerControls_Scroll;
+        private readonly InputAction m_PlayerControls_Pinch;
         public struct PlayerControlsActions
         {
             private @PlayerActions m_Wrapper;
@@ -517,6 +604,7 @@ namespace Inputs
             public InputAction @Tap => m_Wrapper.m_PlayerControls_Tap;
             public InputAction @Swipe => m_Wrapper.m_PlayerControls_Swipe;
             public InputAction @Scroll => m_Wrapper.m_PlayerControls_Scroll;
+            public InputAction @Pinch => m_Wrapper.m_PlayerControls_Pinch;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -550,6 +638,9 @@ namespace Inputs
                     @Scroll.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
                     @Scroll.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
                     @Scroll.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
+                    @Pinch.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
+                    @Pinch.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
+                    @Pinch.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -578,6 +669,9 @@ namespace Inputs
                     @Scroll.started += instance.OnScroll;
                     @Scroll.performed += instance.OnScroll;
                     @Scroll.canceled += instance.OnScroll;
+                    @Pinch.started += instance.OnPinch;
+                    @Pinch.performed += instance.OnPinch;
+                    @Pinch.canceled += instance.OnPinch;
                 }
             }
         }
@@ -610,6 +704,7 @@ namespace Inputs
             void OnTap(InputAction.CallbackContext context);
             void OnSwipe(InputAction.CallbackContext context);
             void OnScroll(InputAction.CallbackContext context);
+            void OnPinch(InputAction.CallbackContext context);
         }
     }
 }

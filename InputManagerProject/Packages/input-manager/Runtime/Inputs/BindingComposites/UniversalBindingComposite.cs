@@ -11,6 +11,12 @@ namespace Inputs.BindingComposites
 #endif
     public class UniversalBindingComposite : InputBindingComposite<CompositeData>
     {
+        private List<int> _modifiers;
+        private List<int> _results;
+        private Dictionary<int, int> _takePartModifiers;
+        private Dictionary<int, int> _takePartResults;
+        private bool _isInitialized;
+        
         [InputControl(layout = "Button")] public int Modifier1;
         [InputControl(layout = "Button")] public int Modifier2;
         [InputControl(layout = "Button")] public int Modifier3;
@@ -22,11 +28,7 @@ namespace Inputs.BindingComposites
         [InputControl(layout = "Button")] public int Result4;
         [InputControl(layout = "Button")] public int Result5;
 
-        private List<int> _modifiers;
-        private List<int> _results;
-        private Dictionary<int, int> _takePartModifiers;
-        private Dictionary<int, int> _takePartResults;
-        private bool _isInitialized;
+        public int AmountModifiers;
 
         private void Initialize()
         {
@@ -41,6 +43,11 @@ namespace Inputs.BindingComposites
             }
         }
 
+        static UniversalBindingComposite()
+        {
+            InputSystem.RegisterBindingComposite<UniversalBindingComposite>();
+        }
+        
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Init()
         {
@@ -55,7 +62,7 @@ namespace Inputs.BindingComposites
         public override float EvaluateMagnitude(ref InputBindingCompositeContext context)
         {
             Initialize();
-            if (IsAllModifiersPerformed(ref context))
+            if (!IsAllModifiersPerformed(ref context))
             {
                 return 0;
             }
@@ -69,7 +76,7 @@ namespace Inputs.BindingComposites
 
             foreach (var takePartModifier in _takePartModifiers.Values)
             {
-                if (context.ReadValueAsButton(takePartModifier))
+                if (!context.ReadValueAsButton(takePartModifier))
                 {
                     isAllModifiersPerformed = false;
                 }
@@ -84,7 +91,7 @@ namespace Inputs.BindingComposites
             {
                 _takePartModifiers = new Dictionary<int, int>();
                 
-                for (int i = 0; i < _modifiers.Count; i++)
+                for (int i = 0; i < AmountModifiers; i++)
                 {
                     _takePartModifiers.Add(i, _modifiers[i]);
                 }
