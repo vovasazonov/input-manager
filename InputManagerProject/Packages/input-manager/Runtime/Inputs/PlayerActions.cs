@@ -263,7 +263,7 @@ namespace Inputs
                     ""name"": ""TouchTap"",
                     ""id"": ""7c479dc4-84fb-4315-853c-150565335c06"",
                     ""path"": ""UniversalBinding(AmountModifiers=1)"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Tap"",
