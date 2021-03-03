@@ -11,12 +11,13 @@ namespace Inputs.Actions.Scale
         private readonly IScrollAction _scrollAction;
 
         public float TotalMagnitude { get; private set; }
+        public float Sign { get; private set; }
 
         public ScaleAction(IPinchAction pinchAction, IScrollAction scrollAction)
         {
             _pinchAction = pinchAction;
             _scrollAction = scrollAction;
-            
+
             AddPinchListeners();
             AddScrollListeners();
         }
@@ -44,12 +45,14 @@ namespace Inputs.Actions.Scale
         private void OnScrollScrolled()
         {
             TotalMagnitude = _scrollAction.TotalMagnitude;
+            Sign = _scrollAction.Sign;
             CallScaled();
         }
-        
+
         private void OnPinchProceed(IPinchInfo pinchInfo)
         {
             TotalMagnitude = pinchInfo.TotalMagnitude;
+            Sign = pinchInfo.Sign;
             CallScaled();
         }
 

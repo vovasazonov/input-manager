@@ -40,7 +40,10 @@ namespace Samples
 
         private void OnScaled()
         {
-            var scale = _playerControl.ScaleAction.TotalMagnitude;
+            var totalMagnitude = _playerControl.ScaleAction.TotalMagnitude;
+            var sign = _playerControl.ScaleAction.Sign;
+            var scale = sign * totalMagnitude;
+            
             CallScaled(scale);
         }
 

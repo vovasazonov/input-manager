@@ -7,5 +7,6 @@
         event ScaledHandler Scaled;
 
         float TotalMagnitude { get; }
+        float Sign { get; }
     }
 }

@@ -5,5 +5,6 @@
         float PinchValue { get; }
         float CurrentMagnitude { get; }
         float TotalMagnitude { get; }
+        float Sign { get; }
     }
 }

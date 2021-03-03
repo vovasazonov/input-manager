@@ -12,16 +12,9 @@ namespace Inputs.Actions.Scroll
 
         public IVector2 ScrollVector => new UnityVector(_scrollVector2);
 
-        public float TotalMagnitude
-        {
-            get
-            {
-                var magnitude = _scrollVector2.magnitude;
-                var sign = Mathf.Sign(_scrollVector2.y);
+        public float TotalMagnitude => _scrollVector2.magnitude;
 
-                return magnitude * sign;
-            }
-        }
+        public float Sign => Mathf.Sign(_scrollVector2.y);
 
         public ScrollAction(InputAction inputAction)
         {
