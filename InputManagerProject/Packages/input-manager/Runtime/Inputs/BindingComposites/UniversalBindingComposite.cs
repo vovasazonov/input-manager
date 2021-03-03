@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Layouts;
 
@@ -40,7 +41,8 @@ namespace Inputs.BindingComposites
             }
         }
 
-        static UniversalBindingComposite()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void Init()
         {
             InputSystem.RegisterBindingComposite<UniversalBindingComposite>();
         }
