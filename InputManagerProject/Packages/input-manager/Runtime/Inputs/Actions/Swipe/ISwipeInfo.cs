@@ -1,4 +1,4 @@
-﻿namespace Inputs.Actions
+﻿namespace Inputs.Actions.Swipe
 {
     public interface ISwipeInfo
     {

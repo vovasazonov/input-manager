@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine.InputSystem;
 
-namespace Inputs.Actions
+namespace Inputs.Actions.Dialog
 {
     internal sealed class DialogAction : IDialogAction
     {

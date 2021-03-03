@@ -1,5 +1,6 @@
 ﻿using System;
 using Inputs.Actions;
+using Inputs.Actions.Skill;
 
 namespace Samples.UI
 {

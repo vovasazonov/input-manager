@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Inputs.Actions
+namespace Inputs.Actions.Movement
 {
     internal sealed class MovementAction : IMovementAction
     {

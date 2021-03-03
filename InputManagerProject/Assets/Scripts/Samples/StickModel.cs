@@ -1,6 +1,7 @@
 ﻿using System;
 using Inputs;
 using Inputs.Actions;
+using Inputs.Actions.Movement;
 
 namespace Samples
 {

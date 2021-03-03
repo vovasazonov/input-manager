@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine.InputSystem;
 
-namespace Inputs.Actions
+namespace Inputs.Actions.Skill
 {
     internal sealed class SkillAction : ISkillAction
     {

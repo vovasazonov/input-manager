@@ -1,5 +1,6 @@
 ﻿using Inputs;
 using Inputs.Actions;
+using Inputs.Actions.Swipe;
 
 namespace Samples
 {

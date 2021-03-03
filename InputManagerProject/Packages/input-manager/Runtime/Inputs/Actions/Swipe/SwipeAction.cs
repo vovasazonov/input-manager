@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Inputs.Actions
+namespace Inputs.Actions.Swipe
 {
     internal sealed class SwipeAction : ISwipeAction
     {
