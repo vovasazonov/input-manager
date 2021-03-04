@@ -6,14 +6,14 @@ namespace Inputs.Actions.Pinch
 {
     internal sealed class PinchAction : IPinchAction
     {
-        public event PinchHandler Started;
         public event PinchHandler Proceed;
+        public event PinchHandler Started;
         public event PinchHandler Stopped;
 
         private readonly InputAction _pinchAction;
         private bool _isPinch;
-        private float _startMagnitude;
         private PinchInfo _pinchInfo;
+        private float _startMagnitude;
 
         public PinchAction(InputAction pinchAction)
         {
@@ -39,7 +39,7 @@ namespace Inputs.Actions.Pinch
         {
             GeneratePinchInfo(context);
             _isPinch = true;
-            
+
             CallStarted(_pinchInfo);
         }
 
@@ -60,7 +60,7 @@ namespace Inputs.Actions.Pinch
         private void GeneratePinchInfo(InputAction.CallbackContext context)
         {
             var compositeData = context.ReadValue<CompositeData>();
-            
+
             var xPositionFinger0 = compositeData.ReadValue<float>(0);
             var yPositionFinger0 = compositeData.ReadValue<float>(1);
             var xPositionFinger1 = compositeData.ReadValue<float>(2);
@@ -68,14 +68,11 @@ namespace Inputs.Actions.Pinch
             var positionFinger0 = new UnityVector(new Vector2(xPositionFinger0, yPositionFinger0));
             var positionFinger1 = new UnityVector(new Vector2(xPositionFinger1, yPositionFinger1));
 
-            if (!_isPinch)
-            {
-                _startMagnitude = positionFinger0.Distance(positionFinger1);
-            }
-            
-            _pinchInfo =  new PinchInfo(_startMagnitude, positionFinger0, positionFinger1);
+            if (!_isPinch) _startMagnitude = positionFinger0.Distance(positionFinger1);
+
+            _pinchInfo = new PinchInfo(_startMagnitude, positionFinger0, positionFinger1);
         }
-        
+
         private void CallStarted(PinchInfo pinchInfo)
         {
             Started?.Invoke(pinchInfo);

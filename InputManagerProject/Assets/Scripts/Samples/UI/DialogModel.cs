@@ -1,17 +1,16 @@
 ﻿using System;
-using Inputs.Actions;
 using Inputs.Actions.Dialog;
 
 namespace Samples.UI
 {
     public sealed class DialogModel : IDialogModel
     {
-        private readonly IDialogAction _dialogAction;
-        public event Action Opened;
         public event Action Closed;
+        public event Action Opened;
 
+        private readonly IDialogAction _dialogAction;
         private bool _isOpen;
-        
+
         public DialogModel(IDialogAction dialogAction)
         {
             _dialogAction = dialogAction;
@@ -22,7 +21,7 @@ namespace Samples.UI
         {
             _dialogAction.Addressed += OnAddressed;
         }
-        
+
         private void RemoveInventoryDialogListener()
         {
             _dialogAction.Addressed -= OnAddressed;
@@ -33,13 +32,9 @@ namespace Samples.UI
             _isOpen = !_isOpen;
 
             if (_isOpen)
-            {
                 CallOpened();
-            }
             else
-            {
                 CallClosed();
-            }
         }
 
         private void CallOpened()

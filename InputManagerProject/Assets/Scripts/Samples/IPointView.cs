@@ -9,11 +9,4 @@ namespace Samples
         void SetColor(PointColor pointColor);
         void ChangeScale(float magnitudeDelta);
     }
-
-    public enum PointColor
-    {
-        Red,
-        Blue,
-        Green
-    }
 }

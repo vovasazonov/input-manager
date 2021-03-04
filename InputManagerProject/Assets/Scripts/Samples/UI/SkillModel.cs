@@ -1,14 +1,14 @@
 ﻿using System;
-using Inputs.Actions;
 using Inputs.Actions.Skill;
 
 namespace Samples.UI
 {
     public sealed class SkillModel : ISkillModel
     {
-        private readonly ISkillAction _skillAction;
-        public event Action Performed;
         public event Action BindPathChanged;
+        public event Action Performed;
+
+        private readonly ISkillAction _skillAction;
 
         public string NameSkill { get; }
         public string NameBindPath => _skillAction.CurrentBindPath;
@@ -18,6 +18,16 @@ namespace Samples.UI
             NameSkill = nameSkill;
             _skillAction = skillAction;
             AddActionListener();
+        }
+
+        public void ChangeBindPath()
+        {
+            _skillAction.ChangeBindPath();
+        }
+
+        public void Invoke()
+        {
+            CallPerformed();
         }
 
         private void AddActionListener()
@@ -40,16 +50,6 @@ namespace Samples.UI
         private void OnRebind()
         {
             CallNameKeyPerformChanged();
-        }
-
-        public void ChangeBindPath()
-        {
-            _skillAction.ChangeBindPath();
-        }
-
-        public void Invoke()
-        {
-            CallPerformed();
         }
 
         private void CallNameKeyPerformChanged()

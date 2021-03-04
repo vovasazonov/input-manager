@@ -5,13 +5,14 @@ namespace Inputs.Actions.Dialog
 {
     internal sealed class DialogAction : IDialogAction
     {
-        private readonly InputAction _inputAction;
         public event Action Addressed;
+
+        private readonly InputAction _inputAction;
 
         public DialogAction(InputAction inputAction)
         {
             _inputAction = inputAction;
-            
+
             AddInputActionListener();
         }
 
@@ -19,7 +20,7 @@ namespace Inputs.Actions.Dialog
         {
             _inputAction.performed += OnPerformed;
         }
-        
+
         private void RemoveInputActionListener()
         {
             _inputAction.performed -= OnPerformed;

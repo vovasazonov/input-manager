@@ -2,15 +2,15 @@
 {
     public sealed class DialogPresenter : IPresenter
     {
-        private readonly IDialogView _view;
         private readonly IDialogModel _model;
+        private readonly IDialogView _view;
 
         public DialogPresenter(IDialogView view, IDialogModel model)
         {
             _view = view;
             _model = model;
         }
-        
+
         public void Activate()
         {
             _model.Opened += OnOpened;

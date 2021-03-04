@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 namespace Samples.UI
 {
-    public sealed class SkillButtonView: MonoBehaviour, ISkillButtonView, IPointerDownHandler
+    public sealed class SkillButtonView : MonoBehaviour, ISkillButtonView, IPointerDownHandler
     {
         public event Action Clicked;
 
         [SerializeField] private Text _nameSkillText;
-        
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            CallClicked();
+        }
+
         public void SetNameSkill(string nameSkill)
         {
             _nameSkillText.text = nameSkill;
@@ -19,11 +24,6 @@ namespace Samples.UI
         private void CallClicked()
         {
             Clicked?.Invoke();
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            CallClicked();
         }
     }
 }

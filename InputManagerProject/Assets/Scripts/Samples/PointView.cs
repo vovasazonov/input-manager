@@ -2,7 +2,6 @@
 using Inputs;
 using UnityEngine;
 using UnityEngine.UI;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Samples
 {

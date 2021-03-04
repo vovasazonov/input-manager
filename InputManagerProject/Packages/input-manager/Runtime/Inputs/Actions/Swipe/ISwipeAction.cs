@@ -4,8 +4,8 @@
 
     public interface ISwipeAction
     {
-        event SwipeHandler Started;
         event SwipeHandler Proceed;
+        event SwipeHandler Started;
         event SwipeHandler Stopped;
     }
 }

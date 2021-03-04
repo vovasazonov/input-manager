@@ -6,7 +6,7 @@ namespace Inputs.Actions.Movement
     internal sealed class MovementAction : IMovementAction
     {
         public event MovedHandler Moved;
-        
+
         private readonly InputAction _movementAction;
 
         private IVector2 Position
@@ -21,7 +21,7 @@ namespace Inputs.Actions.Movement
         public MovementAction(InputAction movementActionAction)
         {
             _movementAction = movementActionAction;
-            
+
             AddActionListener();
         }
 

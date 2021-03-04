@@ -1,5 +1,4 @@
-﻿using Inputs.Actions;
-using Inputs.Actions.Dialog;
+﻿using Inputs.Actions.Dialog;
 using Inputs.Actions.Movement;
 using Inputs.Actions.Pinch;
 using Inputs.Actions.Scale;
@@ -7,13 +6,13 @@ using Inputs.Actions.Scroll;
 using Inputs.Actions.Skill;
 using Inputs.Actions.Swipe;
 using Inputs.Actions.Tap;
-using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace Inputs
 {
     internal sealed class PlayerControl : IPlayerControl
     {
         private readonly PlayerActions _playerActions;
+
         public IMovementAction MovementAction { get; }
         public ITapAction TapAction { get; }
         public ISwipeAction SwipeAction { get; }

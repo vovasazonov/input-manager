@@ -6,9 +6,9 @@ namespace Inputs.Actions.Skill
     {
         event Action Performed;
         event Action Rebind;
-        
+
         string CurrentBindPath { get; }
-        
+
         void ChangeBindPath();
     }
 }

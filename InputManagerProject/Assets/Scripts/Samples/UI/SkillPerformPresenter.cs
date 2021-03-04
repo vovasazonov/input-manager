@@ -2,8 +2,8 @@
 {
     public sealed class SkillPerformPresenter : IPresenter
     {
-        private readonly ISkillPerformView _view;
         private readonly ISkillModel _model;
+        private readonly ISkillPerformView _view;
 
         public SkillPerformPresenter(ISkillPerformView view, ISkillModel model)
         {

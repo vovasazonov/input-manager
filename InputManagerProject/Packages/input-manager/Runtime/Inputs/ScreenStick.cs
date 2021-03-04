@@ -9,16 +9,15 @@ namespace Inputs
     {
         [SerializeField] [InputControl(layout = "Vector2")]
         private string _controlPath;
-
         [SerializeField] private RectTransform _stickArea;
         [SerializeField] private RectTransform _handleArea;
         [SerializeField] private RectTransform _handle;
         [SerializeField] private float _handleRange = 50;
 
-        private Vector2 _handleAreaAnchored;
-        private Vector2 _handleAnchored;
         private Vector2 _downPointerPosition;
-        
+        private Vector2 _handleAnchored;
+        private Vector2 _handleAreaAnchored;
+
         protected override string controlPathInternal
         {
             get => _controlPath;
@@ -30,10 +29,20 @@ namespace Inputs
             InitializeAnchors();
         }
 
+        public void OnDrag(PointerEventData eventData)
+        {
+            CalculateCurrentHandlePosition(eventData);
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
             MoveHandleAreaToDownPointerPosition(eventData);
             SaveDownPointerPosition(eventData);
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            ResetValuesToDefault();
         }
 
         private void SaveDownPointerPosition(PointerEventData eventData)
@@ -45,11 +54,6 @@ namespace Inputs
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_stickArea, eventData.position, eventData.pressEventCamera, out var localPosition);
             _handleArea.anchoredPosition = localPosition;
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            CalculateCurrentHandlePosition(eventData);
         }
 
         private void CalculateCurrentHandlePosition(PointerEventData eventData)
@@ -66,11 +70,6 @@ namespace Inputs
             var delta = dragPointerPosition - _downPointerPosition;
             delta = Vector2.ClampMagnitude(delta, _handleRange);
             return delta;
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            ResetValuesToDefault();
         }
 
         private void InitializeAnchors()

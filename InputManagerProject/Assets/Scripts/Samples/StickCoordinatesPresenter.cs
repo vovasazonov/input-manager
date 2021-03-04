@@ -2,8 +2,8 @@
 {
     public class StickCoordinatesPresenter : IPresenter
     {
-        private readonly ICoordinatesView _view;
         private readonly IStickModel _model;
+        private readonly ICoordinatesView _view;
 
         public StickCoordinatesPresenter(ICoordinatesView view, IStickModel model)
         {

@@ -1,6 +1,5 @@
 ﻿using System;
 using Inputs;
-using Inputs.Actions;
 using Inputs.Actions.Movement;
 
 namespace Samples
@@ -8,9 +7,9 @@ namespace Samples
     public sealed class StickModel : IStickModel
     {
         public event Action Moved;
-        
+
         private readonly IMovementAction _movementAction;
-        
+
         public IVector2 Position { get; private set; }
 
         public StickModel(IMovementAction movementAction)

@@ -2,8 +2,8 @@
 {
     public sealed class SkillSettingPresenter : IPresenter
     {
-        private readonly ISkillSettingView _view;
         private readonly ISkillModel _model;
+        private readonly ISkillSettingView _view;
 
         public SkillSettingPresenter(ISkillSettingView view, ISkillModel model)
         {
@@ -11,12 +11,6 @@
             _model = model;
 
             RenderView();
-        }
-
-        private void RenderView()
-        {
-            _view.SetNameSkill(_model.NameSkill);
-            _view.SetNameBindPath(_model.NameBindPath);
         }
 
         public void Activate()
@@ -29,6 +23,12 @@
         {
             _view.Clicked -= OnClicked;
             _model.BindPathChanged -= OnBindPathChanged;
+        }
+
+        private void RenderView()
+        {
+            _view.SetNameSkill(_model.NameSkill);
+            _view.SetNameBindPath(_model.NameBindPath);
         }
 
         private void OnBindPathChanged()

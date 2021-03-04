@@ -1,5 +1,4 @@
 ﻿using Inputs;
-using Inputs.Actions;
 using Inputs.Actions.Swipe;
 
 namespace Samples
@@ -7,8 +6,8 @@ namespace Samples
     public sealed class PointModel : IPointModel
     {
         public event ColorChangedHandler ColorChanged;
-        public event PositionChangedHandler PositionChanged;
         public event NumberChangedHandler NumberChanged;
+        public event PositionChangedHandler PositionChanged;
         public event ScaledHandler Scaled;
 
         private readonly IPlayerControl _playerControl;
@@ -16,10 +15,10 @@ namespace Samples
         public PointModel(IPlayerControl playerControl)
         {
             _playerControl = playerControl;
-            
+
             AddPlayerControlListener();
         }
-        
+
         private void AddPlayerControlListener()
         {
             _playerControl.TapAction.Tapped += OnTapped;
@@ -43,7 +42,7 @@ namespace Samples
             var totalMagnitude = _playerControl.ScaleAction.TotalMagnitude;
             var sign = _playerControl.ScaleAction.Sign;
             var scale = sign * totalMagnitude;
-            
+
             CallScaled(scale);
         }
 

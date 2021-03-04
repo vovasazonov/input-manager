@@ -2,8 +2,8 @@
 {
     public sealed class SkillButtonPresenter : IPresenter
     {
-        private readonly ISkillButtonView _view;
         private readonly ISkillModel _model;
+        private readonly ISkillButtonView _view;
 
         public SkillButtonPresenter(ISkillButtonView view, ISkillModel model)
         {
@@ -11,11 +11,6 @@
             _model = model;
 
             UpdateView();
-        }
-
-        private void UpdateView()
-        {
-            _view.SetNameSkill(_model.NameSkill);
         }
 
         public void Activate()
@@ -26,6 +21,11 @@
         public void Deactivate()
         {
             _view.Clicked -= OnClicked;
+        }
+
+        private void UpdateView()
+        {
+            _view.SetNameSkill(_model.NameSkill);
         }
 
         private void OnClicked()

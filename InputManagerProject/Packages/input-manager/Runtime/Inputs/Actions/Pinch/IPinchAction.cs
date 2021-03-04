@@ -4,8 +4,8 @@
 
     public interface IPinchAction
     {
-        event PinchHandler Started;
         event PinchHandler Proceed;
+        event PinchHandler Started;
         event PinchHandler Stopped;
     }
 }

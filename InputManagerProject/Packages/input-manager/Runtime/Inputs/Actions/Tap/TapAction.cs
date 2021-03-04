@@ -38,7 +38,7 @@ namespace Inputs.Actions.Tap
                 var positionY = compositeData.ReadValue<float>(1);
                 var vector = new Vector2(positionX, positionY);
                 IVector2 position = new UnityVector(vector);
-                
+
                 CallTapped(position, tapCount);
             }
         }

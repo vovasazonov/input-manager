@@ -9,7 +9,7 @@ namespace Samples
 
         private string _x;
         private string _y;
-        
+
         public string X
         {
             set

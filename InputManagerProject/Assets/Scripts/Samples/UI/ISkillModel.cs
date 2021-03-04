@@ -4,8 +4,8 @@ namespace Samples.UI
 {
     public interface ISkillModel
     {
-        event Action Performed;
         event Action BindPathChanged;
+        event Action Performed;
 
         string NameSkill { get; }
         string NameBindPath { get; }

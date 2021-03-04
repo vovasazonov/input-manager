@@ -6,6 +6,7 @@ namespace Samples
     public interface IStickModel
     {
         event Action Moved;
+        
         IVector2 Position { get; }
     }
 }

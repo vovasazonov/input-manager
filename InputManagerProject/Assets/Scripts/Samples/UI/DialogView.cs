@@ -6,7 +6,7 @@ namespace Samples.UI
     public sealed class DialogView : MonoBehaviour, IDialogView
     {
         [SerializeField] private Selectable _selectableOnStart;
-        
+
         public void Open()
         {
             gameObject.SetActive(true);

@@ -11,12 +11,14 @@ namespace Inputs.BindingComposites
 #endif
     public class UniversalBindingComposite : InputBindingComposite<CompositeData>
     {
+        private bool _isInitialized;
         private List<int> _modifiers;
         private List<int> _results;
         private Dictionary<int, int> _takePartModifiers;
         private Dictionary<int, int> _takePartResults;
-        private bool _isInitialized;
-        
+
+        public int AmountModifiers;
+
         [InputControl(layout = "Button")] public int Modifier1;
         [InputControl(layout = "Button")] public int Modifier2;
         [InputControl(layout = "Button")] public int Modifier3;
@@ -28,7 +30,10 @@ namespace Inputs.BindingComposites
         [InputControl(layout = "Button")] public int Result4;
         [InputControl(layout = "Button")] public int Result5;
 
-        public int AmountModifiers;
+        static UniversalBindingComposite()
+        {
+            InputSystem.RegisterBindingComposite<UniversalBindingComposite>();
+        }
 
         private void Initialize()
         {
@@ -43,11 +48,6 @@ namespace Inputs.BindingComposites
             }
         }
 
-        static UniversalBindingComposite()
-        {
-            InputSystem.RegisterBindingComposite<UniversalBindingComposite>();
-        }
-        
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Init()
         {
@@ -62,39 +62,29 @@ namespace Inputs.BindingComposites
         public override float EvaluateMagnitude(ref InputBindingCompositeContext context)
         {
             Initialize();
-            if (!IsAllModifiersPerformed(ref context))
-            {
-                return 0;
-            }
+            if (!IsAllModifiersPerformed(ref context)) return 0;
 
             return -1;
         }
-        
+
         private bool IsAllModifiersPerformed(ref InputBindingCompositeContext context)
         {
-            bool isAllModifiersPerformed = true;
+            var isAllModifiersPerformed = true;
 
             foreach (var takePartModifier in _takePartModifiers.Values)
-            {
                 if (!context.ReadValueAsButton(takePartModifier))
-                {
                     isAllModifiersPerformed = false;
-                }
-            }
 
             return isAllModifiersPerformed;
         }
-        
+
         private void InitializeTakePartModifiers()
         {
             if (_takePartModifiers == null)
             {
                 _takePartModifiers = new Dictionary<int, int>();
-                
-                for (int i = 0; i < AmountModifiers; i++)
-                {
-                    _takePartModifiers.Add(i, _modifiers[i]);
-                }
+
+                for (var i = 0; i < AmountModifiers; i++) _takePartModifiers.Add(i, _modifiers[i]);
             }
         }
 
@@ -103,18 +93,14 @@ namespace Inputs.BindingComposites
             if (_takePartResults == null)
             {
                 _takePartResults = new Dictionary<int, int>();
-                
-                for (int i = 0; i < _results.Count; i++)
-                {
-                    _takePartResults.Add(i, _results[i]);
-                }
+
+                for (var i = 0; i < _results.Count; i++) _takePartResults.Add(i, _results[i]);
             }
         }
 
         private void InitializeResults()
         {
             if (_results == null)
-            {
                 _results = new List<int>
                 {
                     Result1,
@@ -123,13 +109,11 @@ namespace Inputs.BindingComposites
                     Result4,
                     Result5
                 };
-            }
         }
 
         private void InitializeModifiers()
         {
             if (_modifiers == null)
-            {
                 _modifiers = new List<int>
                 {
                     Modifier1,
@@ -138,7 +122,6 @@ namespace Inputs.BindingComposites
                     Modifier4,
                     Modifier5
                 };
-            }
         }
     }
 }

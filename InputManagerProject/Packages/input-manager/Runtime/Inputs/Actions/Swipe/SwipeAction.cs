@@ -6,14 +6,14 @@ namespace Inputs.Actions.Swipe
 {
     internal sealed class SwipeAction : ISwipeAction
     {
-        public event SwipeHandler Started;
         public event SwipeHandler Proceed;
+        public event SwipeHandler Started;
         public event SwipeHandler Stopped;
 
         private readonly InputAction _swipeAction;
-        private IVector2 _startScreenPosition;
-        private bool _isSwiping;
         private bool _isPressing;
+        private bool _isSwiping;
+        private IVector2 _startScreenPosition;
 
         public SwipeAction(InputAction swipeAction)
         {
@@ -37,32 +37,24 @@ namespace Inputs.Actions.Swipe
         private void OnPerformed(InputAction.CallbackContext context)
         {
             if (_isSwiping)
-            {
                 ProceedSwiping();
-            }
             else
-            {
                 DetectStartSwiping();
-            }
         }
 
         private void DetectStartSwiping()
         {
             if (_isPressing)
-            {
                 StartSwiping();
-            }
             else
-            {
                 _isPressing = true;
-            }
         }
 
         private void OnCanceled(InputAction.CallbackContext context)
         {
             StopSwiping();
         }
-        
+
         private void StartSwiping()
         {
             _isSwiping = true;
@@ -76,7 +68,7 @@ namespace Inputs.Actions.Swipe
             var swipeInfo = GetSwipeInfo();
             CallProceed(swipeInfo);
         }
-        
+
         private void StopSwiping()
         {
             if (_isSwiping)
@@ -85,10 +77,10 @@ namespace Inputs.Actions.Swipe
                 var swipeInfo = GetSwipeInfo();
                 CallStopped(swipeInfo);
             }
-            
+
             _isPressing = false;
         }
-        
+
         private SwipeInfo GetSwipeInfo()
         {
             return new SwipeInfo(_startScreenPosition, GetCurrentScreenPosition());
@@ -108,7 +100,7 @@ namespace Inputs.Actions.Swipe
             return new UnityVector(vector);
         }
 
-        
+
         private void CallStarted(SwipeInfo swipeInfo)
         {
             Started?.Invoke(swipeInfo);

@@ -5,13 +5,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using Object = UnityEngine.Object;
 
 namespace Inputs
 {
-    public class @PlayerActions : IInputActionCollection, IDisposable
+    public class PlayerActions : IInputActionCollection, IDisposable
     {
+        // PlayerControls
+        private readonly InputActionMap m_PlayerControls;
+
+        private readonly InputAction m_PlayerControls_InventoryDialog;
+
+        private readonly InputAction m_PlayerControls_Movement;
+
+        private readonly InputAction m_PlayerControls_Pinch;
+
+        private readonly InputAction m_PlayerControls_Scroll;
+
+        private readonly InputAction m_PlayerControls_SettingSkillDialog;
+
+        private readonly InputAction m_PlayerControls_SkillButton1;
+
+        private readonly InputAction m_PlayerControls_SkillButton2;
+
+        private readonly InputAction m_PlayerControls_Swipe;
+
+        private readonly InputAction m_PlayerControls_Tap;
+
+        private int m_PCSchemeIndex = -1;
+
+        private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
+
+        private int m_TouchScreenSchemeIndex = -1;
+
         public InputActionAsset asset { get; }
-        public @PlayerActions()
+        public PlayerControlsActions PlayerControls => new PlayerControlsActions(this);
+
+        public InputControlScheme PCScheme
+        {
+            get
+            {
+                if (m_PCSchemeIndex == -1) m_PCSchemeIndex = asset.FindControlSchemeIndex("PC");
+                return asset.controlSchemes[m_PCSchemeIndex];
+            }
+        }
+
+        public InputControlScheme TouchScreenScheme
+        {
+            get
+            {
+                if (m_TouchScreenSchemeIndex == -1) m_TouchScreenSchemeIndex = asset.FindControlSchemeIndex("TouchScreen");
+                return asset.controlSchemes[m_TouchScreenSchemeIndex];
+            }
+        }
+
+        public InputBinding? bindingMask
+        {
+            get => asset.bindingMask;
+            set => asset.bindingMask = value;
+        }
+
+        public ReadOnlyArray<InputDevice>? devices
+        {
+            get => asset.devices;
+            set => asset.devices = value;
+        }
+
+        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+        public PlayerActions()
         {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerActions"",
@@ -524,36 +586,22 @@ namespace Inputs
     ]
 }");
             // PlayerControls
-            m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
-            m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
-            m_PlayerControls_InventoryDialog = m_PlayerControls.FindAction("InventoryDialog", throwIfNotFound: true);
-            m_PlayerControls_SettingSkillDialog = m_PlayerControls.FindAction("SettingSkillDialog", throwIfNotFound: true);
-            m_PlayerControls_SkillButton1 = m_PlayerControls.FindAction("SkillButton1", throwIfNotFound: true);
-            m_PlayerControls_SkillButton2 = m_PlayerControls.FindAction("SkillButton2", throwIfNotFound: true);
-            m_PlayerControls_Tap = m_PlayerControls.FindAction("Tap", throwIfNotFound: true);
-            m_PlayerControls_Swipe = m_PlayerControls.FindAction("Swipe", throwIfNotFound: true);
-            m_PlayerControls_Scroll = m_PlayerControls.FindAction("Scroll", throwIfNotFound: true);
-            m_PlayerControls_Pinch = m_PlayerControls.FindAction("Pinch", throwIfNotFound: true);
+            m_PlayerControls = asset.FindActionMap("PlayerControls", true);
+            m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", true);
+            m_PlayerControls_InventoryDialog = m_PlayerControls.FindAction("InventoryDialog", true);
+            m_PlayerControls_SettingSkillDialog = m_PlayerControls.FindAction("SettingSkillDialog", true);
+            m_PlayerControls_SkillButton1 = m_PlayerControls.FindAction("SkillButton1", true);
+            m_PlayerControls_SkillButton2 = m_PlayerControls.FindAction("SkillButton2", true);
+            m_PlayerControls_Tap = m_PlayerControls.FindAction("Tap", true);
+            m_PlayerControls_Swipe = m_PlayerControls.FindAction("Swipe", true);
+            m_PlayerControls_Scroll = m_PlayerControls.FindAction("Scroll", true);
+            m_PlayerControls_Pinch = m_PlayerControls.FindAction("Pinch", true);
         }
 
         public void Dispose()
         {
-            UnityEngine.Object.Destroy(asset);
+            Object.Destroy(asset);
         }
-
-        public InputBinding? bindingMask
-        {
-            get => asset.bindingMask;
-            set => asset.bindingMask = value;
-        }
-
-        public ReadOnlyArray<InputDevice>? devices
-        {
-            get => asset.devices;
-            set => asset.devices = value;
-        }
-
-        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
 
         public bool Contains(InputAction action)
         {
@@ -580,120 +628,114 @@ namespace Inputs
             asset.Disable();
         }
 
-        // PlayerControls
-        private readonly InputActionMap m_PlayerControls;
-        private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
-        private readonly InputAction m_PlayerControls_Movement;
-        private readonly InputAction m_PlayerControls_InventoryDialog;
-        private readonly InputAction m_PlayerControls_SettingSkillDialog;
-        private readonly InputAction m_PlayerControls_SkillButton1;
-        private readonly InputAction m_PlayerControls_SkillButton2;
-        private readonly InputAction m_PlayerControls_Tap;
-        private readonly InputAction m_PlayerControls_Swipe;
-        private readonly InputAction m_PlayerControls_Scroll;
-        private readonly InputAction m_PlayerControls_Pinch;
         public struct PlayerControlsActions
         {
-            private @PlayerActions m_Wrapper;
-            public PlayerControlsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
-            public InputAction @InventoryDialog => m_Wrapper.m_PlayerControls_InventoryDialog;
-            public InputAction @SettingSkillDialog => m_Wrapper.m_PlayerControls_SettingSkillDialog;
-            public InputAction @SkillButton1 => m_Wrapper.m_PlayerControls_SkillButton1;
-            public InputAction @SkillButton2 => m_Wrapper.m_PlayerControls_SkillButton2;
-            public InputAction @Tap => m_Wrapper.m_PlayerControls_Tap;
-            public InputAction @Swipe => m_Wrapper.m_PlayerControls_Swipe;
-            public InputAction @Scroll => m_Wrapper.m_PlayerControls_Scroll;
-            public InputAction @Pinch => m_Wrapper.m_PlayerControls_Pinch;
-            public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
-            public void Enable() { Get().Enable(); }
-            public void Disable() { Get().Disable(); }
+            private readonly PlayerActions m_Wrapper;
+
+            public PlayerControlsActions(PlayerActions wrapper)
+            {
+                m_Wrapper = wrapper;
+            }
+
+            public InputAction Movement => m_Wrapper.m_PlayerControls_Movement;
+            public InputAction InventoryDialog => m_Wrapper.m_PlayerControls_InventoryDialog;
+            public InputAction SettingSkillDialog => m_Wrapper.m_PlayerControls_SettingSkillDialog;
+            public InputAction SkillButton1 => m_Wrapper.m_PlayerControls_SkillButton1;
+            public InputAction SkillButton2 => m_Wrapper.m_PlayerControls_SkillButton2;
+            public InputAction Tap => m_Wrapper.m_PlayerControls_Tap;
+            public InputAction Swipe => m_Wrapper.m_PlayerControls_Swipe;
+            public InputAction Scroll => m_Wrapper.m_PlayerControls_Scroll;
+            public InputAction Pinch => m_Wrapper.m_PlayerControls_Pinch;
+
+            public InputActionMap Get()
+            {
+                return m_Wrapper.m_PlayerControls;
+            }
+
+            public void Enable()
+            {
+                Get().Enable();
+            }
+
+            public void Disable()
+            {
+                Get().Disable();
+            }
+
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlayerControlsActions set) { return set.Get(); }
+
+            public static implicit operator InputActionMap(PlayerControlsActions set)
+            {
+                return set.Get();
+            }
+
             public void SetCallbacks(IPlayerControlsActions instance)
             {
                 if (m_Wrapper.m_PlayerControlsActionsCallbackInterface != null)
                 {
-                    @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                    @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                    @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                    @InventoryDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
-                    @InventoryDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
-                    @InventoryDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
-                    @SettingSkillDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
-                    @SettingSkillDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
-                    @SettingSkillDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
-                    @SkillButton1.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
-                    @SkillButton1.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
-                    @SkillButton1.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
-                    @SkillButton2.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton2;
-                    @SkillButton2.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton2;
-                    @SkillButton2.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton2;
-                    @Tap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
-                    @Tap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
-                    @Tap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
-                    @Swipe.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
-                    @Swipe.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
-                    @Swipe.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
-                    @Scroll.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
-                    @Scroll.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
-                    @Scroll.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
-                    @Pinch.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
-                    @Pinch.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
-                    @Pinch.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
+                    Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
+                    Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
+                    Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
+                    InventoryDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
+                    InventoryDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
+                    InventoryDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInventoryDialog;
+                    SettingSkillDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
+                    SettingSkillDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
+                    SettingSkillDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSettingSkillDialog;
+                    SkillButton1.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
+                    SkillButton1.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
+                    SkillButton1.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton1;
+                    SkillButton2.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton2;
+                    SkillButton2.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton2;
+                    SkillButton2.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSkillButton2;
+                    Tap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
+                    Tap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
+                    Tap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTap;
+                    Swipe.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    Swipe.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    Swipe.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipe;
+                    Scroll.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
+                    Scroll.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
+                    Scroll.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnScroll;
+                    Pinch.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
+                    Pinch.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
+                    Pinch.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPinch;
                 }
+
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @Movement.started += instance.OnMovement;
-                    @Movement.performed += instance.OnMovement;
-                    @Movement.canceled += instance.OnMovement;
-                    @InventoryDialog.started += instance.OnInventoryDialog;
-                    @InventoryDialog.performed += instance.OnInventoryDialog;
-                    @InventoryDialog.canceled += instance.OnInventoryDialog;
-                    @SettingSkillDialog.started += instance.OnSettingSkillDialog;
-                    @SettingSkillDialog.performed += instance.OnSettingSkillDialog;
-                    @SettingSkillDialog.canceled += instance.OnSettingSkillDialog;
-                    @SkillButton1.started += instance.OnSkillButton1;
-                    @SkillButton1.performed += instance.OnSkillButton1;
-                    @SkillButton1.canceled += instance.OnSkillButton1;
-                    @SkillButton2.started += instance.OnSkillButton2;
-                    @SkillButton2.performed += instance.OnSkillButton2;
-                    @SkillButton2.canceled += instance.OnSkillButton2;
-                    @Tap.started += instance.OnTap;
-                    @Tap.performed += instance.OnTap;
-                    @Tap.canceled += instance.OnTap;
-                    @Swipe.started += instance.OnSwipe;
-                    @Swipe.performed += instance.OnSwipe;
-                    @Swipe.canceled += instance.OnSwipe;
-                    @Scroll.started += instance.OnScroll;
-                    @Scroll.performed += instance.OnScroll;
-                    @Scroll.canceled += instance.OnScroll;
-                    @Pinch.started += instance.OnPinch;
-                    @Pinch.performed += instance.OnPinch;
-                    @Pinch.canceled += instance.OnPinch;
+                    Movement.started += instance.OnMovement;
+                    Movement.performed += instance.OnMovement;
+                    Movement.canceled += instance.OnMovement;
+                    InventoryDialog.started += instance.OnInventoryDialog;
+                    InventoryDialog.performed += instance.OnInventoryDialog;
+                    InventoryDialog.canceled += instance.OnInventoryDialog;
+                    SettingSkillDialog.started += instance.OnSettingSkillDialog;
+                    SettingSkillDialog.performed += instance.OnSettingSkillDialog;
+                    SettingSkillDialog.canceled += instance.OnSettingSkillDialog;
+                    SkillButton1.started += instance.OnSkillButton1;
+                    SkillButton1.performed += instance.OnSkillButton1;
+                    SkillButton1.canceled += instance.OnSkillButton1;
+                    SkillButton2.started += instance.OnSkillButton2;
+                    SkillButton2.performed += instance.OnSkillButton2;
+                    SkillButton2.canceled += instance.OnSkillButton2;
+                    Tap.started += instance.OnTap;
+                    Tap.performed += instance.OnTap;
+                    Tap.canceled += instance.OnTap;
+                    Swipe.started += instance.OnSwipe;
+                    Swipe.performed += instance.OnSwipe;
+                    Swipe.canceled += instance.OnSwipe;
+                    Scroll.started += instance.OnScroll;
+                    Scroll.performed += instance.OnScroll;
+                    Scroll.canceled += instance.OnScroll;
+                    Pinch.started += instance.OnPinch;
+                    Pinch.performed += instance.OnPinch;
+                    Pinch.canceled += instance.OnPinch;
                 }
             }
         }
-        public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
-        private int m_PCSchemeIndex = -1;
-        public InputControlScheme PCScheme
-        {
-            get
-            {
-                if (m_PCSchemeIndex == -1) m_PCSchemeIndex = asset.FindControlSchemeIndex("PC");
-                return asset.controlSchemes[m_PCSchemeIndex];
-            }
-        }
-        private int m_TouchScreenSchemeIndex = -1;
-        public InputControlScheme TouchScreenScheme
-        {
-            get
-            {
-                if (m_TouchScreenSchemeIndex == -1) m_TouchScreenSchemeIndex = asset.FindControlSchemeIndex("TouchScreen");
-                return asset.controlSchemes[m_TouchScreenSchemeIndex];
-            }
-        }
+
         public interface IPlayerControlsActions
         {
             void OnMovement(InputAction.CallbackContext context);

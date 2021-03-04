@@ -4,15 +4,15 @@ namespace Samples
 {
     public sealed class PointPresenter : IPresenter
     {
-        private readonly IPointView _view;
         private readonly IPointModel _model;
+        private readonly IPointView _view;
 
         public PointPresenter(IPointView view, IPointModel model)
         {
             _view = view;
             _model = model;
         }
-        
+
         public void Activate()
         {
             _model.ColorChanged += OnColorChanged;

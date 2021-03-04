@@ -7,7 +7,7 @@
         public InputManager()
         {
             var playerActions = new PlayerActions();
-            
+
             PlayerControl = new PlayerControl(playerActions);
         }
     }

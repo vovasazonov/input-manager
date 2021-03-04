@@ -11,9 +11,7 @@ namespace Inputs.Actions.Scroll
         private Vector2 _scrollVector2;
 
         public IVector2 ScrollVector => new UnityVector(_scrollVector2);
-
         public float TotalMagnitude => _scrollVector2.magnitude;
-
         public float Sign => Mathf.Sign(_scrollVector2.y);
 
         public ScrollAction(InputAction inputAction)

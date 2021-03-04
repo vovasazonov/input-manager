@@ -1,5 +1,4 @@
-﻿using Inputs.Actions;
-using Inputs.Actions.Dialog;
+﻿using Inputs.Actions.Dialog;
 using Inputs.Actions.Movement;
 using Inputs.Actions.Pinch;
 using Inputs.Actions.Scale;

@@ -21,6 +21,11 @@ namespace Inputs.Actions.Skill
             AddInputActionListener();
         }
 
+        public void ChangeBindPath()
+        {
+            StartRebind();
+        }
+
         private void AddInputActionListener()
         {
             _inputAction.performed += OnPerformed;
@@ -34,11 +39,6 @@ namespace Inputs.Actions.Skill
         private void OnPerformed(InputAction.CallbackContext context)
         {
             CallPerformed();
-        }
-
-        public void ChangeBindPath()
-        {
-            StartRebind();
         }
 
         private void StartRebind()
