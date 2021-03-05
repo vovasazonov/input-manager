@@ -250,6 +250,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1750413240}
     m_Modifications:
+    - target: {fileID: 5259609945087834702, guid: 6fd15595060052d4ab016542557e696e, type: 3}
+      propertyPath: _isAllowMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259609945087834702, guid: 6fd15595060052d4ab016542557e696e, type: 3}
+      propertyPath: _onScreenStick
+      value: 
+      objectReference: {fileID: 1078409758}
     - target: {fileID: 8170153791668043268, guid: 6fd15595060052d4ab016542557e696e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2572,6 +2580,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071087664}
   m_CullTransparentMesh: 0
+--- !u!1 &1078409756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8170153791961219457, guid: 6fd15595060052d4ab016542557e696e, type: 3}
+  m_PrefabInstance: {fileID: 67904396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1078409758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078409756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovementRange: 50
+  m_ControlPath: <Gamepad>/leftStick
 --- !u!1 &1129461977
 GameObject:
   m_ObjectHideFlags: 0
