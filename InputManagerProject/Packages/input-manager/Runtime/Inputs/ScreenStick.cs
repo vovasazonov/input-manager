@@ -9,10 +9,12 @@ namespace Inputs
     {
         [SerializeField] [InputControl(layout = "Vector2")]
         private string _controlPath;
+
         [SerializeField] private RectTransform _stickArea;
         [SerializeField] private RectTransform _handleArea;
         [SerializeField] private RectTransform _handle;
         [SerializeField] private float _handleRange = 50;
+        [SerializeField] private bool _allowHideHandleArea;
 
         private Vector2 _downPointerPosition;
         private Vector2 _handleAnchored;
@@ -26,7 +28,16 @@ namespace Inputs
 
         private void Start()
         {
+            SetDisplayHandleArea(false);
             InitializeAnchors();
+        }
+
+        private void SetDisplayHandleArea(bool isDisplay)
+        {
+            if (_allowHideHandleArea)
+            {
+                _handleArea.gameObject.SetActive(isDisplay);
+            }
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -36,12 +47,14 @@ namespace Inputs
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            SetDisplayHandleArea(true);
             MoveHandleAreaToDownPointerPosition(eventData);
             SaveDownPointerPosition(eventData);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            SetDisplayHandleArea(false);
             ResetValuesToDefault();
         }
 
@@ -78,6 +91,7 @@ namespace Inputs
             _handleAreaAnchored = _handleArea.anchoredPosition;
         }
 
+        
         private void ResetValuesToDefault()
         {
             SetCurrentHandlerPosition(Vector2.zero);
