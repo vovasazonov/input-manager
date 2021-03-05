@@ -89,11 +89,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27017fb32123443db1c0edb95c4d3c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlPath: <Gamepad>/leftStick
-  _stickArea: {fileID: 8170153791668043268}
-  _handleArea: {fileID: 8170153792821263258}
-  _handle: {fileID: 8170153791961219456}
-  _handleRange: 50
+  _stickAreaTransform: {fileID: 8170153791668043268}
+  _handleAreaTransform: {fileID: 8170153792821263258}
+  _handleTransform: {fileID: 8170153791961219456}
+  _handleAreaImage: {fileID: 8170153792821263252}
+  _handleImage: {fileID: 8170153791961219459}
+  _onScreenStick: {fileID: 6897885889296138233}
+  _isAllowMove: 1
+  _allowHideHandleArea: 0
 --- !u!1 &8170153791961219457
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +108,7 @@ GameObject:
   - component: {fileID: 8170153791961219456}
   - component: {fileID: 8170153791961219458}
   - component: {fileID: 8170153791961219459}
+  - component: {fileID: 6897885889296138233}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -169,6 +173,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6897885889296138233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170153791961219457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovementRange: 50
+  m_ControlPath: <Gamepad>/leftStick
 --- !u!1 &8170153792821263259
 GameObject:
   m_ObjectHideFlags: 0

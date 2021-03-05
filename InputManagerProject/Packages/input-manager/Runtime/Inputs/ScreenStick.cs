@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.Layouts;
 using UnityEngine.InputSystem.OnScreen;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Inputs
 {
@@ -11,6 +10,8 @@ namespace Inputs
         [SerializeField] private RectTransform _stickAreaTransform;
         [SerializeField] private RectTransform _handleAreaTransform;
         [SerializeField] private RectTransform _handleTransform;
+        [SerializeField] private Image _handleAreaImage;
+        [SerializeField] private Image _handleImage;
         [SerializeField] private OnScreenStick _onScreenStick;
         [SerializeField] private bool _isAllowMove;
         [SerializeField] private bool _allowHideHandleArea;
@@ -28,7 +29,8 @@ namespace Inputs
         {
             if (_allowHideHandleArea)
             {
-                _handleAreaTransform.gameObject.SetActive(isDisplay);
+                _handleAreaImage.enabled = isDisplay;
+                _handleImage.enabled = isDisplay;
             }
         }
 
@@ -43,11 +45,11 @@ namespace Inputs
         public void OnPointerDown(PointerEventData eventData)
         {
             SetDisplayHandleArea(true);
-            
             if (_isAllowMove)
             {
                 MoveHandleAreaToDownPointerPosition(eventData);
             }
+
         }
 
         public void OnPointerUp(PointerEventData eventData)
