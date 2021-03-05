@@ -11,6 +11,7 @@ namespace Inputs
         [SerializeField] private RectTransform _handleArea;
         [SerializeField] private RectTransform _handle;
         [SerializeField] private OnScreenStick _onScreenStick;
+        [SerializeField] private bool _isAllowMove;
         [SerializeField] private bool _allowHideHandleArea;
         
         private Vector2 _handleAnchored;
@@ -32,13 +33,20 @@ namespace Inputs
 
         public void OnDrag(PointerEventData eventData)
         {
-            _onScreenStick.OnDrag(eventData);
+            if (_isAllowMove)
+            {
+                _onScreenStick.OnDrag(eventData);
+            }
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             SetDisplayHandleArea(true);
-            MoveHandleAreaToDownPointerPosition(eventData);
+            
+            if (_isAllowMove)
+            {
+                MoveHandleAreaToDownPointerPosition(eventData);
+            }
         }
 
         public void OnPointerUp(PointerEventData eventData)
