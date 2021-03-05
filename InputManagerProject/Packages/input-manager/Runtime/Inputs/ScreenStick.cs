@@ -2,14 +2,15 @@
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine.InputSystem.OnScreen;
+using UnityEngine.Serialization;
 
 namespace Inputs
 {
     public sealed class ScreenStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
-        [SerializeField] private RectTransform _stickArea;
-        [SerializeField] private RectTransform _handleArea;
-        [SerializeField] private RectTransform _handle;
+        [SerializeField] private RectTransform _stickAreaTransform;
+        [SerializeField] private RectTransform _handleAreaTransform;
+        [SerializeField] private RectTransform _handleTransform;
         [SerializeField] private OnScreenStick _onScreenStick;
         [SerializeField] private bool _isAllowMove;
         [SerializeField] private bool _allowHideHandleArea;
@@ -27,7 +28,7 @@ namespace Inputs
         {
             if (_allowHideHandleArea)
             {
-                _handleArea.gameObject.SetActive(isDisplay);
+                _handleAreaTransform.gameObject.SetActive(isDisplay);
             }
         }
 
@@ -58,20 +59,20 @@ namespace Inputs
 
         private void MoveHandleAreaToDownPointerPosition(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_stickArea, eventData.position, eventData.pressEventCamera, out var localPosition);
-            _handleArea.anchoredPosition = localPosition;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_stickAreaTransform, eventData.position, eventData.pressEventCamera, out var localPosition);
+            _handleAreaTransform.anchoredPosition = localPosition;
         }
 
         private void InitializeAnchors()
         {
-            _handleAnchored = _handle.anchoredPosition;
-            _handleAreaAnchored = _handleArea.anchoredPosition;
+            _handleAnchored = _handleTransform.anchoredPosition;
+            _handleAreaAnchored = _handleAreaTransform.anchoredPosition;
         }
 
         private void ResetValuesToDefault()
         {
-            _handleArea.anchoredPosition = _handleAreaAnchored;
-            _handle.anchoredPosition = _handleAnchored;
+            _handleAreaTransform.anchoredPosition = _handleAreaAnchored;
+            _handleTransform.anchoredPosition = _handleAnchored;
         }
     }
 }
